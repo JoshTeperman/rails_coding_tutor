@@ -37,3 +37,9 @@ CodingTutor is a two-way tutoring marketplace for Software Developers based in A
 
 
 ## Answers to the Short Answer questions (Section 2.2)
+\
+
+
+
+
+hi
