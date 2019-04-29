@@ -1,24 +1,39 @@
-# README
+# README - CodingTutor
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+URL: www.blahblahblah.herokuapps.com
+---
+## Description
+---
+### Problem Definition / Purpose
 
-Things you may want to cover:
+CodingTutor is a two-way tutoring marketplace for Software Developers based in Australia. Students can search for and select Tutors based primaritly on skill set, location and reputation, and book a session by themself or teaming up with other students as a group. 
 
-* Ruby version
+### Functionality / Features
+- screenshots
 
-* System dependencies
+### Tech Stack
+- HTML, CSS, SASS
+- Ruby, Ruby on Rails
+- Heroku
 
-* Configuration
+### Configuration / Installation Instructions 
 
-* Database creation
+## Design Documentation
 
-* Database initialization
+### Design process
 
-* How to run the test suite
+### User stories / User Journey
+- stories
+- Workflow diagram of user journey/s.
 
-* Services (job queues, cache servers, search engines, etc.)
+### Wireframes
 
-* Deployment instructions
+### ERD (Entity Relationship Diagrams)
 
-* ...
+
+## Planning process
+- project plan & timeline
+- Screenshots of Trello board(s)
+
+
+## Answers to the Short Answer questions (Section 2.2)
