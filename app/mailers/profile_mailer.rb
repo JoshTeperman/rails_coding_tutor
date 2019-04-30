@@ -1,0 +1,2 @@
+class ProfileMailer < ApplicationMailer
+end
