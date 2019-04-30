@@ -1,4 +1,4 @@
-class ReviewsController < ApplicationController
+class OrdersController < ApplicationController
 
   def index
   end
@@ -12,7 +12,7 @@ class ReviewsController < ApplicationController
 
 
   def show
-    @review = find_review(params)
+    @order = find_order(params)
   end
 
 
@@ -26,13 +26,12 @@ class ReviewsController < ApplicationController
   end
 
   private
-  def review_params
+  def order_params
     params.permit()
   end
 
-  def find_review
-    Review.find(params[:id])
+  def find_order
+    Order.find(params[:id])
   end
-
 
 end

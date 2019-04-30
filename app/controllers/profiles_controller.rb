@@ -21,6 +21,16 @@ class ProfilesController < ApplicationController
     @profile = Profile.find(params[:id])
   end
 
+  def edit
+  end
+
+  def update
+  end
+
+  def destroy
+  end
+  
+
   private
   def profile_params
     params.permit(:tutor?, :admin?, :name, :skills, :bio, :hourly_rate)
