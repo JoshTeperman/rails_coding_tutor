@@ -1,29 +1,42 @@
-puts "Destroying old records..."
-
-User.destroy_all
-
-puts "Starting Seeding..."
 
 
 skills = ['HTML', 'CSS', 'Sass', 'CSS Animations', 'JavaScript', 'Ruby', 'Ruby on Rails', 'PostgreSQL', 'Java', 'Python', 'Markdown', 'TypeScript', 'Scala', 'Kotlin', 'C', 'C#', 'C++', 'Objective-C', 'PHP', '.NET', 'SQL', 'Fortran', 'Perl', 'Django', 'Clojure', 'Lisp', 'Cobol', 'Haskell', 'Rust', 'MongoDB', 'Elixir', 'Node.js', 'Express.js', 'JQuery', 'React.js', 'WebAssembly', 'VBA', 'Microsoft Excel', 'Go', 'OOP', 'Unit Testing', 'Automated Testing', 'User Testing', 'TDD', 'UI/UX', 'DevOps', 'Site Reliability Testing', 'Crying', 'Talking Smack', 'Donald Trump Jokes', 'Twitter', 'Borrowing money from my Parents', 'Making fun of Bootcamp grads', 'Regret']
 
-puts 'Creating Admin User'
-user = User.new(email: 'admin@admin.com', password: 'password', password_confirmation: 'password', admin?: true, moderator?: true)
-user.skip_confirmation!
-user.save
-
-params = {
+profile_params = {
   tutor?: true,
-  name: "Admin",
+  first_name: 'Admin',
+  surname: 'User',
   skills: skills.sample(rand(3..20)).join(', '),
   bio: 'placeholder',
   average_rating: rand(0.0..5.0),
   hourly_rate: rand(20.00..200.00)
 }
 
-# create Admin User Profile
-user_profile = user.create_profile(params)
-user_profile.save
+puts "Destroying old records..."
+User.destroy_all
+
+# SEEDING -->
+puts "Starting Seeding..."
+
+# ADMIN 
+puts 'Creating Admin User'
+user = User.new(email: 'admin@admin.com', password: 'password', password_confirmation: 'password', admin?: true, moderator?: true)
+user.skip_confirmation!
+user.save
+
+admin_user_profile = user.create_profile(profile_params)
+admin_user_profile.save
+
+
+# MODERATOR
+puts 'Creating Moderator User'
+user = User.new(email: 'moderator@moderator.com', password: 'password', password_confirmation: 'password', admin?: false, moderator?: true)
+user.skip_confirmation!
+user.save
+
+moderator_user_profile = user.create_profile(profile_params)
+moderator_user_profile.save
+
 
 # puts 'Creating Student Users'
 # create Normal Users (students only)
