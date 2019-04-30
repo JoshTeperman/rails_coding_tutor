@@ -10,10 +10,19 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_04_30_013321) do
+ActiveRecord::Schema.define(version: 2019_04_30_024316) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "bookings", force: :cascade do |t|
+    t.datetime "date"
+    t.string "location"
+    t.integer "price"
+    t.integer "duration"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
 
   create_table "profiles", force: :cascade do |t|
     t.boolean "tutor?"
@@ -27,6 +36,15 @@ ActiveRecord::Schema.define(version: 2019_04_30_013321) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["user_id"], name: "index_profiles_on_user_id"
+  end
+
+  create_table "user_bookings", force: :cascade do |t|
+    t.bigint "user_id"
+    t.bigint "booking_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["booking_id"], name: "index_user_bookings_on_booking_id"
+    t.index ["user_id"], name: "index_user_bookings_on_user_id"
   end
 
   create_table "users", force: :cascade do |t|
@@ -46,4 +64,6 @@ ActiveRecord::Schema.define(version: 2019_04_30_013321) do
   end
 
   add_foreign_key "profiles", "users"
+  add_foreign_key "user_bookings", "bookings"
+  add_foreign_key "user_bookings", "users"
 end
