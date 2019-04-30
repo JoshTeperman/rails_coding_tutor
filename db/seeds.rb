@@ -8,13 +8,12 @@ puts "Starting Seeding..."
 skills = ['HTML', 'CSS', 'Sass', 'CSS Animations', 'JavaScript', 'Ruby', 'Ruby on Rails', 'PostgreSQL', 'Java', 'Python', 'Markdown', 'TypeScript', 'Scala', 'Kotlin', 'C', 'C#', 'C++', 'Objective-C', 'PHP', '.NET', 'SQL', 'Fortran', 'Perl', 'Django', 'Clojure', 'Lisp', 'Cobol', 'Haskell', 'Rust', 'MongoDB', 'Elixir', 'Node.js', 'Express.js', 'JQuery', 'React.js', 'WebAssembly', 'VBA', 'Microsoft Excel', 'Go', 'OOP', 'Unit Testing', 'Automated Testing', 'User Testing', 'TDD', 'UI/UX', 'DevOps', 'Site Reliability Testing', 'Crying', 'Talking Smack', 'Donald Trump Jokes', 'Twitter', 'Borrowing money from my Parents', 'Making fun of Bootcamp grads', 'Regret']
 
 puts 'Creating Admin User'
-user = User.new(email: 'admin@admin.com', password: 'password', password_confirmation: 'password')
+user = User.new(email: 'admin@admin.com', password: 'password', password_confirmation: 'password', admin?: true, moderator?: true)
 user.skip_confirmation!
 user.save
 
 params = {
   tutor?: true,
-  admin?: true,
   name: "Admin",
   skills: skills.sample(rand(3..20)).join(', '),
   bio: 'placeholder',
