@@ -1,0 +1,20 @@
+<h1>New Profile</h1>
+
+<form class="form-style" action="<%= new_profile_path %>" method="POST" enctype="multipart/form-data">
+
+  <input type="hidden" value="<%= form_authenticity_token %>" name="authenticity_token" />
+  <label for="name">Name</label>
+  <input type="text" name="name" />
+
+  <label for="skills">Skills</label>
+  <input type="textarea" name="skills" />
+
+  <label for="bio">Bio</label>
+  <input type="textarea" name="bio" />
+
+  <label for="hourly_rate">Hourly Rate</label>
+  <input type="text" name="hourly_rate">
+
+  <input type="submit" id="submit" value="Create" />
+</form>
+
