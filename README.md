@@ -16,6 +16,10 @@ CodingTutor is a two-way tutoring marketplace for Software Developers based in A
 - Heroku
 
 ### Configuration / Installation Instructions 
+Gmail account
+email address: ca.codingtutor@gmail.com
+password: nl*V@hKGZ1I6
+
 ---
 ## Design Documentation
 
@@ -38,3 +42,5 @@ CodingTutor is a two-way tutoring marketplace for Software Developers based in A
 ## Answers to the Short Answer questions (Section 2.2)
 
 by Josh & Sunny
+
+
