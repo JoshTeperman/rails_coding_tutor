@@ -66,3 +66,7 @@ gem "devise", "~> 4.6"
 gem "cancan", "~> 1.6"
 
 gem "cancancan", "~> 3.0"
+
+gem "stripe", "~> 4.16"
+
+gem "dotenv-rails", "~> 2.7"
