@@ -1,0 +1,21 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  tutor?: false
+  admin?: false
+  name: MyString
+  skills: MyString
+  bio: MyString
+  average_rating: 1
+  hourly_rate: 1
+  user: one
+
+two:
+  tutor?: false
+  admin?: false
+  name: MyString
+  skills: MyString
+  bio: MyString
+  average_rating: 1
+  hourly_rate: 1
+  user: two
