@@ -7,5 +7,6 @@ class User < ApplicationRecord
   has_many :user_bookings
   has_many :bookings, through: :user_bookings
   has_one :profile
+  has_many :reviews
 
 end
