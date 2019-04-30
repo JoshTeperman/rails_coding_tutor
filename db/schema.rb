@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_04_30_044044) do
+ActiveRecord::Schema.define(version: 2019_04_30_045300) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -22,6 +22,17 @@ ActiveRecord::Schema.define(version: 2019_04_30_044044) do
     t.integer "duration"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+  end
+
+  create_table "orders", force: :cascade do |t|
+    t.integer "total_amount"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "orders_users", id: false, force: :cascade do |t|
+    t.bigint "user_id", null: false
+    t.bigint "order_id", null: false
   end
 
   create_table "profiles", force: :cascade do |t|
@@ -78,6 +89,3 @@ ActiveRecord::Schema.define(version: 2019_04_30_044044) do
   add_foreign_key "user_bookings", "bookings"
   add_foreign_key "user_bookings", "users"
 end
-
-
-
