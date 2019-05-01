@@ -1,73 +1,115 @@
+require_relative '../lib/seeds/seeds.rb'
 
-
-skills = ['HTML', 'CSS', 'Sass', 'CSS Animations', 'JavaScript', 'Ruby', 'Ruby on Rails', 'PostgreSQL', 'Java', 'Python', 'Markdown', 'TypeScript', 'Scala', 'Kotlin', 'C', 'C#', 'C++', 'Objective-C', 'PHP', '.NET', 'SQL', 'Fortran', 'Perl', 'Django', 'Clojure', 'Lisp', 'Cobol', 'Haskell', 'Rust', 'MongoDB', 'Elixir', 'Node.js', 'Express.js', 'JQuery', 'React.js', 'WebAssembly', 'VBA', 'Microsoft Excel', 'Go', 'OOP', 'Unit Testing', 'Automated Testing', 'User Testing', 'TDD', 'UI/UX', 'DevOps', 'Site Reliability Testing', 'Crying', 'Talking Smack', 'Donald Trump Jokes', 'Twitter', 'Borrowing money from my Parents', 'Making fun of Bootcamp grads', 'Regret']
-
-profile_params = {
-  tutor?: true,
-  first_name: 'Admin',
-  surname: 'User',
-  skills: skills.sample(rand(3..20)).join(', '),
-  bio: 'placeholder',
-  average_rating: rand(0.0..5.0),
-  hourly_rate: rand(20.00..200.00)
-}
-
-puts "Destroying old records..."
+puts 'Destroying old records...'
 User.destroy_all
 
-# SEEDING -->
-puts "Starting Seeding..."
+# SEEDING       ------------------------------------------------------------->
 
-# ADMIN 
+puts 'Starting Seeding...'
+
+# ADMIN USER    ------------------------------------------------------------->
+
 puts 'Creating Admin User'
 user = User.new(email: 'admin@admin.com', password: 'password', password_confirmation: 'password', admin?: true, moderator?: true)
+
 user.skip_confirmation!
 user.save
 
-admin_user_profile = user.create_profile(profile_params)
-admin_user_profile.save
+profile = user.create_profile(tutor?: true, first_name: 'Admin', surname: 'User', skills: 'none', bio: 'Administrator', average_rating: 0, hourly_rate: 0)
+profile.save
 
+# MODERATOR USER  ------------------------------------------------------------->
 
-# MODERATOR
 puts 'Creating Moderator User'
 user = User.new(email: 'moderator@moderator.com', password: 'password', password_confirmation: 'password', admin?: false, moderator?: true)
 user.skip_confirmation!
 user.save
 
-moderator_user_profile = user.create_profile(profile_params)
-moderator_user_profile.save
+profile = user.create_profile(tutor?: true, first_name: 'Moderator', surname: 'User', skills: 'none', bio: 'Moderator', average_rating: 0, hourly_rate: 0)
+profile.save
 
 
-# puts 'Creating Student Users'
-# create Normal Users (students only)
-# Create Normal User Profiles
+# STUDENT USERS  ------------------------------------------------------------->
 
-# puts 'Creating Tutor Users'
-# create Normal Users (tutors: true)
-# create Normal User Profiles
+puts 'Creating Student Users'
 
+5.times do
+
+  seed_email = 'admin@admin.com'
+  while User.exists?(email: seed_email)
+    seed_email = EMAILS.sample
+  end
+  
+  p seed_email
+  user_params = {
+    email: seed_email,
+    password: 'password',
+    password_confirmation: 'password',
+    admin?: false,
+    moderator?: false
+  }
+  profile_params = {
+    tutor?: false,
+    first_name: FIRST_NAMES.sample,
+    surname: SURNAMES.sample,
+    skills: SKILLS.sample(rand(3..20)).join(', '),
+    bio: BIOS.sample,
+    average_rating: nil,
+    hourly_rate: nil
+  }
+  puts "Seeding Student: #{profile_params[:first_name]} #{profile_params[:surname]}"
+  user = User.create!(user_params)
+  user.skip_confirmation!
+  user.save
+
+  # Create Student User Profiles
+  student_user_profile = user.create_profile(profile_params)
+  student_user_profile.save
+end
+
+# TUTOR USERS   ------------------------------------------------------------->
+
+puts 'Creating Tutor Users'
+
+5.times do
+
+  seed_email = 'admin@admin.com'
+  while User.exists?(email: seed_email)
+    seed_email = EMAILS.sample
+  end
+  
+  p seed_email
+  user_params = {
+    email: seed_email,
+    password: 'password',
+    password_confirmation: 'password',
+    admin?: false,
+    moderator?: false
+  }
+  profile_params = {
+    tutor?: true,
+    first_name: FIRST_NAMES.sample,
+    surname: SURNAMES.sample,
+    skills: SKILLS.sample(rand(3..20)).join(', '),
+    bio: BIOS.sample,
+    average_rating: rand(0.0..5.0),
+    hourly_rate: rand(20.00..200.00)
+  }
+  puts "Seeding Tutor: #{profile_params[:first_name]} #{profile_params[:surname]}"
+  user = User.create!(user_params)
+  user.skip_confirmation!
+  user.save
+
+  # Create Tutor User Profiles
+  tutor_user_profile = user.create_profile(profile_params)
+  tutor_user_profile.save
+end
+
+# BOOKINGS   ------------------------------------------------------------->
+puts 'Seeding bookings'
 
 
 puts 'Finished seeding'
-
-
-# 10.times do 
-#   author_name = Faker::Book.author
-#   author = Author.create({name: author_name})
-#   5.times do
-#     title = Faker::Book.title
-#     description = Faker::Book.genre
-#     rating = rand(1..5)
-#     # author_id = author.id
-#     book = Book.new({title: title, description: description, rating: rating})
-#     book.author_id = author.id
-#     book.save
-
-#     3.times do
-#       book.reviews.create({title: Faker::Artist.name, review: Faker::Restaurant.review})
-#     end
-#   end
-# end
 
 
 
