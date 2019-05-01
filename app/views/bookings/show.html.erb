@@ -1,0 +1,13 @@
+<h1>Show specific bookings</h1>
+<h1>Show (specific booking for a user)</h1>
+<ul>
+  <li><%= @booking.date  %></li>
+  <li><%= @booking.location %></li>
+  <li><%= @booking.price %></li>
+  <li><%= @booking.duration %></li>
+</ul>
+
+  <p><%= link_to "EDIT booking", edit_booking_path(@booking) %></p>
+  <p><%= link_to "Delete Booking", delete_booking_path(@booking.id), method: :delete, data: { confirm: 'Are you sure?' } %></p>
+
+<p><%= link_to "Go back to view all your bookings", booking_path %></p>

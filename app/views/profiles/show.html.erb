@@ -7,7 +7,9 @@
  <li><%= @profile.hourly_rate %></li>
 </ul>
 <% if @profile.user == current_user %>
+
  <p><%= link_to "Delete Profile", profile_path(@profile.id), method: :delete, data: { confirm: 'Are you sure?' } %></p>
  <p><%= link_to "Edit profile", edit_profile_path(current_user.profile) %></p>
 <% end %>
 <p><%= link_to "Go back to home", home_path %></p>
+

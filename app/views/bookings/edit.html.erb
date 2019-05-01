@@ -1,0 +1,23 @@
+<h1>Edit (edit bookings)</h1>
+<p>(EDIT your booking)</p>
+
+<form class="form-style" action="<%= update_booking_path(@booking) %>" method="POST" enctype="multipart/form-data">
+<input type="hidden" value="<%= form_authenticity_token %>" name="authenticity_token" />
+  <input type="hidden" name="_method" value="patch"/>
+  <label for="date">Date</label>
+  <input type="text" name="date" />
+
+  <label for="location">Location</label>
+  <input type="textarea" name="location" />
+
+  <label for="price">Price</label>
+  <input type="textarea" name="price" />
+
+  <label for="duration">Duration</label>
+  <input type="text" name="duration">
+
+  <input type="submit" value="Update" />
+</form>
+
+<%= link_to "Delete", delete_booking_path(@booking.id), method: :delete, data: { confirm: 'Are you sure?' } %>
+<p><%= link_to "Go back to show all your bookings", booking_path %></p>
