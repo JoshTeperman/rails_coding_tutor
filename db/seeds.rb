@@ -33,7 +33,7 @@ profile.save
 
 puts 'Creating Student Users'
 
-2.times do
+20.times do
 
   seed_email = 'admin@admin.com'
   while User.exists?(email: seed_email)
@@ -71,7 +71,7 @@ end
 
 puts 'Creating Tutor Users'
 
-2.times do
+20.times do
 
   seed_email = 'admin@admin.com'
   while User.exists?(email: seed_email)
@@ -128,7 +128,7 @@ end
 puts 'Seeding bookings'
 
 
-20.times do
+50.times do
 
   # Random Student
   students = User.joins(:profile).where(profiles: {tutor?: false})
@@ -165,6 +165,7 @@ end
 puts 'Finished seeding'
 
 
+#NOTES for adding multiple Users to a Booking
 #     @author = Author.all.find_by(name: params[:name])
 #     @book = Book.new(book_params)
 #     @book.authors << @author
@@ -175,3 +176,4 @@ puts 'Finished seeding'
 # book.authors << first_author
 # book.authors << second_author if rand(1..5) > 3
 # book.authors << third_author if rand(1..5) > 3
+
