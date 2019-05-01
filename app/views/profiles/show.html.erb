@@ -1,10 +1,13 @@
 <h1>User Profile</h1>
 <h1>Show (specific user profile + all reviews + add review form)</h1>
 <ul>
- <li><%= @profile.name  %></li>
- <li><%= @profile.skills %></li>
- <li><%= @profile.bio %></li>
- <li><%= @profile.hourly_rate %></li>
+  <li><%= @profile.first_name  %><%= @profile.surname %></li>
+  <li><%= @profile.skills %></li>
+  <li><%= @profile.bio %></li>
+  <% unless nil %>
+  <%= @profile.average_rating %>
+  <%= @profile.hourly_rate %>
+  <% end %>
 </ul>
 <% if @profile.user == current_user %>
 

@@ -3,8 +3,11 @@
 <form class="form-style" action="<%= new_profile_path %>" method="POST" enctype="multipart/form-data">
 
   <input type="hidden" value="<%= form_authenticity_token %>" name="authenticity_token" />
-  <label for="name">Name</label>
-  <input type="text" name="name" />
+  <label for="first_name">First Name</label>
+  <input type="text" name="first_name" />
+
+  <label for="name">Surname</label>
+  <input type="text" name="surname" />
 
   <label for="skills">Skills</label>
   <input type="textarea" name="skills" />

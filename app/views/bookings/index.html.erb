@@ -5,26 +5,25 @@
 
 
 <div class="d-flex flex-wrap">
-  <% @bookings.each_with_index do |booking, index| %>
-   <li> 
-    <div class="card m-2" style="width: 21.5rem;">
-      <div class="card-body">
-      <h2 class="card-title"><%= booking.id %></h2>
-        <h5 class="card-title"><%= booking.date %></h5>
-        <h6 class="card-subtitle mb-2 text-muted"><%= booking.location %></h6>
-        <h6 class="card-subtitle mb-2 text-muted"><%= booking.price %></h6>
-        <h6 class="card-subtitle mb-2 text-muted"><%= booking.duration %></h6>
-        <h6 class="card-subtitle mb-2 text-muted"><<%= link_to "show", show_booking_path(booking) %></h6>
-          </li>
-      
-     
-   
-            <i class="fas fa-book"></i>
-        </a>
-      </div>
-    </div>
-    <% end %>
-  </div>
 
-  
+  <% if @bookings.nil? %>
+    <% @bookings.each_with_index do |booking, index| %>
+      <li> 
+        <div class="card m-2" style="width: 21.5rem;">
+          <div class="card-body">
+            <h2 class="card-title"><%= booking.id %></h2>
+            <h5 class="card-title"><%= booking.date %></h5>
+            <h6 class="card-subtitle mb-2 text-muted"><%= booking.location %></h6>
+            <h6 class="card-subtitle mb-2 text-muted"><%= booking.price %></h6>
+            <h6 class="card-subtitle mb-2 text-muted"><%= booking.duration %></h6>
+            <h6 class="card-subtitle mb-2 text-muted"><<%= link_to "show", show_booking_path(booking) %></h6>
+          </div>
+        </div>
+      </li>
+    <% end %>
+  <% else %>
+    <h3>You don't have any bookings yet. Make a booking here</h3>
+  <% end %>
+</div>
+
   <p><%= link_to "Create new booking", new_booking_path %></p>

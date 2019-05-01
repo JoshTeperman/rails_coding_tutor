@@ -8,11 +8,11 @@
   <% @profiles.each do |tutor| %>
     <div class="card m-2" style="width: 21.5rem;">
       <div class="card-body">
-        <h5 class="card-title"><%= tutor.name %></h5>
+        <h5 class="card-title"><%= tutor.first_name %> <%= tutor.surname %></h5>
         <h6 class="card-subtitle mb-2 text-muted"><%= tutor.skills %></h6>
-        <p class="card-text">  </p>
-   
-            <i class="fas fa-book"></i>
+        <p class="card-text"> </p>
+        <%= link_to "View Profile", profile_path(tutor) %>
+
         </a>
       </div>
     </div>
@@ -21,6 +21,8 @@
 
 
   <p><%= link_to "Create new profile", new_profile_path %></p>
-  <p><%= link_to "Create new Booking with a tutor", booking_path %></p>
+  <p><%= link_to "Create new Booking with a tutor", booking_path %></p
+  
+  <%=  %>
 
 
