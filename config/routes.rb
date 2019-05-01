@@ -16,7 +16,7 @@ Rails.application.routes.draw do
 
 # BOOKINGS ROUTES
   get '/bookings', to: 'bookings#index', as: 'booking'
-  get '/bookings/new', to: 'bookings/new', to: 'bookings#new', as: 'new_booking'
+  get '/bookings/new', to: 'bookings#new', as: 'new_booking'
   post '/bookings/new', to: 'bookings#create'
   get '/bookings/:id', to: 'bookings#show', as: 'show_booking'
 
@@ -27,5 +27,4 @@ Rails.application.routes.draw do
   delete "/bookings/:id", to: "bookings#destroy", as: "delete_booking"
 
   root to: 'profiles#index'
-  # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 end
