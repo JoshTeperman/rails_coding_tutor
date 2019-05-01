@@ -70,3 +70,5 @@ gem "cancancan", "~> 3.0"
 gem "stripe", "~> 4.16"
 
 gem "dotenv-rails", "~> 2.7"
+
+gem "faker", "~> 1.9"
