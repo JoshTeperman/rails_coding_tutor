@@ -11,23 +11,50 @@ class ProfilesController < ApplicationController
   def create
     @user = current_user
     @profile = current_user.create_profile(profile_params)
-    @profile.save
 
-
+    if @profile.save
+        flash[:success] = "Profile saved"
     redirect_to profile_path(@profile)
+    else
+        flash[:error] = "Error"
+        render :new
+      end
   end
 
   def show
+    
     @profile = Profile.find(params[:id])
+    # raise
   end
 
   def edit
+    @profile = Profile.find(params[:id])
+
+
   end
 
   def update
+    
+    @user = current_user
+    
+    @profile = @user.profile
+    if @profile
+        @profile.update(profile_params)
+        flash[:success] = "Successfully updated"
+        redirect_to @profile
+    else
+      flash[:error] = "Error"
+      render :edit
+    end
   end
 
+
   def destroy
+    @profile = Profile.find(params[:id])
+    @profile.destroy
+   
+    redirect_to home_path
+
   end
   
 
