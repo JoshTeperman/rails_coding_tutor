@@ -7,71 +7,71 @@ User.destroy_all
 
 puts 'Starting Seeding...'
 
-# ADMIN USER    ------------------------------------------------------------->
+# # ADMIN USER    ------------------------------------------------------------->
 
-puts 'Creating Admin User'
-user = User.new(email: 'admin@admin.com', password: 'password', password_confirmation: 'password', admin?: true, moderator?: true)
+# puts 'Creating Admin User'
+# user = User.new(email: 'admin@admin.com', password: 'password', password_confirmation: 'password', admin?: true, moderator?: true)
 
-user.skip_confirmation!
-user.save
+# user.skip_confirmation!
+# user.save
 
-profile = user.create_profile(tutor?: true, first_name: 'Admin', surname: 'User', skills: 'none', bio: 'Administrator', average_rating: 0, hourly_rate: 0)
-profile.save
+# profile = user.create_profile(tutor?: true, first_name: 'Admin', surname: 'User', skills: 'none', bio: 'Administrator', average_rating: 0, hourly_rate: 0)
+# profile.save
 
-# MODERATOR USER  ------------------------------------------------------------->
+# # MODERATOR USER  ------------------------------------------------------------->
 
-puts 'Creating Moderator User'
-user = User.new(email: 'moderator@moderator.com', password: 'password', password_confirmation: 'password', admin?: false, moderator?: true)
-user.skip_confirmation!
-user.save
+# puts 'Creating Moderator User'
+# user = User.new(email: 'moderator@moderator.com', password: 'password', password_confirmation: 'password', admin?: false, moderator?: true)
+# user.skip_confirmation!
+# user.save
 
-profile = user.create_profile(tutor?: true, first_name: 'Moderator', surname: 'User', skills: 'none', bio: 'Moderator', average_rating: 0, hourly_rate: 0)
-profile.save
+# profile = user.create_profile(tutor?: true, first_name: 'Moderator', surname: 'User', skills: 'none', bio: 'Moderator', average_rating: 0, hourly_rate: 0)
+# profile.save
 
 
-# STUDENT USERS  ------------------------------------------------------------->
+# # STUDENT USERS  ------------------------------------------------------------->
 
-puts 'Creating Student Users'
+# puts 'Creating Student Users'
 
-5.times do
+# 5.times do
 
-  seed_email = 'admin@admin.com'
-  while User.exists?(email: seed_email)
-    seed_email = EMAILS.sample
-  end
+#   seed_email = 'admin@admin.com'
+#   while User.exists?(email: seed_email)
+#     seed_email = EMAILS.sample
+#   end
   
-  p seed_email
-  user_params = {
-    email: seed_email,
-    password: 'password',
-    password_confirmation: 'password',
-    admin?: false,
-    moderator?: false
-  }
-  profile_params = {
-    tutor?: false,
-    first_name: FIRST_NAMES.sample,
-    surname: SURNAMES.sample,
-    skills: SKILLS.sample(rand(3..20)).join(', '),
-    bio: BIOS.sample,
-    average_rating: nil,
-    hourly_rate: nil
-  }
-  puts "Seeding Student: #{profile_params[:first_name]} #{profile_params[:surname]}"
-  user = User.create!(user_params)
-  user.skip_confirmation!
-  user.save
+#   p seed_email
+#   user_params = {
+#     email: seed_email,
+#     password: 'password',
+#     password_confirmation: 'password',
+#     admin?: false,
+#     moderator?: false
+#   }
+#   profile_params = {
+#     tutor?: false,
+#     first_name: FIRST_NAMES.sample,
+#     surname: SURNAMES.sample,
+#     skills: SKILLS.sample(rand(3..20)).join(', '),
+#     bio: BIOS.sample,
+#     average_rating: nil,
+#     hourly_rate: nil
+#   }
+#   puts "Seeding Student: #{profile_params[:first_name]} #{profile_params[:surname]}"
+#   user = User.create!(user_params)
+#   user.skip_confirmation!
+#   user.save
 
-  # Create Student User Profiles
-  student_user_profile = user.create_profile(profile_params)
-  student_user_profile.save
-end
+#   # Create Student User Profiles
+#   student_user_profile = user.create_profile(profile_params)
+#   student_user_profile.save
+# end
 
 # TUTOR USERS   ------------------------------------------------------------->
 
 puts 'Creating Tutor Users'
 
-5.times do
+1.times do
 
   seed_email = 'admin@admin.com'
   while User.exists?(email: seed_email)
@@ -108,20 +108,35 @@ end
 # BOOKINGS   ------------------------------------------------------------->
 puts 'Seeding bookings'
 
+2.times do
+
+  booking_params = {
+    date: nil, #datetime
+    location: nil, #string
+    price: nil,
+    duration: nil
+  }
+
+  puts "Seeding Booking: #{booking_params}"
+  booking = Booking.new(booking_params)
+  booking.save
+
+  puts "Adding Booking to User..."
+  user = User.last
+  user.bookings << booking
+  user.save
+end
 
 puts 'Finished seeding'
 
 
+#     @author = Author.all.find_by(name: params[:name])
+#     @book = Book.new(book_params)
+#     @book.authors << @author
+#     @book.save
 
-# Notes
-# =====================
 
-# Not seeding the following User attributes for now:
-  # reset_password_token: nil,
-  # reset_password_sent_at: nil,
-  # remember_created_at: nil,
-  # created_at: nil,
-  # updated_at: nil,
-  # confirmation_token: nil,
-  # confirmed_at: nil,
-  # confirmation_sent_at: nil
+# Update the database seed to add one to three authors
+# book.authors << first_author
+# book.authors << second_author if rand(1..5) > 3
+# book.authors << third_author if rand(1..5) > 3
