@@ -137,9 +137,9 @@ puts 'Seeding bookings'
   puts "student: #{student}"
 
   # Random Tutor
-  tutors = User.joins(:profile).where(profiles: {tutor?: true})
+  tutors = User.joins(:profile).where(profiles: {tutor?: true}) #Array of tutors [tutor1, tutor2, tutor3]
   offset = rand(tutors.count)
-  tutor = tutors[offset-1]
+  tutor = tutors[offset-1]  #select tutor object from array tutors at index [offset-1] => return one tutor object
   puts "tutor: #{tutor}"
 
   # random duration:
@@ -150,7 +150,7 @@ puts 'Seeding bookings'
     location: LOCATIONS.sample,
     duration: duration,
     price: user.profile.hourly_rate * duration,
-    tutor_id: tutor.id
+    tutor_id: tutor.id #user_id for the tutor > change to tutor_id: tutor.profile.tutor_id
   }
 
   puts "Seeding Booking: #{booking_params}"

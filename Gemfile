@@ -72,3 +72,5 @@ gem "stripe", "~> 4.16"
 gem "dotenv-rails", "~> 2.7"
 
 gem "faker", "~> 1.9"
+
+gem "pry", "~> 0.12.2"
