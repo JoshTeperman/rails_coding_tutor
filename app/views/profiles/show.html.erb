@@ -27,7 +27,6 @@
 <% end %>
 
 <p><%= link_to "Create new Booking with a tutor", booking_path %></p>
-<%= link_to "Write a review about this tutor", new_review_path(params[:id]) %>
 <p><%= link_to "Go back to home", home_path %></p>
 
 <% if current_user && @profile != current_user.profile %>
