@@ -12,7 +12,7 @@ puts 'Starting Seeding...'
 puts 'Creating Admin User'
 user = User.new(email: 'admin@admin.com', password: 'password', password_confirmation: 'password', admin?: true, moderator?: true)
 
-user.skip_confirmation!
+# user.skip_confirmation!
 user.save
 
 profile = user.create_profile(tutor?: true, first_name: 'Admin', surname: 'User', skills: 'none', bio: 'Administrator', average_rating: 0, hourly_rate: 0)
@@ -22,7 +22,7 @@ profile.save
 
 puts 'Creating Moderator User'
 user = User.new(email: 'moderator@moderator.com', password: 'password', password_confirmation: 'password', admin?: false, moderator?: true)
-user.skip_confirmation!
+# user.skip_confirmation!
 user.save
 
 profile = user.create_profile(tutor?: true, first_name: 'Moderator', surname: 'User', skills: 'none', bio: 'Moderator', average_rating: 0, hourly_rate: 0)
@@ -59,7 +59,7 @@ puts 'Creating Student Users'
   }
   puts "Seeding Student: #{profile_params[:first_name]} #{profile_params[:surname]}"
   user = User.create!(user_params)
-  user.skip_confirmation!
+  # user.skip_confirmation!
   user.save
 
   # Create Student User Profiles
@@ -97,7 +97,7 @@ puts 'Creating Tutor Users'
   }
   puts "Seeding Tutor: #{profile_params[:first_name]} #{profile_params[:surname]}"
   user = User.create!(user_params)
-  user.skip_confirmation!
+  # user.skip_confirmation!
   user.save
 
   # Create Tutor User Profiles
@@ -137,9 +137,9 @@ puts 'Seeding bookings'
   puts "student: #{student}"
 
   # Random Tutor
-  tutors = User.joins(:profile).where(profiles: {tutor?: true})
+  tutors = User.joins(:profile).where(profiles: {tutor?: true}) #Array of tutors [tutor1, tutor2, tutor3]
   offset = rand(tutors.count)
-  tutor = tutors[offset-1]
+  tutor = tutors[offset-1]  #select tutor object from array tutors at index [offset-1] => return one tutor object
   puts "tutor: #{tutor}"
 
   # random duration:
@@ -150,7 +150,7 @@ puts 'Seeding bookings'
     location: LOCATIONS.sample,
     duration: duration,
     price: user.profile.hourly_rate * duration,
-    tutor_id: tutor.id
+    tutor_id: tutor.id #user_id for the tutor > change to tutor_id: tutor.profile.tutor_id
   }
 
   puts "Seeding Booking: #{booking_params}"
