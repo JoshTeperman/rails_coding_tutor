@@ -6,22 +6,22 @@
   <li><%= @profile.bio %></li>
 
   <h2> Reviews of this tutor from all students </h2>
- <% @tutor.reviews.each do |review| %>
-  <p> <%= review.content %> </p>
-  <p> <%= review.rating %> </p>
-  <% if current_user.id == review.reviewer %>
-    <p><%= link_to "Delete Review", delete_review_path(review), method: :delete, data: { confirm: 'Are you sure?' } %></p>
-    <p><%= link_to "Edit review", edit_profile_path(current_user.profile) %></p>
+  <% @tutor.reviews.each do |review| %>
+    <p> <%= review.content %> </p>
+    <p> <%= review.rating %> </p>
+    <% if current_user.id == review.reviewer %>
+      <p><%= link_to "Delete Review", delete_review_path(review), method: :delete, data: { confirm: 'Are you sure?' } %></p>
+      <p><%= link_to "Edit Review", edit_review_path(review) %></p>
+    <% end %>
   <% end %>
-<% end %>
 
   <% unless nil %>
-  <%= @profile.average_rating %>
-  <%= @profile.hourly_rate %>
+    <%= @profile.average_rating %>
+    <%= @profile.hourly_rate %>
   <% end %>
 </ul>
-<% if @profile.user == current_user %>
 
+<% if @profile.user == current_user %>
  <p><%= link_to "Delete Profile", profile_path(@profile.id), method: :delete, data: { confirm: 'Are you sure?' } %></p>
  <p><%= link_to "Edit profile", edit_profile_path(current_user.profile) %></p>
 <% end %>

@@ -3,51 +3,39 @@ class ReviewsController < ApplicationController
   def index
     @user = current_user
     @reviews = @user.reviews
-    
   end
 
   def create
     unless current_user.nil?
       @tutor = User.joins(:profile).where(profiles: { tutor_id: params[:tutor_id] }).first
       @review = @tutor.reviews.create(review_params)
-      # raise
       if @review.save
-        redirect_to profile_path(@tutor.profile) #was going to @tutor, not @tutor.profile
+        redirect_to profile_path(@tutor.profile)
       else
         render new_review_path(@tutor)
       end
     end
   end
-  
 
   def new
-
     @review = Review.new
-    # raise
-
   end
 
-
   def show
-   @user = current_user
-    @review = @user.reviews
-    
+    @user = current_user
+    @review = @user.reviews 
   end
 
   def edit
-
-    @user = User.find(current_user.id)
+    @review = Review.find(params[:id])
   end
   
   def update
-
-    @user = current_user
-    
-    @review = @user.reviews
-    if @review
-        @review.update(review_params)
-        flash[:success] = "Successfully updated"
-        redirect_to show_review_path
+    @review = Review.find(params[:id])
+    tutor = User.find_by(id: @review.user_id)
+    if @review.update(review_params)
+      flash[:success] = 'Successfully updated' 
+      redirect_to profile_path(tutor.profile)
     else
       flash[:error] = "Error"
       render :edit
@@ -56,9 +44,6 @@ class ReviewsController < ApplicationController
 
   def destroy
     @profile = Profile.find(6)
-    # tutor = User.find(params[:id])
-    # @profile = tutor.profile
-
     id = params[:id]
     @review = Review.find(id)
     @review.destroy
@@ -67,9 +52,9 @@ class ReviewsController < ApplicationController
   end
 
   private
-  def review_params
-    params.permit(:content, :rating, :reviewer)
-  end
+    def review_params
+      params.permit(:content, :rating, :reviewer)
+    end
 
 
 end
