@@ -4,12 +4,17 @@
   <li><%= @profile.first_name  %><%= @profile.surname %></li>
   <li><%= @profile.skills %></li>
   <li><%= @profile.bio %></li>
+
   <h2> Reviews of this tutor from all students </h2>
-  <h3><%= u = current_user.reviews 
-  u.each do |content|
-  p content
-  end
-%></h3>
+ <% @tutor.reviews.each do |review| %>
+  <p> <%= review.content %> </p>
+  <p> <%= review.rating %> </p>
+  <% if current_user.id == review.reviewer %>
+    <p><%= link_to "Delete Review", delete_review_path(review), method: :delete, data: { confirm: 'Are you sure?' } %></p>
+    <p><%= link_to "Edit review", edit_profile_path(current_user.profile) %></p>
+  <% end %>
+<% end %>
+
   <% unless nil %>
   <%= @profile.average_rating %>
   <%= @profile.hourly_rate %>
@@ -20,6 +25,28 @@
  <p><%= link_to "Delete Profile", profile_path(@profile.id), method: :delete, data: { confirm: 'Are you sure?' } %></p>
  <p><%= link_to "Edit profile", edit_profile_path(current_user.profile) %></p>
 <% end %>
-<%= link_to "Write a review about this tutor", new_review_path %>
+
+<p><%= link_to "Create new Booking with a tutor", booking_path %></p>
+<%= link_to "Write a review about this tutor", new_review_path(params[:id]) %>
 <p><%= link_to "Go back to home", home_path %></p>
 
+<% if current_user && @profile != current_user.profile %>
+  <h1>WRITE A REVIEW</h1>
+  <p>New (new review form - of a specific tutor)</p>
+  <form class="form-style" action="<%= new_review_path %>" method="POST" enctype="multipart/form-data">
+
+    <input type="hidden" value="<%= form_authenticity_token %>" name="authenticity_token" />
+    <input type="hidden" value="<%= @profile.tutor_id %>" name="tutor_id" />
+    <input type="hidden" value="<%= current_user.id %>" name="reviewer" />
+
+    <label for="content">Content</label>
+    <input type="text" name="content" />
+
+    <label for="rating">Rating</label>
+    <input type="text" name="rating" />
+
+    <input type="submit" id="submit" value="Submit Review" />
+  </form>
+<% else %>
+  <p>Please log in to create a review</p>
+<% end %>

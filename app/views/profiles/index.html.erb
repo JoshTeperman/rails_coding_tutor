@@ -12,6 +12,7 @@
         <h6 class="card-subtitle mb-2 text-muted"><%= tutor.skills %></h6>
         <p class="card-text"> </p>
         <%= link_to "View Profile", profile_path(tutor) %>
+        <p><%= link_to "Create new Booking with a tutor", new_booking_path(:tutor => tutor) %></p>
 
         </a>
       </div>

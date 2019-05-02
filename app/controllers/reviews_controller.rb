@@ -8,18 +8,22 @@ class ReviewsController < ApplicationController
 
   def create
     unless current_user.nil?
-      @user = User.find(current_user.id)
-      @review = @user.reviews.create(review_params)
+      @reviewer_id = current_user.id
+      @tutor = User.find(params[:tutor_id])
+      @review = @tutor.reviews.create(review_params)
       if @review.save
-        redirect_to home_path
+        redirect_to profile_path(@tutor)
       else
-        render new_review_path
+        render new_review_path(@tutor)
       end
     end
   end
 
   def new
+
     @review = Review.new
+    # raise
+
   end
 
 
@@ -50,10 +54,15 @@ class ReviewsController < ApplicationController
   end
 
   def destroy
-    @user = User.find(current_user.id)
-    @user.review.destroy
-   
-    redirect_to home_path
+    @profile = Profile.find(6)
+    # tutor = User.find(params[:id])
+    # @profile = tutor.profile
+
+    id = params[:id]
+    @review = Review.find(id)
+    @review.destroy
+
+    redirect_to profile_path(@profile)
   end
 
   private
