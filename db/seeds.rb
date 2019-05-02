@@ -12,7 +12,7 @@ puts 'Starting Seeding...'
 puts 'Creating Admin User'
 user = User.new(email: 'admin@admin.com', password: 'password', password_confirmation: 'password', admin?: true, moderator?: true)
 
-user.skip_confirmation!
+# user.skip_confirmation!
 user.save
 
 profile = user.create_profile(tutor?: true, first_name: 'Admin', surname: 'User', skills: 'none', bio: 'Administrator', average_rating: 0, hourly_rate: 0)
@@ -22,7 +22,7 @@ profile.save
 
 puts 'Creating Moderator User'
 user = User.new(email: 'moderator@moderator.com', password: 'password', password_confirmation: 'password', admin?: false, moderator?: true)
-user.skip_confirmation!
+# user.skip_confirmation!
 user.save
 
 profile = user.create_profile(tutor?: true, first_name: 'Moderator', surname: 'User', skills: 'none', bio: 'Moderator', average_rating: 0, hourly_rate: 0)
@@ -59,7 +59,7 @@ puts 'Creating Student Users'
   }
   puts "Seeding Student: #{profile_params[:first_name]} #{profile_params[:surname]}"
   user = User.create!(user_params)
-  user.skip_confirmation!
+  # user.skip_confirmation!
   user.save
 
   # Create Student User Profiles
@@ -97,7 +97,7 @@ puts 'Creating Tutor Users'
   }
   puts "Seeding Tutor: #{profile_params[:first_name]} #{profile_params[:surname]}"
   user = User.create!(user_params)
-  user.skip_confirmation!
+  # user.skip_confirmation!
   user.save
 
   # Create Tutor User Profiles

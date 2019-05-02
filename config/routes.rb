@@ -26,5 +26,16 @@ Rails.application.routes.draw do
   patch "/bookings/:id", to: "bookings#update", as: "update_booking"
   delete "/bookings/:id", to: "bookings#destroy", as: "delete_booking"
 
+  # REVIEWS ROUTES
+  get '/reviews', to: 'reviews#index', as: 'review'
+  get '/reviews/new', to: 'reviews#new', as: 'new_review'
+  post '/reviews/new', to: 'reviews#create'
+  get '/reviews/:id', to: 'reviews#show', as: 'show_review'
+
+  get "/reviews/:id/edit", to: "reviews#edit", as: "edit_review"
+  put "/reviews/:id", to: "reviews#update"
+  patch "/reviews/:id", to: "reviews#update", as: "update_review"
+  delete "/reviews/:id", to: "reviews#destroy", as: "delete_review"
+
   root to: 'profiles#index'
 end

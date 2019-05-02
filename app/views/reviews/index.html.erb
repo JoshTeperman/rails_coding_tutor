@@ -1,0 +1,21 @@
+<h1>REVIEWS INDEX</h1>
+
+
+<h1>SHOW ALL YOUR REVIEWS</h1>
+
+<h1>Reviews that user has given to others</h1>
+<h1>Show reviews</h1>
+<ul>
+<% @current_user.reviews.each do |review| %>
+
+  <li><%= review.content  %></li>
+  <li><%= review.rating %></li>
+  <li><%= review.reviewer %></li>
+   <%= link_to "View more", show_review_path(review) %>
+<% end%>
+</ul>
+
+
+<p><%= link_to "Go back to home", home_path %></p>
+
+  <p><%= link_to "Create new review", new_review_path %></p>

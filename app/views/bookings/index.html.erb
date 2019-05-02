@@ -7,7 +7,9 @@
 <div class="d-flex flex-wrap">
 
   <% if @bookings.nil? %>
-    <% @bookings.each_with_index do |booking, index| %>
+    <h3>You don't have any bookings yet. Make a booking here</h3>
+  <% end %>
+    <% @bookings.each do |booking| %>
       <li> 
         <div class="card m-2" style="width: 21.5rem;">
           <div class="card-body">
@@ -21,9 +23,8 @@
         </div>
       </li>
     <% end %>
-  <% else %>
-    <h3>You don't have any bookings yet. Make a booking here</h3>
-  <% end %>
+
+  
 </div>
 
   <p><%= link_to "Create new booking", new_booking_path %></p>

@@ -4,6 +4,12 @@
   <li><%= @profile.first_name  %><%= @profile.surname %></li>
   <li><%= @profile.skills %></li>
   <li><%= @profile.bio %></li>
+  <h2> Reviews of this tutor from all students </h2>
+  <h3><%= u = current_user.reviews 
+  u.each do |content|
+  p content
+  end
+%></h3>
   <% unless nil %>
   <%= @profile.average_rating %>
   <%= @profile.hourly_rate %>
@@ -14,5 +20,6 @@
  <p><%= link_to "Delete Profile", profile_path(@profile.id), method: :delete, data: { confirm: 'Are you sure?' } %></p>
  <p><%= link_to "Edit profile", edit_profile_path(current_user.profile) %></p>
 <% end %>
+<%= link_to "Write a review about this tutor", new_review_path %>
 <p><%= link_to "Go back to home", home_path %></p>
 
