@@ -5,14 +5,14 @@
 
 
 <div class="d-flex flex-wrap">
-  <% @profiles.each do |tutor| %>
+  <% @profiles.each do |profile| %>
     <div class="card m-2" style="width: 21.5rem;">
       <div class="card-body">
-        <h5 class="card-title"><%= tutor.first_name %> <%= tutor.surname %></h5>
-        <h6 class="card-subtitle mb-2 text-muted"><%= tutor.skills %></h6>
+        <h5 class="card-title"><%= profile.first_name %> <%= profile.surname %></h5>
+        <h6 class="card-subtitle mb-2 text-muted"><%= profile.skills %></h6>
         <p class="card-text"> </p>
-        <%= link_to "View Profile", profile_path(tutor) %>
-        <p><%= link_to "Create new Booking with a tutor", new_booking_path(:tutor => tutor) %></p>
+        <%= link_to "View Profile", profile_path(profile) %>
+        <p><%= link_to "Create new Booking with a tutor", new_booking_path(:tutor => profile.tutor_id) %></p>
 
         </a>
       </div>

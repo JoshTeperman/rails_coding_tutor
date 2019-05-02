@@ -7,7 +7,7 @@ class BookingsController < ApplicationController
 
   def create
     @user = current_user
-    @tutor = params['tutor_id']
+    @tutor = params['tutor_id'] # available: profile.tutor_id
     @booking = @user.bookings.create(booking_params)
     @booking.save
 

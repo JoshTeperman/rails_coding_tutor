@@ -8,16 +8,17 @@ class ReviewsController < ApplicationController
 
   def create
     unless current_user.nil?
-      @reviewer_id = current_user.id
-      @tutor = User.find(params[:tutor_id])
+      @tutor = User.joins(:profile).where(profiles: { tutor_id: params[:tutor_id] }).first
       @review = @tutor.reviews.create(review_params)
+      # raise
       if @review.save
-        redirect_to profile_path(@tutor)
+        redirect_to profile_path(@tutor.profile) #was going to @tutor, not @tutor.profile
       else
         render new_review_path(@tutor)
       end
     end
   end
+  
 
   def new
 

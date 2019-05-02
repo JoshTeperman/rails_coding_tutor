@@ -164,6 +164,15 @@ end
 
 puts 'Finished seeding'
 
+@tutor_id = tutor.profile.tutor_id
+
+bookings/new.html.erb 
+
+input value=@tutor_id
+
+create
+@tutor_id = tutor.id
+
 
 #NOTES for adding multiple Users to a Booking
 #     @author = Author.all.find_by(name: params[:name])

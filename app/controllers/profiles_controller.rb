@@ -23,8 +23,7 @@ class ProfilesController < ApplicationController
   end
 
   def show
-    
-    @profile = Profile.find_by(tutor_id: params[:id])
+    @profile = Profile.find(params[:id])
     @tutor = User.find_by(id: @profile.user_id)
     # raise
   end
