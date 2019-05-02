@@ -1,14 +1,15 @@
 <h1>Edit (edit review)</h1>
 <p>(EDIT FORM)</p>
 
-<form class="form-style" action="<%= new_review_path(@review) %>" method="POST" enctype="multipart/form-data">
-<input type="hidden" value="<%= form_authenticity_token %>" name="authenticity_token" />
+<form class="form-style" action="<%= update_review_path %>" method="POST" enctype="multipart/form-data">
+  <input type="hidden" value="<%= form_authenticity_token %>" name="authenticity_token" />
   <input type="hidden" name="_method" value="patch"/>
+  
   <label for="content">Content</label>
-  <input type="text" name="content" />
+  <input type="text" name="content" value="<%= @review.content %>" /> 
 
   <label for="rating">Rating</label>
-  <input type="text" name="rating" />
+  <input type="text" name="rating" value="<%= @review.rating %>"/>
 
   <input type="submit" value="Update" />
 </form>
