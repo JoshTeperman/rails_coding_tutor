@@ -1,13 +1,13 @@
 class BookingsController < ApplicationController
 
   def index
-    @bookings = current_user.bookings
+    @user = current_user
+    @bookings = @user.bookings
   end
 
   def create
-
-    booking = Booking.new(booking_params)
-    booking.save
+    @booking = Booking.new(booking_params)
+    @booking.save
 
     redirect_to booking_path
   end
@@ -38,6 +38,8 @@ class BookingsController < ApplicationController
   end
 
   def destroy
+    @user = current_user
+    @bookings = @user.bookings
     @booking = Booking.find(params[:id])
     @booking.destroy
    

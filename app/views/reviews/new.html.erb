@@ -1,0 +1,19 @@
+<h1>WRITE A REVIEW</h1>
+<p>New (new review form - of a specific tutor)</p>
+<form class="form-style" action="<%= new_review_path %>" method="POST" enctype="multipart/form-data">
+
+  <input type="hidden" value="<%= form_authenticity_token %>" name="authenticity_token" />
+  <label for="content">Content</label>
+  <input type="text" name="content" />
+
+  <label for="rating">Rating</label>
+  <input type="text" name="rating" />
+
+  <label for="reviewer">Reviewer</label>
+  <input type="textarea" name="reviewer" />
+
+  <input type="submit" id="submit" value="Submit Review" />
+</form>
+
+
+
