@@ -6,13 +6,17 @@ class BookingsController < ApplicationController
   end
 
   def create
-    @booking = Booking.new(booking_params)
+    @user = current_user
+    @tutor = params['tutor_id']
+    @booking = @user.bookings.create(booking_params)
     @booking.save
+
 
     redirect_to booking_path
   end
 
   def new
+    @tutor = params[:tutor]
     @booking = Booking.new
   end
 
@@ -49,7 +53,7 @@ class BookingsController < ApplicationController
 
   private
   def booking_params
-    params.permit(:date, :location, :price, :duration)
+    params.permit(:date, :location, :price, :duration, :tutor_id)
   end
 
 

@@ -10,6 +10,7 @@ class ProfilesController < ApplicationController
 
   def create
     @user = current_user
+    
     @profile = current_user.create_profile(profile_params)
 
     if @profile.save
@@ -23,7 +24,8 @@ class ProfilesController < ApplicationController
 
   def show
     
-    @profile = Profile.find(params[:id])
+    @profile = Profile.find_by(tutor_id: params[:id])
+    @tutor = User.find_by(id: @profile.user_id)
     # raise
   end
 
