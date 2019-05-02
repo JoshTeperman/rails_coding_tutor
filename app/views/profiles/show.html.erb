@@ -47,5 +47,5 @@
     <input type="submit" id="submit" value="Submit Review" />
   </form>
 <% else %>
-  <p>Please log in to create a review</p>
+  <p>Please <%= link_to 'log in', new_user_session_path %> to create a review</p>
 <% end %>
