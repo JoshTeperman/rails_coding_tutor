@@ -11,7 +11,6 @@ class BookingsController < ApplicationController
     @booking = @user.bookings.create(booking_params)
     @booking.save
 
-
     redirect_to booking_path
   end
 

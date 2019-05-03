@@ -1,42 +1,49 @@
 <h1>User Profile</h1>
-<h1>Show (specific user profile + all reviews + add review form)</h1>
 <ul>
-  <li><%= @profile.first_name  %><%= @profile.surname %></li>
-  <li><%= @profile.skills %></li>
-  <li><%= @profile.bio %></li>
-
-  <h2> Reviews of this tutor from all students </h2>
-  <% @tutor.reviews.each do |review| %>
-    <p> <%= review.content %> </p>
-    <p> <%= review.rating %> </p>
-    <% if current_user.id == review.reviewer %>
-      <p><%= link_to "Delete Review", delete_review_path(review), method: :delete, data: { confirm: 'Are you sure?' } %></p>
-      <p><%= link_to "Edit Review", edit_review_path(review) %></p>
+  <li>Name: <%= @profile.first_name  %><%= @profile.surname %></li>
+  <li>Skills: <%= @profile.skills %></li>
+  <li>Bio: <%= @profile.bio %></li>
+  <% if @profile.tutor? %>
+    <li>Hourly Rate: <%= @profile.hourly_rate %></li>
+    <% unless @tutor.reviews.count.zero? %>
+      <li>Average Rating: <%= @profile.average_rating %></li>
     <% end %>
   <% end %>
 
-  <% unless nil %>
-    <%= @profile.average_rating %>
-    <%= @profile.hourly_rate %>
-  <% end %>
 </ul>
 
-<% if @profile.user == current_user %>
- <p><%= link_to "Delete Profile", profile_path(@profile.id), method: :delete, data: { confirm: 'Are you sure?' } %></p>
- <p><%= link_to "Edit profile", edit_profile_path(current_user.profile) %></p>
+<% if @profile.tutor? %>
+  <h3> Reviews: </h3>
+  <% if @tutor.reviews.count.zero? %>
+      <p>This tutor hasn't received any reviews yet.</p>
+  <% else %>
+    <ul>
+      <% @tutor.reviews.each do |review| %>
+        <li> <%= review.content %> </li>
+        <li> <%= review.rating %> </li>
+        <% if current_user.id == review.reviewer_id %>
+          <li><%= link_to "Delete Review", delete_review_path(review), method: :delete, data: { confirm: 'Are you sure?' } %></p>
+          <li><%= link_to "Edit Review", edit_review_path(review) %></li>
+        <% end %>
+      <% end %>
+    </ul>
+  <% end %>
 <% end %>
 
-<p><%= link_to "Create new Booking with a tutor", booking_path %></p>
-<p><%= link_to "Go back to home", home_path %></p>
+<% if @profile.user == current_user %>
+  <%= link_to "Edit profile", edit_profile_path(current_user.profile) %>
+  <% unless current_user.admin? %>  
+    | <%= link_to "Delete Account", profile_path(@profile.id), method: :delete, data: { confirm: 'Are you sure?' } %>
+  <% end %>
+<% end %>
 
 <% if current_user && @profile != current_user.profile %>
-  <h1>WRITE A REVIEW</h1>
-  <p>New (new review form - of a specific tutor)</p>
+  <h3>Write a Review</h3>
   <form class="form-style" action="<%= new_review_path %>" method="POST" enctype="multipart/form-data">
 
     <input type="hidden" value="<%= form_authenticity_token %>" name="authenticity_token" />
     <input type="hidden" value="<%= @profile.tutor_id %>" name="tutor_id" />
-    <input type="hidden" value="<%= current_user.id %>" name="reviewer" />
+    <input type="hidden" value="<%= current_user.id %>" name="_id" />
 
     <label for="content">Content</label>
     <input type="text" name="content" />
@@ -49,3 +56,6 @@
 <% elsif !signed_in? %>
   <p>Please <%= link_to 'log in', new_user_session_path %> to create a review</p>
 <% end %>
+
+<br>
+<%= link_to 'Back', :back %>
