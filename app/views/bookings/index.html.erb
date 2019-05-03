@@ -14,7 +14,7 @@
           <h6 class="card-subtitle mb-2 text-muted"><%= booking.location %></h6>
           <h6 class="card-subtitle mb-2 text-muted"><%= booking.price %></h6>
           <h6 class="card-subtitle mb-2 text-muted"><%= booking.duration %></h6>
-          <h6 class="card-subtitle mb-2 text-muted"><<%= link_to "show", bookings_path(booking) %></h6>
+          <h6 class="card-subtitle mb-2 text-muted"><%= link_to "View", booking_path(booking) %></h6>
         </div>
       </div>
     <% end %>

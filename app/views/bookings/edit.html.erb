@@ -5,8 +5,9 @@
 <form class="form-style" action="<%= update_booking_path(@booking) %>" method="POST" enctype="multipart/form-data">
 <input type="hidden" value="<%= form_authenticity_token %>" name="authenticity_token" />
   <input type="hidden" name="_method" value="patch"/>
+
   <label for="date">Date</label>
-  <input type="text" name="date" value="<%= @booking.date %>" />
+  <input type="date" name="date" value="<%= @booking.date %>" />
 
   <label for="location">Location</label>
   <input type="textarea" name="location" value="<%= @booking.location %>" />

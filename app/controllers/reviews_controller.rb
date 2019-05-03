@@ -1,4 +1,5 @@
 class ReviewsController < ApplicationController
+  # before_action :require_profile
 
   def index
     @user = current_user

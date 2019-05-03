@@ -1,4 +1,5 @@
 class BookingsController < ApplicationController
+  # before_action :require_profile
 
   def index
     @user = current_user
@@ -8,10 +9,16 @@ class BookingsController < ApplicationController
   def create
     @user = current_user
     @tutor = params['tutor_id'] # available: profile.tutor_id
+    # @tutor_profile = Profile.find_by(tutor_id: @booking.tutor_id)
     @booking = @user.bookings.create(booking_params)
-    @booking.save
+    if @booking.save
+      flash[:success] = "Created a new booking."
+      redirect_to booking_path(@booking)
+    else
+      flash[:error] = "Error: Could not create booking."
+      redirect_to new_booking_path(:tutor => @tutor)
+    end
 
-    redirect_to booking_path(@booking)
   end
 
   def new
@@ -45,9 +52,12 @@ class BookingsController < ApplicationController
     @user = current_user
     @bookings = @user.bookings
     @booking = Booking.find(params[:id])
-    @booking.destroy
-   
-    redirect_to booking_path
+    if @booking.destroy
+      flash[:success] = "Booking Deleted."
+      redirect_to bookings_path
+    else
+      flash[:error] = "Error: Could not delete booking."
+    end
   end
 
 
