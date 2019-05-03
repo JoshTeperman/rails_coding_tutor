@@ -2,8 +2,8 @@
 
 <ul>
     <li><%= @review.content %> - <%= @review.rating %> </li>
-    <li><%= @review.reviewer %></li>
-    <% if @review.reviewer == current_user.id %>
+    <li><%= @review.reviewer_id %></li>
+    <% if @review.reviewer_id == current_user.id %>
       <li><%= link_to "Edit review", edit_review_path(current_user.reviews) %></li>
       <li><%= link_to "Delete Review", review_path(current_user.reviews), method: :delete, data: { confirm: 'Are you sure?' } %></li>
     <% end %>

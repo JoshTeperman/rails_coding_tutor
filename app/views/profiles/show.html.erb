@@ -9,7 +9,7 @@
   <% @tutor.reviews.each do |review| %>
     <p> <%= review.content %> </p>
     <p> <%= review.rating %> </p>
-    <% if current_user.id == review.reviewer %>
+    <% if current_user.id == review.reviewer_id %>
       <p><%= link_to "Delete Review", delete_review_path(review), method: :delete, data: { confirm: 'Are you sure?' } %></p>
       <p><%= link_to "Edit Review", edit_review_path(review) %></p>
     <% end %>
@@ -36,7 +36,7 @@
 
     <input type="hidden" value="<%= form_authenticity_token %>" name="authenticity_token" />
     <input type="hidden" value="<%= @profile.tutor_id %>" name="tutor_id" />
-    <input type="hidden" value="<%= current_user.id %>" name="reviewer" />
+    <input type="hidden" value="<%= current_user.id %>" name="_id" />
 
     <label for="content">Content</label>
     <input type="text" name="content" />
