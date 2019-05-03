@@ -1,15 +1,11 @@
-<h1>User Profile</h1>
-
-<h1>Show (specific user profile + all reviews + add review form)</h1>
-
+<h1><%= @profile.first_name  %><%= @profile.surname %></h1>
 <% if @profile.avatar.attached? %>
-  <%= image_tag @profile.avatar.service_url, class: 'image-size' %>
+  <%= image_tag @profile.avatar.service_url, class: 'image' %>
 <% else %>
-  <p>Upload a profile pic?</p>
+  <%= image_tag "https://avatarfiles.alphacoders.com/182/182752.jpg", class: 'image' %>
 <% end %>
 
 <ul>
-  <li>Name: <%= @profile.first_name  %><%= @profile.surname %></li>
   <li>Skills: <%= @profile.skills %></li>
   <li>Bio: <%= @profile.bio %></li>
   <% if @profile.tutor? %>
