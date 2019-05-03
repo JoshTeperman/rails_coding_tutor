@@ -11,11 +11,12 @@ class BookingsController < ApplicationController
     @booking = @user.bookings.create(booking_params)
     @booking.save
 
-    redirect_to booking_path
+    redirect_to booking_path(@booking)
   end
 
   def new
-    @tutor = params[:tutor]
+    @tutor_id = params[:tutor]
+    @tutor_first_name = Profile.find_by(tutor_id: @tutor_id).first_name
     @booking = Booking.new
   end
 
@@ -29,11 +30,11 @@ class BookingsController < ApplicationController
   end
   
   def update
-    
     @booking = Booking.find(params[:id])
-      if  @booking.update(booking_params)
-        flash[:success] = "Successfully updated"
-        redirect_to @booking
+    @tutor_profile = Profile.find_by(tutor_id: @booking.tutor_id)
+    if @booking.update(booking_params)
+      flash[:success] = "You updated your booking with #{@tutor_profile.first_name}."
+      redirect_to @booking
     else
       flash[:error] = "Error"
       render :edit

@@ -5,16 +5,16 @@
 <input type="hidden" value="<%= form_authenticity_token %>" name="authenticity_token" />
   <input type="hidden" name="_method" value="patch"/>
   <label for="date">Date</label>
-  <input type="text" name="date" />
+  <input type="text" name="date" value="<%= @booking.date %>" />
 
   <label for="location">Location</label>
-  <input type="textarea" name="location" />
+  <input type="textarea" name="location" value="<%= @booking.location %>" />
 
   <label for="price">Price</label>
-  <input type="textarea" name="price" />
+  <input type="textarea" name="price" value="<%= @booking.price %>" />
 
   <label for="duration">Duration</label>
-  <input type="text" name="duration">
+  <input type="text" name="duration" value="<%= @booking.duration %>" >
 
   <input type="submit" value="Update" />
 </form>
