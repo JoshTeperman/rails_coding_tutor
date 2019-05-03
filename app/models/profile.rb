@@ -6,7 +6,7 @@ class Profile < ApplicationRecord
   before_create :set_tutor_id
   has_one_attached :avatar
 
-  validates :tutor?, :first_name, :surname, :skills, presence: true
+  # validates :tutor?, :first_name, :surname, :skills, presence: true
 
   private
     def set_tutor_id

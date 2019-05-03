@@ -1,6 +1,6 @@
 class ChargesController < ApplicationController
-  before_action :require_profile
-  
+  # before_action :require_profile
+
   def new
   end
   
