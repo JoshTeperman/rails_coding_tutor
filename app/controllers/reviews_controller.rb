@@ -22,8 +22,7 @@ class ReviewsController < ApplicationController
   end
 
   def show
-    @user = current_user
-    @review = @user.reviews 
+    @review = Review.find(params[:id])
   end
 
   def edit
@@ -34,27 +33,24 @@ class ReviewsController < ApplicationController
     @review = Review.find(params[:id])
     tutor = User.find_by(id: @review.user_id)
     if @review.update(review_params)
-      flash[:success] = 'Successfully updated' 
+      flash[:success] = 'Successfully updated'
       redirect_to profile_path(tutor.profile)
     else
-      flash[:error] = "Error"
+      flash[:error] = 'Error'
       render :edit
     end
   end
 
   def destroy
-    @profile = Profile.find(6)
-    id = params[:id]
-    @review = Review.find(id)
-    @review.destroy
+    review = Review.find(params[:id])
+    tutor = User.find_by(id: review.user_id)
+    review.destroy
 
-    redirect_to profile_path(@profile)
+    redirect_to profile_path(tutor.profile)
   end
 
   private
     def review_params
-      params.permit(:content, :rating, :reviewer)
+      params.permit(:content, :rating, :reviewer_id)
     end
-
-
 end

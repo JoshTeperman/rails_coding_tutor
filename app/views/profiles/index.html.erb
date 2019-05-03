@@ -6,29 +6,29 @@
 
 <div class="d-flex flex-wrap">
   <% @profiles.each do |profile| %>
-    <div class="card m-2" style="width: 21.5rem;">
-      <div class="card-body">
-        <h5 class="card-title"><%= profile.first_name %> <%= profile.surname %></h5>
-        <h6 class="card-subtitle mb-2 text-muted"><%= profile.skills %></h6>
-            <% if profile.avatar.attached? %>
+    <% if profile.tutor?  && profile.id != 86 && profile.id != 85 %>   <%# profile.id 85 & 86 are the admin and moderator users %>
+      <div class="card m-2" style="width: 21.5rem;">
+        <div class="card-body">
+          <h5 class="card-title"><%= profile.first_name %> <%= profile.surname %></h5>
+          <h6 class="card-subtitle mb-2 text-muted"><%= profile.skills %></h6>
+           <% if profile.avatar.attached? %>
                 <%= image_tag profile.avatar.service_url, class: 'image-size' %>
             <% else %>
                 <p>Upload a profile pic?</p>
             <% end %>
-        <p class="card-text"> </p>
-        <%= link_to "View Profile", profile_path(profile) %>
-        <p><%= link_to "Create new Booking with a tutor", new_booking_path(:tutor => profile.tutor_id) %></p>
+          <%# <p class="card-text"> </p> %>
+          <%= link_to "View Profile", profile_path(profile) %> |
+          <%= link_to "New Booking", new_booking_path(:tutor => profile.tutor_id) %>
+        </div>
 
-        </a>
       </div>
-    </div>
     <% end %>
-  </div>
+  <% end %>
+</div>
 
 
-  <p><%= link_to "Create new profile", new_profile_path %></p>
-  <p><%= link_to "Create new Booking with a tutor", booking_path %></p
-  
+<p><%= link_to "Create new profile", new_profile_path %></p>
+
 
 
 
