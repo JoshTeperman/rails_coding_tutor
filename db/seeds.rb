@@ -116,7 +116,7 @@ puts 'Creating Tutor Users'
     review_params = {
       content: REVIEWS.sample,
       rating: rand(1..5),
-      reviewer: reviewer.id
+      reviewer_id: reviewer.id
     }
     puts "Creating Review: #{review_params}"
     review = user.reviews.create(review_params)
