@@ -26,7 +26,7 @@
       <% @tutor.reviews.each do |review| %>
         <li> <%= review.content %> </li>
         <li> <%= review.rating %> </li>
-        <% if current_user.id == review.reviewer_id %>
+        <% if !signed_in? || current_user.id == review.reviewer_id %>
           <li><%= link_to "Delete Review", delete_review_path(review), method: :delete, data: { confirm: 'Are you sure?' } %></p>
           <li><%= link_to "Edit Review", edit_review_path(review) %></li>
         <% end %>
