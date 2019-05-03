@@ -1,3 +1,4 @@
+<%= render "shared/navbar" %>
 <h1>All Tutors</h1>
 
 
@@ -5,17 +6,17 @@
   <% @profiles.each do |profile| %>
     <% if profile.tutor?  && profile.id != 86 && profile.id != 85 %>   <%# profile.id 85 & 86 are the admin and moderator users %>
       <div class="card m-2" style="width: 21.5rem;">
-        <div class="card-body">
-          <h5 class="card-title"><%= profile.first_name %> <%= profile.surname %></h5>
-          <h6 class="card-subtitle mb-2 text-muted"><%= profile.skills %></h6>
-           <% if profile.avatar.attached? %>
+        <div class="card-body text-center">
+            <% if profile.avatar.attached? %>
                 <%= image_tag profile.avatar.service_url, class: 'image-size' %>
             <% else %>
-                <p>Upload a profile pic?</p>
+                <%= image_tag "https://avatarfiles.alphacoders.com/182/182752.jpg", class: 'image' %>
             <% end %>
-          <%# <p class="card-text"> </p> %>
-          <%= link_to "View Profile", profile_path(profile) %> |
-          <%= link_to "New Booking", new_booking_path(:tutor => profile.tutor_id) %>
+          <h2 class="card-title"><%= profile.first_name %> <%= profile.surname %></h2>
+          <h6 class="card-subtitle mb-2 text-muted"><%= profile.skills %></h6>
+      
+          <%= link_to ('<i class="fa fas fa-user-circle fa-2x"></i>').html_safe, profile_path(profile) %> |
+          <%= link_to ('<i class="fa fas fa-book fa-2x"></i>').html_safe, new_booking_path(:tutor => profile.tutor_id) %>
         </div>
 
       </div>

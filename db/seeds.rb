@@ -116,7 +116,7 @@ puts 'Creating Tutor Users'
     review_params = {
       content: REVIEWS.sample,
       rating: rand(1..5),
-      reviewer: reviewer.id
+      reviewer_id: reviewer.id
     }
     puts "Creating Review: #{review_params}"
     review = user.reviews.create(review_params)
@@ -163,15 +163,6 @@ puts 'Seeding bookings'
 end
 
 puts 'Finished seeding'
-
-@tutor_id = tutor.profile.tutor_id
-
-bookings/new.html.erb 
-
-input value=@tutor_id
-
-create
-@tutor_id = tutor.id
 
 
 #NOTES for adding multiple Users to a Booking

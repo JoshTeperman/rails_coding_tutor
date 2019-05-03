@@ -82,3 +82,7 @@ gem "aws-sdk-s3", require: false
 #Bootstrap
 gem 'bootstrap', '~> 4.3.1'
 gem 'jquery-rails'
+
+
+#font-awesome
+gem "font-awesome-rails"
