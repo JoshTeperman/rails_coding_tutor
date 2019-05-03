@@ -30,11 +30,11 @@ class BookingsController < ApplicationController
   end
   
   def update
-    
     @booking = Booking.find(params[:id])
-      if  @booking.update(booking_params)
-        flash[:success] = "Successfully updated"
-        redirect_to @booking
+    @tutor_profile = Profile.find_by(tutor_id: @booking.tutor_id)
+    if @booking.update(booking_params)
+      flash[:success] = "You updated your booking with #{@tutor_profile.first_name}."
+      redirect_to @booking
     else
       flash[:error] = "Error"
       render :edit
