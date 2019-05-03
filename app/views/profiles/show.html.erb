@@ -1,25 +1,30 @@
 <h1>User Profile</h1>
 <h1>Show (specific user profile + all reviews + add review form)</h1>
 <ul>
-  <li><%= @profile.first_name  %><%= @profile.surname %></li>
-  <li><%= @profile.skills %></li>
-  <li><%= @profile.bio %></li>
-
-  <h2> Reviews of this tutor from all students </h2>
-  <% @tutor.reviews.each do |review| %>
-    <p> <%= review.content %> </p>
-    <p> <%= review.rating %> </p>
-    <% if current_user.id == review.reviewer_id %>
-      <p><%= link_to "Delete Review", delete_review_path(review), method: :delete, data: { confirm: 'Are you sure?' } %></p>
-      <p><%= link_to "Edit Review", edit_review_path(review) %></p>
-    <% end %>
-  <% end %>
-
-  <% unless nil %>
-    <%= @profile.average_rating %>
-    <%= @profile.hourly_rate %>
-  <% end %>
+  <li>Name: <%= @profile.first_name  %><%= @profile.surname %></li>
+  <li>Skills: <%= @profile.skills %></li>
+  <li>Bio: <%= @profile.bio %></li>
+  <li>Hourly Rate: <%= @profile.hourly_rate %></li>
 </ul>
+
+<% if @profile.tutor? %>
+  <h3> Reviews: </h3>
+  <% if @tutor.reviews.count.zero? %>
+      <p>This tutor hasn't received any reviews yet.</p>
+  <% else %>
+    <ul>
+      <li>Average Rating: <%= @profile.average_rating %></li>
+      <% @tutor.reviews.each do |review| %>
+        <li> <%= review.content %> </li>
+        <li> <%= review.rating %> </li>
+        <% if current_user.id == review.reviewer_id %>
+          <li><%= link_to "Delete Review", delete_review_path(review), method: :delete, data: { confirm: 'Are you sure?' } %></p>
+          <li><%= link_to "Edit Review", edit_review_path(review) %></li>
+        <% end %>
+      <% end %>
+    </ul>
+  <% end %>
+<% end %>
 
 <% if @profile.user == current_user %>
   <%= link_to "Edit profile", edit_profile_path(current_user.profile) %>
