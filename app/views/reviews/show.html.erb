@@ -1,15 +1,13 @@
-<h1>Specific review that user has given to others</h1>
-<h1>Show review</h1>
+<h2>Review for tutor by user</h2>
+
 <ul>
-    <% @current_user.reviews.each do |review| %>
-        <li>
-            <p><%= review.content %> - <%= review.rating %> </p>
-            <p><%= review.reviewer %></p>
-        </li>
+    <li><%= @review.content %> - <%= @review.rating %> </li>
+    <li><%= @review.reviewer %></li>
+    <% if @review.reviewer == current_user.id %>
+      <li><%= link_to "Edit review", edit_review_path(current_user.reviews) %></li>
+      <li><%= link_to "Delete Review", review_path(current_user.reviews), method: :delete, data: { confirm: 'Are you sure?' } %></li>
     <% end %>
 </ul>
- <p><%= link_to "Edit review", edit_review_path(current_user.reviews) %></p>
- <p><%= link_to "Delete Review", review_path(current_user.reviews), method: :delete, data: { confirm: 'Are you sure?' } %></p>
 
 
 <p><%= link_to "Go back to home", home_path %></p>
