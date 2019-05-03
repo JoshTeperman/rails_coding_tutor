@@ -1,10 +1,15 @@
 <h1>User Profile</h1>
-<h1>Show (specific user profile + all reviews + add review form)</h1>
 <ul>
   <li>Name: <%= @profile.first_name  %><%= @profile.surname %></li>
   <li>Skills: <%= @profile.skills %></li>
   <li>Bio: <%= @profile.bio %></li>
-  <li>Hourly Rate: <%= @profile.hourly_rate %></li>
+  <% if @profile.tutor? %>
+    <li>Hourly Rate: <%= @profile.hourly_rate %></li>
+    <% unless @tutor.reviews.count.zero? %>
+      <li>Average Rating: <%= @profile.average_rating %></li>
+    <% end %>
+  <% end %>
+
 </ul>
 
 <% if @profile.tutor? %>
@@ -13,7 +18,6 @@
       <p>This tutor hasn't received any reviews yet.</p>
   <% else %>
     <ul>
-      <li>Average Rating: <%= @profile.average_rating %></li>
       <% @tutor.reviews.each do |review| %>
         <li> <%= review.content %> </li>
         <li> <%= review.rating %> </li>
@@ -34,8 +38,7 @@
 <% end %>
 
 <% if current_user && @profile != current_user.profile %>
-  <h1>WRITE A REVIEW</h1>
-  <p>New (new review form - of a specific tutor)</p>
+  <h3>Write a Review</h3>
   <form class="form-style" action="<%= new_review_path %>" method="POST" enctype="multipart/form-data">
 
     <input type="hidden" value="<%= form_authenticity_token %>" name="authenticity_token" />
@@ -53,3 +56,6 @@
 <% elsif !signed_in? %>
   <p>Please <%= link_to 'log in', new_user_session_path %> to create a review</p>
 <% end %>
+
+<br>
+<%= link_to 'Back', :back %>
