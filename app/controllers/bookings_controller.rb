@@ -51,9 +51,12 @@ class BookingsController < ApplicationController
     @user = current_user
     @bookings = @user.bookings
     @booking = Booking.find(params[:id])
-    @booking.destroy
-   
-    redirect_to booking_path
+    if @booking.destroy
+      flash[:success] = "Booking Deleted."
+      redirect_to bookings_path
+    else
+      flash[:error] = "Error: Could not delete booking."
+    end
   end
 
 
