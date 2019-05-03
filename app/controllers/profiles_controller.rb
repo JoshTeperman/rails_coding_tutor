@@ -1,4 +1,8 @@
 class ProfilesController < ApplicationController
+
+  before_action :require_profile, except: [:new]
+  #, only: [:index, :show]
+
   def index
     @profiles = Profile.all
   end
