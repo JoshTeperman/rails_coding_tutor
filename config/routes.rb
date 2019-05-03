@@ -15,10 +15,10 @@ Rails.application.routes.draw do
 
 
 # BOOKINGS ROUTES
-  get '/bookings', to: 'bookings#index', as: 'booking'
+  get '/bookings', to: 'bookings#index', as: 'bookings'
   get '/bookings/new', to: 'bookings#new', as: 'new_booking'
   post '/bookings/new', to: 'bookings#create'
-  get '/bookings/:id', to: 'bookings#show', as: 'show_booking'
+  get '/bookings/:id', to: 'bookings#show', as: 'booking'
 
 
   get "/bookings/:id/edit", to: "bookings#edit", as: "edit_booking"
@@ -27,10 +27,10 @@ Rails.application.routes.draw do
   delete "/bookings/:id", to: "bookings#destroy", as: "delete_booking"
 
   # REVIEWS ROUTES
-  get '/reviews', to: 'reviews#index', as: 'review'
+  get '/reviews', to: 'reviews#index', as: 'reviews'
   get '/reviews/new', to: 'reviews#new', as: 'new_review'
   post '/reviews/new', to: 'reviews#create'
-  get '/reviews/:id', to: 'reviews#show', as: 'show_review'
+  get '/reviews/:id', to: 'reviews#show', as: 'review'
 
   get "/reviews/:id/edit", to: "reviews#edit", as: "edit_review"
   put "/reviews/:id", to: "reviews#update"
