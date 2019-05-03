@@ -1,8 +1,4 @@
-<h1>Bookings INDEX</h1>
-
-
-<h1>SHOW ALL YOUR CURENT BOOKINGS</h1>
-
+<h1>My Bookings</h1>
 
 <div class="d-flex flex-wrap">
 
@@ -10,18 +6,16 @@
     <h3>You don't have any bookings yet. Make a booking here</h3>
   <% end %>
     <% @bookings.each do |booking| %>
-      <li> 
-        <div class="card m-2" style="width: 21.5rem;">
-          <div class="card-body">
-            <h2 class="card-title"><%= booking.id %></h2>
-            <h5 class="card-title"><%= booking.date %></h5>
-            <h6 class="card-subtitle mb-2 text-muted"><%= booking.location %></h6>
-            <h6 class="card-subtitle mb-2 text-muted"><%= booking.price %></h6>
-            <h6 class="card-subtitle mb-2 text-muted"><%= booking.duration %></h6>
-            <h6 class="card-subtitle mb-2 text-muted"><%= link_to "show", booking_path(booking) %></h6>
-          </div>
+      <div class="card m-2" style="width: 21.5rem;">
+        <div class="card-body">
+          <h2 class="card-title"><%= booking.id %></h2>
+          <h5 class="card-title"><%= booking.date %></h5>
+          <h6 class="card-subtitle mb-2 text-muted"><%= booking.location %></h6>
+          <h6 class="card-subtitle mb-2 text-muted"><%= booking.price %></h6>
+          <h6 class="card-subtitle mb-2 text-muted"><%= booking.duration %></h6>
+          <h6 class="card-subtitle mb-2 text-muted"><<%= link_to "show", bookings_path(booking) %></h6>
         </div>
-      </li>
+      </div>
     <% end %>
 
   
