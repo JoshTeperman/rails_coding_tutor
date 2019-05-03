@@ -8,6 +8,6 @@
   <li><%= @booking.duration %></li>
 </ul>
 
-<p><%= link_to "EDIT booking", edit_booking_path(@booking) %></p>
-<p><%= link_to "Delete Booking", delete_booking_path(@booking.id), method: :delete, data: { confirm: 'Are you sure?' } %></p>
-<p><%= link_to "Go back to view all your bookings", booking_path %></p>
+<p><%= link_to "EDIT", edit_booking_path(@booking) %></p>
+<p><%= link_to "Delete", delete_booking_path(@booking.id), method: :delete, data: { confirm: 'Are you sure?' } %></p>
+<p><%= link_to "View Bookings", bookings_path %></p>

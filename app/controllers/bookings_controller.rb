@@ -8,10 +8,16 @@ class BookingsController < ApplicationController
   def create
     @user = current_user
     @tutor = params['tutor_id'] # available: profile.tutor_id
+    # @tutor_profile = Profile.find_by(tutor_id: @booking.tutor_id)
     @booking = @user.bookings.create(booking_params)
-    @booking.save
+    if @booking.save
+      flash[:success] = "Created a new booking."
+      redirect_to booking_path(@booking)
+    else
+      flash[:error] = "Error: Could not create booking."
+      redirect_to :back
+    end
 
-    redirect_to booking_path(@booking)
   end
 
   def new
