@@ -1,3 +1,4 @@
+<%= render "shared/navbar" %>
 <h1><%= @profile.first_name  %><%= @profile.surname %></h1>
 <% if @profile.avatar.attached? %>
   <%= image_tag @profile.avatar.service_url, class: 'image' %>
