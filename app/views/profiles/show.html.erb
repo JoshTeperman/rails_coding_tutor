@@ -1,4 +1,13 @@
 <h1>User Profile</h1>
+
+<h1>Show (specific user profile + all reviews + add review form)</h1>
+
+<% if @profile.avatar.attached? %>
+  <%= image_tag @profile.avatar.service_url, class: 'image-size' %>
+<% else %>
+  <p>Upload a profile pic?</p>
+<% end %>
+
 <ul>
   <li>Name: <%= @profile.first_name  %><%= @profile.surname %></li>
   <li>Skills: <%= @profile.skills %></li>

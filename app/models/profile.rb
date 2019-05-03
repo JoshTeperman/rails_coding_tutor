@@ -4,6 +4,8 @@ class Profile < ApplicationRecord
   belongs_to :user
 
   before_create :set_tutor_id
+  has_one_attached :avatar
+
 
   private
     def set_tutor_id

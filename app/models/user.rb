@@ -10,5 +10,5 @@ class User < ApplicationRecord
   has_one :profile, dependent: :delete
   has_many :reviews, dependent: :delete_all
   has_and_belongs_to_many :orders
-
+  
 end
