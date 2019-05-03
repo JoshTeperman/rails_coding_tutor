@@ -22,12 +22,11 @@
 </ul>
 
 <% if @profile.user == current_user %>
- <p><%= link_to "Delete Profile", profile_path(@profile.id), method: :delete, data: { confirm: 'Are you sure?' } %></p>
- <p><%= link_to "Edit profile", edit_profile_path(current_user.profile) %></p>
+  <%= link_to "Edit profile", edit_profile_path(current_user.profile) %>
+  <% unless current_user.admin? %>  
+    | <%= link_to "Delete Account", profile_path(@profile.id), method: :delete, data: { confirm: 'Are you sure?' } %>
+  <% end %>
 <% end %>
-
-<p><%= link_to "Create new booking with a tutor", booking_path %></p>
-<p><%= link_to "Go back to home", home_path %></p>
 
 <% if current_user && @profile != current_user.profile %>
   <h1>WRITE A REVIEW</h1>
