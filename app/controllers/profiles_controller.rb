@@ -10,7 +10,6 @@ class ProfilesController < ApplicationController
 
   def create
     @user = current_user
-    
     @profile = current_user.create_profile(profile_params)
 
     if @profile.save
@@ -61,7 +60,7 @@ class ProfilesController < ApplicationController
 
   private
   def profile_params
-    params.permit(:tutor?, :admin?, :first_name, :surname, :skills, :bio, :hourly_rate)
+    params.permit(:tutor?, :admin?, :first_name, :surname, :skills, :bio, :hourly_rate, :avatar)
   end
 
 end
