@@ -15,7 +15,7 @@ class BookingsController < ApplicationController
       redirect_to booking_path(@booking)
     else
       flash[:error] = "Error: Could not create booking."
-      redirect_to :back
+      redirect_to new_booking_path(:tutor => @tutor)
     end
 
   end
