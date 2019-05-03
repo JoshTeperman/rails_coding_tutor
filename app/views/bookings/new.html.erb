@@ -1,6 +1,5 @@
-<h1>New Booking</h1>
-<p>New (new bookings form, create new booking - form)</p>
-<%= @params %>
+<h1>New Booking with <%= @tutor_first_name %></h1>
+
 <form class="form-style" action="<%= new_booking_path %>" method="POST" enctype="multipart/form-data">
 
   <input type="hidden" value="<%= form_authenticity_token %>" name="authenticity_token" />
@@ -17,7 +16,7 @@
   <input type="text" name="duration">
 
   <label for="tutor_id">Tutor</label>
-  <input type="text" name="tutor_id" value="<%= @tutor %>">
+  <input type="text" name="tutor_id" value="<%= @tutor_id %>">
 
   <input type="submit" id="submit" value="Create" />
 </form>

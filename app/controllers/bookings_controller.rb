@@ -11,11 +11,12 @@ class BookingsController < ApplicationController
     @booking = @user.bookings.create(booking_params)
     @booking.save
 
-    redirect_to booking_path
+    redirect_to booking_path(@booking)
   end
 
   def new
-    @tutor = params[:tutor]
+    @tutor_id = params[:tutor]
+    @tutor_first_name = Profile.find_by(tutor_id: @tutor_id).first_name
     @booking = Booking.new
   end
 
