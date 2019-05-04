@@ -2,6 +2,7 @@ class ProfilesController < ApplicationController
 
   def index
     @profiles = Profile.all
+    # raise
   end
 
   def new
