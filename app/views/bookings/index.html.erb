@@ -1,25 +1,39 @@
+<div class="d-flex flex-wrap">
 
-  <div style="margin: 50px;"><h1>My Bookings</h1></div>
-
-  <div class="d-flex flex-wrap">
-
-  <% if @bookings.nil? %>
-    <h3>You don't have any bookings yet. Make a booking here</h3>
-  <% end %>
-    <% @bookings.each do |booking| %>
-      <div class="card m-2" style="width: 21.5rem;">
-        <div class="card-body">
-          <h2 class="card-title"><%= booking.id %></h2>
-          <h5 class="card-title"><%= booking.date %></h5>
-          <h6 class="card-subtitle mb-2 text-muted"><%= booking.location %></h6>
-          <h6 class="card-subtitle mb-2 text-muted"><%= booking.price %></h6>
-          <h6 class="card-subtitle mb-2 text-muted"><%= booking.duration %></h6>
-          <h6 class="card-subtitle mb-2 text-muted" style="margin-top: 30px;"><%= link_to "View", booking_path(booking) %></h6>
+  <% if @tutor_bookings.nil? && @student_bookings.nil?%>
+    <h4>Looks like you don't have any bookings yet. Make a booking here: </h4>
+  <% else %>
+    <% if @tutor_bookings %>
+      <h3>Tutor Bookings</h3>
+      <% @tutor_bookings.each do |booking| %>
+        <div class="card m-2" style="width: 21.5rem;">
+          <div class="card-body">
+            <h2 class="card-title"><%= booking.id %></h2>
+            <h5 class="card-title"><%= booking.date %></h5>
+            <h6 class="card-subtitle mb-2 text-muted"><%= booking.location %></h6>
+            <h6 class="card-subtitle mb-2 text-muted"><%= booking.price %></h6>
+            <h6 class="card-subtitle mb-2 text-muted"><%= booking.duration %></h6>
+            <h6 class="card-subtitle mb-2 text-muted" style="margin-top: 30px;"><%= link_to "View", booking_path(booking) %></h6>
+          </div>
         </div>
-      </div>
+      <% end %>
     <% end %>
+    <% if @student_bookings %>
+      <h3>Student Bookings</h3>
+      <% @student_bookings.each do |booking| %>
+        <div class="card m-2" style="width: 21.5rem;">
+          <div class="card-body">
+            <h2 class="card-title"><%= booking.id %></h2>
+            <h5 class="card-title"><%= booking.date %></h5>
+            <h6 class="card-subtitle mb-2 text-muted"><%= booking.location %></h6>
+          <h6 class="card-subtitle mb-2 text-muted"><%= booking.price %></h6>
+            <h6 class="card-subtitle mb-2 text-muted"><%= booking.duration %></h6>
+            <h6 class="card-subtitle mb-2 text-muted" style="margin-top: 30px;"><%= link_to "View", booking_path(booking) %></h6>
+          </div>
+        </div>
+      <% end %>
+    <% end %>
+  <% end %>
 
   
 </div>
-
-  <p class="btn btn-default btn-rounded mb-4 bg-info text-white"><%= link_to "Create new booking", new_booking_path %></p>
