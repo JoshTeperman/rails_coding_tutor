@@ -12,13 +12,13 @@
   <body>
 
   <%= render 'shared/navbar' %>
-  <div class="container">
+
 
    <% flash.each do |key, value| %>
      <%= value %>
    <% end %>
    
    <%= yield %>
-  </div>
+
    </body>
 </html>
