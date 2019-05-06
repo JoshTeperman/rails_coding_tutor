@@ -1,7 +1,13 @@
 class ProfilesController < ApplicationController
+  
+  def home
+  end
 
   def index
     @profiles = Profile.all
+  end
+
+  def about
   end
 
   def new
@@ -50,7 +56,7 @@ class ProfilesController < ApplicationController
     @profile = Profile.find(params[:id])
     @profile.destroy
 
-    redirect_to home_path
+    redirect_to index_path
   end
 
   private

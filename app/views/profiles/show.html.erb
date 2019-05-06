@@ -1,32 +1,43 @@
-<%= render "shared/navbar" %>
-<h1><%= @profile.first_name  %><%= @profile.surname %></h1>
-<% if @profile.avatar.attached? %>
-  <%= image_tag @profile.avatar.service_url, class: 'image' %>
-<% else %>
-  <%= image_tag "https://avatarfiles.alphacoders.com/182/182752.jpg", class: 'image' %>
-<% end %>
+<!DOCTYPE html>
+<html>
+  <head>
+    <%= render "shared/navbar" %>
+  </head>
 
-<ul>
-  <li>Skills: <%= @profile.skills %></li>
-  <li>Bio: <%= @profile.bio %></li>
-  <% if @profile.tutor? %>
-    <li>Hourly Rate: <%= @profile.hourly_rate %></li>
-    <% unless @tutor.reviews.count.zero? %>
-      <li>Average Rating: <%= @profile.average_rating %></li>
+ <body>
+  <div class="container ">
+    <br>
+    <h1><%= @profile.first_name  %> <%= @profile.surname %></h1>
+    <br>
+
+      <% if @profile.avatar.attached? %>
+        <div class="image_profile"><%= image_tag @profile.avatar.service_url, class: 'image_profile' %></div>
+      <% else %>
+        <%= image_tag "https://avatarfiles.alphacoders.com/182/182752.jpg", class: 'image_profile' %>
+      <% end %>
+<div class="container" style="background-color: grey; margin: 10px; padding: 10px; color: white;">
+    <h2>Skills : <p style="font-size: 20px;"><%= @profile.skills %></p></h2> 
+</div>   
+<div class="container" style="background-color: grey; margin: 10px; padding: 10px; color: white;"> 
+    <h2>Bio : <p style="font-size: 20px;"><%= @profile.bio %></p></h2>
+</div>    
+      <% if @profile.tutor? %>
+        <h2>Hourly Rate: <p style="font-size: 20px;"><%= @profile.hourly_rate %></p></h2>
+      <% unless @tutor.reviews.count.zero? %>
+        <h2>Average Rating: <p style="font-size: 20px;"><%= @profile.average_rating %></p></h2>
+      <% end %>
     <% end %>
-  <% end %>
-
-</ul>
+  </ul>
 
 <% if @profile.tutor? %>
-  <h3> Reviews: </h3>
+  <h2> Reviews : </h2>
   <% if @tutor.reviews.count.zero? %>
       <p>This tutor hasn't received any reviews yet.</p>
   <% else %>
     <ul>
       <% @tutor.reviews.each do |review| %>
-        <li> <%= review.content %> </li>
-        <li> <%= review.rating %> </li>
+        <li> <h6><strong> Content: </strong></h6> <p><%= review.content %></p> <h6><strong> Rating: </strong></h6> <p><%= review.rating %></p> </li>
+       
         <% if !signed_in? || current_user.id == review.reviewer_id %>
           <li><%= link_to "Delete Review", delete_review_path(review), method: :delete, data: { confirm: 'Are you sure?' } %></p>
           <li><%= link_to "Edit Review", edit_review_path(review) %></li>
@@ -44,24 +55,53 @@
 <% end %>
 
 <% if current_user && @profile != current_user.profile %>
-  <h3>Write a Review</h3>
-  <form class="form-style" action="<%= new_review_path %>" method="POST" enctype="multipart/form-data">
-
+<form class="form-style" action="<%= new_review_path %>" method="POST" enctype="multipart/form-data">
     <input type="hidden" value="<%= form_authenticity_token %>" name="authenticity_token" />
     <input type="hidden" value="<%= @profile.tutor_id %>" name="tutor_id" />
     <input type="hidden" value="<%= current_user.id %>" name="_id" />
 
-    <label for="content">Content</label>
-    <input type="text" name="content" />
+  <div class="modal fade" id="modalLoginForm" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
+    aria-hidden="true">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header text-center">
+          <h4 class="modal-title w-100 font-weight-bold">Write a Review</h4>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body mx-3">
+          <div class="md-form mb-5">
+          <label data-error="wrong" data-success="right" for="content"> Content <i class="fa fas fa-comment"></i></label>  
+            <input type="text" id="content" class="form-control validate" name="content">
+          </div>
 
-    <label for="rating">Rating</label>
-    <input type="text" name="rating" />
+          <div class="md-form mb-4"> 
+            <label data-error="wrong" data-success="right" for="rating"> Rating <i class="fa fas fa-star"></i></label>
+            <input type="text" id="rating" class="form-control validate" name="rating">
+          </div>
 
-    <input type="submit" id="submit" value="Submit Review" />
-  </form>
-<% elsif !signed_in? %>
-  <p>Please <%= link_to 'log in', new_user_session_path %> to create a review</p>
-<% end %>
+        </div>
+        <div class="modal-footer d-flex justify-content-center">
+          <button class="btn btn-default bg-info text-white">Submit</button>
+        </div>
+      </div>
+    </div>
+  </div>
 
-<br>
-<%= link_to 'Back', :back %>
+  <div class="hi">
+    <a href="" class="btn btn-default btn-rounded mb-4 bg-info text-white" data-toggle="modal" data-target="#modalLoginForm">Write a Review for this tutor</a>
+  </div>
+</form>
+
+  <% elsif !signed_in? %>
+    <p>Please <%= link_to 'log in', new_user_session_path %> to create a review</p>
+  <% end %>
+
+
+  <h3><%= link_to 'Back', index_path %></h3>
+  <br>
+
+ </div>
+   </body>
+</html>
