@@ -1,24 +1,66 @@
-<%= render "shared/navbar" %>
-<h1>New Booking with <%= @tutor_first_name %></h1>
-
-<form class="form-style" action="<%= new_booking_path %>" method="POST" enctype="multipart/form-data">
-
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>New Booking</title>
+  <%= render "shared/navbar" %>
+</head>
+<body>
+   <div class="text-center" style="margin: 30px;"><h1>New Booking with <%= @tutor_first_name %></h1></div>
+  <form class="form-style" action="<%= new_booking_path %>" method="POST" enctype="multipart/form-data">
   <input type="hidden" value="<%= form_authenticity_token %>" name="authenticity_token" />
-  <label for="date">Date</label>
-  <input type="date" name="date" />
+    <div class="card">
+      <h5 class="card-header info-color white-text text-center py-4">
+          <strong>Book a session</strong>
+      </h5>
 
-  <label for="location">Location</label>
-  <input type="textarea" name="location" />
+       <div class="card-body px-lg-5 pt-0">
 
-  <label for="price">Price</label>
-  <input type="textarea" name="price" />
+        <form class="text-center" style="color: #757575;">
 
-  <label for="duration">Duration</label>
-  <input type="text" name="duration">
+         <!-- Date -->
+            <div class="md-form mt-3">
+                <label for="date">Date</label>
+                <input type="date" name="date" class="form-control">
+            </div>
+        
+        <!-- Location -->
+            <div class="md-form">
+                <label for="location">Location</label>
+                <input type="textarea" name="location" class="form-control">
+            </div>
+        
+        <!-- Price -->
+            <div class="md-form">
+                <label for="price">Price</label>
+                <input type="textarea" name="price" class="form-control">
+            </div>
 
-  <label for="tutor_id">Tutor</label>
-  <input type="text" name="tutor_id" value="<%= @tutor_id %>">
+        <!-- Duration -->    
+            <div class="md-form">
+                <label for="duration">Duration</label>
+                <input type="text" name="duration" class="form-control">
+            </div>
+        
+        <!-- Duration -->    
+            <div class="md-form">
+                <label for="tutor_id">Tutor</label>
+                <input type="text" name="tutor_id" class="form-control" value="<%= @tutor_id %>">
+            </div>
 
-  <input type="submit" id="submit" value="Create" />
-</form>
+   <!-- Send button -->
+            <button class="btn btn-outline-info btn-rounded btn-block z-depth-0 my-4 waves-effect" type="submit">Create</button>
 
+
+  </form>
+</body>
+</html>
+
+
+
+
+
+
+  

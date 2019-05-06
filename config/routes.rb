@@ -4,7 +4,9 @@ Rails.application.routes.draw do
   default_url_options :host => "localhost:3000" #default host can be anything
   resources :charges
 # PROFILES ROUTES
-  get '/', to: 'profiles#index', as: 'home'
+  get '/', to: 'profiles#home', as: 'home'
+  get '/index', to: 'profiles#index', as: 'index'
+  get '/about', to: 'profiles#about', as: 'about'
   get '/profiles/new', to: 'profiles#new', as: 'new_profile'
   post '/profiles/new', to: 'profiles#create'
   get '/profiles/:id', to: 'profiles#show', as: 'profile'
@@ -38,5 +40,5 @@ Rails.application.routes.draw do
   patch "/reviews/:id", to: "reviews#update", as: "update_review"
   delete "/reviews/:id", to: "reviews#destroy", as: "delete_review"
 
-  root to: 'profiles#index'
+  root to: 'profiles#home'
 end
