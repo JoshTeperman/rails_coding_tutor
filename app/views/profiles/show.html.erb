@@ -1,10 +1,5 @@
-<!DOCTYPE html>
-<html>
-  <head>
-    <%= render "shared/navbar" %>
-  </head>
 
- <body>
+
   <div class="container ">
     <br>
     <h1><%= @profile.first_name  %> <%= @profile.surname %></h1>
@@ -36,6 +31,7 @@
   <% else %>
     <ul>
       <% @tutor.reviews.each do |review| %>
+
         <li> <h6><strong> Content: </strong></h6> <p><%= review.content %></p> <h6><strong> Rating: </strong></h6> <p><%= review.rating %></p> </li>
        
         <% if !signed_in? || current_user.id == review.reviewer_id %>
@@ -103,5 +99,3 @@
   <br>
 
  </div>
-   </body>
-</html>

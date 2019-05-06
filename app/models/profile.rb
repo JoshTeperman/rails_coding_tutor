@@ -6,6 +6,8 @@ class Profile < ApplicationRecord
   before_create :set_tutor_id
   has_one_attached :avatar
 
+
+
   # validates :tutor?, :first_name, :surname, :skills, presence: true
 
   private
@@ -16,5 +18,9 @@ class Profile < ApplicationRecord
         last_tutor_id = Profile.maximum(:tutor_id)
       end
       self.tutor_id = last_tutor_id.to_i + 1
+    end
+
+    def profile_is_admin?(profile)
+      profile.user_id == User.find_by(admin?: true).user_id
     end
 end

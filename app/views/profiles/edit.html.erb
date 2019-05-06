@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -9,6 +10,7 @@
 </head>
 <body>
   <div class="text-center" style="margin: 50px;"><h1>Edit Profile</h1></div>
+  
   <form class="form-style" action="<%= new_profile_path(@profile) %>" method="POST" enctype="multipart/form-data">
   <input type="hidden" value="<%= form_authenticity_token %>" name="authenticity_token" />
   <input type="hidden" name="_method" value="patch"/>

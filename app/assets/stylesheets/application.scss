@@ -15,14 +15,16 @@
  
  // Custom bootstrap variables must be set or imported *before* bootstrap.
 
+// StyleSheets --->
 @import "profiles.scss";
 
+// Gems ---> 
 @import "bootstrap";
-
 @import "font-awesome";
 
-
-
+  * {
+    margin: 0px;
+  }
   
   .container {
     width: 100%;

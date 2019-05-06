@@ -1,4 +1,7 @@
 class ApplicationController < ActionController::Base
+
+  helper_method :profile_is_admin?
+
   # def require_user
   #   redirect_to '/login' unless current_user
   # end
