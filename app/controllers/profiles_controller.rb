@@ -58,4 +58,6 @@ class ProfilesController < ApplicationController
   def profile_params
     params.permit(:tutor?, :admin?, :first_name, :surname, :skills, :bio, :hourly_rate, :avatar)
   end
+
+
 end

@@ -11,54 +11,67 @@
 </head>
 <body>
 
-<nav class="navbar navbar-expand-sm bg-dark navbar-dark">
-  <!-- Brand -->
-  <a class="navbar-brand" href="#">LOGO</a>
-
-  <!-- Links -->
-  <ul class="navbar-nav">
-    <li>
-      <button class="btn btn-outline-primary" type="button" style="margin: 10px;">
-        <a class="nav-link" href="<%= root_path %>">Home</a>
-      </button>
-    </li>
-    <li>
-      <button class="btn btn-outline-primary" type="button" style="margin: 10px;">
-        <a class="nav-link" href="#">About</a>
-    </li>
-      </button>
-    <li>
-      <button class="btn btn-outline-primary" type="button" style="margin: 10px;">
-        <a class="nav-link" href="#">Become a tutor</a>
-    </button>   
-    </li>
-
-  
-  
-    <!-- Dropdown -->
-    <form class="form-inline">
-     <button class="btn btn-outline-primary" type="button" style="margin-left: 430px;">
-      <li class="nav-item dropdown">
-        <a class="nav-link dropdown-toggle" href="#" id="navbardrop" data-toggle="dropdown">
-          Account Settings
-        </a>
-        <div class="dropdown-menu">
-        <% if user_signed_in? %>
-            <a class="dropdown-item" href="<%= profile_path(current_user.profile) %>">Profile</a>
-            
-        <% else %>
-            <a class="dropdown-item" href="<%= new_user_session_path %>">Log In</a>
-            <a class="dropdown-item" href="<%= new_user_registration_path %>">Sign up</a>
-        <% end %>
-        </div>
+  <nav class="navbar navbar-expand-sm bg-dark navbar-dark">
+    <!-- Brand -->
+    <a class="navbar-brand" href="#">LOGO</a>
+    <!-- Links -->
+    <ul class="navbar-nav">
+      
+      <li>
+        <button class="btn btn-outline-primary" type="button" style="margin: 10px;">
+          <a class="nav-link" href="<%= root_path %>">Home</a>
+        </button>
       </li>
-      </button>
-    </form>
-  </ul>
-</nav>
+      <li>
+        <button class="btn btn-outline-primary" type="button" style="margin: 10px;">
+          <a class="nav-link" href="#">About</a>
+        </button>
+      </li>
+      <li>
+        <button class="btn btn-outline-primary" type="button" style="margin: 10px;">
+          <a class="nav-link" href="#">Become a tutor</a>
+      </button>   
+      </li>
 
-  
 
-
+      
+        <% if user_signed_in? %>
+      <li>
+        <button class="btn btn-outline-primary" type="button" style="margin: 10px;">
+        <a class="nav-link" href="#">Account Settings</a>
+        </button>
+      </li>
+      <li>
+        <button class="btn btn-outline-primary" type="button" style="margin: 10px;">
+          <a class="nav-link" href="<%= profile_path(current_user.profile) %>">Profile</a>
+        </button>
+      </li>
+      <li>
+        <button class="btn btn-outline-primary" type="button" style="margin: 10px;">
+          <%= link_to 'Logout', destroy_user_session_path, :method=>'delete', class: 'nav-link' %>
+        </button>   
+      </li>
+        <% else %>
+      <li>
+        <button class="btn btn-outline-primary" type="button" style="margin: 10px;">
+          <a class="nav-link" href="<%= new_user_session_path %>" method="POST">Log In</a>
+        </button>   
+      </li>
+      <li>
+        <button class="btn btn-outline-primary" type="button" style="margin: 10px;">
+          <a class="nav-link" href="<%= new_user_registration_path %>">Sign up</a>
+        </button>   
+      </li>
+        <% end %>
+    </ul>
+  </nav>
+    <!-- Dropdown -->
   </body>
 </html>
+
+
+
+<%# 
+
+ %>
+  
