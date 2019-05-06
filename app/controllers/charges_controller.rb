@@ -1,13 +1,15 @@
 class ChargesController < ApplicationController
   # before_action :require_profile
 
+  def index
+  end
+
   def new
   end
   
   def create
     # Amount in cents
     @amount = 500
-  
     customer = Stripe::Customer.create({
       email: params[:stripeEmail],
       source: params[:stripeToken],
@@ -22,6 +24,6 @@ class ChargesController < ApplicationController
   
   rescue Stripe::CardError => e
     flash[:error] = e.message
-    redirect_to new_charge_path
+    redirect_to new_charge_path(charge)
   end
 end
