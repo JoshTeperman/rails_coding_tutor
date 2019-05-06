@@ -1,5 +1,4 @@
 <div class="d-flex flex-wrap">
-
   <% if @tutor_bookings.nil? && @student_bookings.nil?%>
     <h4>Looks like you don't have any bookings yet. Make a booking here: </h4>
   <% else %>
@@ -26,6 +25,7 @@
             <h2 class="card-title"><%= booking.id %></h2>
             <h5 class="card-title"><%= booking.date %></h5>
             <h6 class="card-subtitle mb-2 text-muted"><%= booking.location %></h6>
+
           <h6 class="card-subtitle mb-2 text-muted"><%= booking.price %></h6>
             <h6 class="card-subtitle mb-2 text-muted"><%= booking.duration %></h6>
             <h6 class="card-subtitle mb-2 text-muted" style="margin-top: 30px;"><%= link_to "View", booking_path(booking) %></h6>
@@ -34,6 +34,4 @@
       <% end %>
     <% end %>
   <% end %>
-
-  
 </div>

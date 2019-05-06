@@ -1,6 +1,10 @@
    <div class="text-center" style="margin: 30px;"><h1>New Booking with <%= @tutor_first_name %></h1></div>
   <form class="form-style" action="<%= new_booking_path %>" method="POST" enctype="multipart/form-data">
   <input type="hidden" value="<%= form_authenticity_token %>" name="authenticity_token" />
+  <input type="hidden" name="price" class="form-control" value="" id="price"/>
+  <input type="hidden" name="hourly_rate" class="form-control" value="<%= @tutor_hourly_rate %>" id='hourly_rate' />
+
+
     <div class="card">
       <h5 class="card-header info-color white-text text-center py-4">
           <strong>Book a session</strong>
@@ -21,20 +25,14 @@
                 <label for="location">Location</label>
                 <input type="textarea" name="location" class="form-control">
             </div>
-        
-        <!-- Price -->
-            <div class="md-form">
-                <label for="price">Price</label>
-                <input type="textarea" name="price" class="form-control">
-            </div>
-
+    
         <!-- Duration -->    
             <div class="md-form">
                 <label for="duration">Duration</label>
-                <input type="text" name="duration" class="form-control">
+                <input type="text" name="duration" class="form-control" id="duration">
             </div>
         
-        <!-- Duration -->    
+        <!-- Tutor -->    
             <div class="md-form">
                 <label for="tutor_id">Tutor</label>
                 <input type="text" name="tutor_id" class="form-control" value="<%= @tutor_id %>">
@@ -42,9 +40,19 @@
 
    <!-- Send button -->
             <button class="btn btn-outline-info btn-rounded btn-block z-depth-0 my-4 waves-effect" type="submit">Create</button>
-
+            
 
   </form>
 
+<script>
+    const duration = document.querySelector('#duration');
+    const hourly_rate = document.querySelector('#hourly_rate'); 
+    const price = document.querySelector('#price');
+    duration.addEventListener('change', (e) => {
+        const durationValue = parseInt(e.target.value);
+        const finalPrice = parseInt(hourly_rate.value) * durationValue * (durationValue / 60)
+        price.value = finalPrice
+     })
+</script>
 
   

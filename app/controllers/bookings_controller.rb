@@ -14,12 +14,13 @@ class BookingsController < ApplicationController
 
   def create
     @user = current_user
-    @tutor = params['tutor_id'] # available: profile.tutor_id
-    # @tutor_profile = Profile.find_by(tutor_id: @booking.tutor_id)
+    @tutor = params['tutor_id'] 
     @booking = @user.bookings.create(booking_params)
+
     if @booking.save
       flash[:success] = "Created a new booking."
-      redirect_to booking_path(@booking)
+      redirect_to payment_path(:price => @booking[:price])
+      
     else
       flash[:error] = "Error: Could not create booking."
       redirect_to new_booking_path(:tutor => @tutor)
@@ -29,7 +30,9 @@ class BookingsController < ApplicationController
 
   def new
     @tutor_id = params[:tutor]
-    @tutor_first_name = Profile.find_by(tutor_id: @tutor_id).first_name
+    @tutor = Profile.find_by(tutor_id: @tutor_id)
+    @tutor_first_name = @tutor.first_name
+    @tutor_hourly_rate = @tutor.hourly_rate
     @booking = Booking.new
   end
 

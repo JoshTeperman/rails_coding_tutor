@@ -41,4 +41,8 @@ Rails.application.routes.draw do
   delete "/reviews/:id", to: "reviews#destroy", as: "delete_review"
 
   root to: 'profiles#home'
+
+
+  # Charges routes
+  get '/charges', to: 'charges#index', as:'payment'
 end
