@@ -2,8 +2,14 @@ class BookingsController < ApplicationController
   # before_action :require_profile
 
   def index
-    @user = current_user
-    @bookings = @user.bookings
+    # bookings as a tutor --->
+    tutor_id = current_user.profile.tutor_id
+    @tutor_bookings = Booking.where(tutor_id: tutor_id)
+
+    # bookings as a student --->
+    @student_bookings = current_user.bookings
+    # raise
+
   end
 
   def create
@@ -33,6 +39,7 @@ class BookingsController < ApplicationController
 
   def show
     @booking = Booking.find(params[:id])
+  
   end
 
   def edit
