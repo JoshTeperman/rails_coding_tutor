@@ -1,29 +1,6 @@
-
-
-  <nav class="navbar navbar-expand-sm bg-dark navbar-dark">
+<nav class="navbar navbar-expand-sm bg-dark navbar-dark">
     <!-- Brand -->
-    <a class="navbar-brand" href="#">LOGO</a>
-    <!-- Links -->
-    <ul class="navbar-nav">
-      
-      <li>
-        <button class="btn btn-outline-primary" type="button" style="margin: 10px;">
-          <a class="nav-link" href="<%= root_path %>">Home</a>
-        </button>
-      </li>
-      <li>
-        <button class="btn btn-outline-primary" type="button" style="margin: 10px;">
-          <a class="nav-link" href="#">About</a>
-        </button>
-      </li>
-      <li>
-        <button class="btn btn-outline-primary" type="button" style="margin: 10px;">
-          <a class="nav-link" href="#">Become a tutor</a>
-      </button>   
-      </li>
-
-
-      
+  <a class="navbar-brand" href="#">LOGO</a>
 
   <!-- Links -->
   <ul class="navbar-nav">
@@ -43,20 +20,34 @@
     </button>   
     </li>
     <li>
-      <button class="btn btn-outline-primary" type="button" style="margin-left: 10px;">
+      <button class="btn btn-outline-primary" type="button" style="margin: 10px;">
         <a class="nav-link" href="#">Become a tutor</a>
     </button>   
     </li>
   
-    
 
-  
-  
-    <!-- Dropdown -->
+        <!-- Dropdown -->
     <form class="form-inline">
-     <button class="btn btn-outline-primary" type="button" style="margin-left: 380px;">
-      <li class="nav-item dropdown">
-        <a class="nav-link dropdown-toggle" href="#" id="navbardrop" data-toggle="dropdown">
-          Account Settings
-        </a>
-        <div class="dropdown-menu">
+
+      <% if user_signed_in? %>
+        <button class="btn btn-outline-primary" type="button" style="margin-left: 10px;">
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" id="navbardrop" data-toggle="dropdown">Settings</a>
+              <div class="dropdown-menu">
+                <a class="dropdown-item" href="<%= profile_path(current_user.profile) %>">Profile</a>
+                <%= link_to 'Sign Out', destroy_user_session_path, method: :delete, class: 'dropdown-item' %>
+              </div>
+          </li>
+        </button>
+      <% else %>
+        <button class="btn btn-outline-primary" type="button" style="margin-left: 10px;">
+          <a class="nav-link" href="<%= new_user_session_path %>">Log In</a>
+        </button>
+        <button class="btn btn-outline-primary" type="button" style="margin-left: 10px;">
+          <a class="nav-link" href="<%= new_user_registration_path %>">Sign up</a>
+        </button>
+      <% end %>
+    </form>
+  </ul>
+</nav>
+
