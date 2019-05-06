@@ -8,7 +8,7 @@
       <div class="card m-2" style="width: 21.5rem;">
         <div class="card-body text-center">
             <% if profile.avatar.attached? %>
-                <%= image_tag profile.avatar.service_url, class: 'image-size' %>
+                <%= image_tag profile.avatar, class: 'image-size' %>
             <% else %>
                 <div style="height: 100px;"><%= image_tag "https://avatarfiles.alphacoders.com/182/182752.jpg", class: 'image'%></div>
             <% end %>
