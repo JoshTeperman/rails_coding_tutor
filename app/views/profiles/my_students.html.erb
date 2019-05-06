@@ -1,0 +1,5 @@
+<h1>My Students</h1>
+<%= @my_students.count %>
+<%= @my_students.each do |student|%>
+  <p><%= student.profile.first_name %><%= student.profile.surname %></p>
+<% end %>

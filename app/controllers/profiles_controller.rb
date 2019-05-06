@@ -37,6 +37,16 @@ class ProfilesController < ApplicationController
     @tutor = User.find_by(id: @profile.user_id)
   end
 
+  def my_students
+    @my_students = User.all.select do |user|
+      current_user.bookings.map do |booking|
+        booking.users.include?(User.find(user.id))
+      end
+    end
+
+  end
+
+
   def edit
     @profile = Profile.find(params[:id])
   end

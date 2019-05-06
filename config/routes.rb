@@ -10,7 +10,8 @@ Rails.application.routes.draw do
   get '/profiles/new', to: 'profiles#new', as: 'new_profile'
   post '/profiles/new', to: 'profiles#create'
   get '/profiles/:id', to: 'profiles#show', as: 'profile'
-  
+  get '/profiles/:id/students', to: 'profiles#my_students', as: 'my_students'
+
   put "/profiles/:id", to: "profiles#update"
   patch "/profiles/:id", to: "profiles#update"
   get "/profiles/:id/edit", to: "profiles#edit", as: "edit_profile"
