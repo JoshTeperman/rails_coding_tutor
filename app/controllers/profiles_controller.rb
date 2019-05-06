@@ -38,12 +38,18 @@ class ProfilesController < ApplicationController
   end
 
   def my_students
-    @my_students = User.all.select do |user|
-      current_user.bookings.map do |booking|
-        booking.users.include?(User.find(user.id))
-      end
-    end
+    tutor_id = current_user.profile.tutor_id
+    my_bookings = Booking.where(tutor_id: tutor_id)
+    @my_students = my_bookings.map {|booking| booking.users.each{|student| student}}.flatten.uniq
+    # raise
+    # @my_students = User.all.select do |user|
+    #   current_user.bookings.map do |booking|
+    #     booking.users.include?(User.find(user.id))
+    #   end
+    # end
 
+    # @my_students = User.all.select{|student| student.bookings.include?(Booking.where(tutor_id: current_user.profile.tutor_id))}
+    # raise
   end
 
 
