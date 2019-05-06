@@ -27,10 +27,11 @@
   
 
         <!-- Dropdown -->
-    <form class="form-inline">
+    <li>
+
 
       <% if user_signed_in? %>
-        <button class="btn btn-outline-primary" type="button" style="margin-left: 10px;">
+        <button class="btn btn-outline-primary" type="button" style="margin: 10px;">
           <li class="nav-item dropdown">
             <a class="nav-link dropdown-toggle" href="#" id="navbardrop" data-toggle="dropdown">Profile</a>
               <div class="dropdown-menu">
@@ -53,7 +54,8 @@
           <a class="nav-link" href="<%= new_user_registration_path %>">Sign up</a>
         </button>
       <% end %>
-    </form>
+
+    </li>
   </ul>
 </nav>
 
