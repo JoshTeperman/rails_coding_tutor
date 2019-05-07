@@ -25,7 +25,7 @@
     </button>   
     </li>
       <li>
-      <button class="btn btn-outline-primary" type="button" style="margin-left: 680px; margin-top: 10px;">
+      <button class="btn btn-outline-primary" type="button" style="margin: 10px;">
         <a class="nav-link" href="<%= bookings_path %>">Bookings</a>
     </button>   
     </li>
@@ -36,26 +36,26 @@
 
 
       <% if user_signed_in? %>
-        <button class="btn btn-outline-primary" type="button" style="margin-left: 20px;">
+        <button class="btn btn-outline-primary" type="button" style="margin: 10px;">
           <li class="nav-item dropdown">
             <a class="nav-link dropdown-toggle" href="#" id="navbardrop" data-toggle="dropdown">Profile</a>
               <div class="dropdown-menu">
                 <% if current_user.profile %>
                   <a class="dropdown-item" href="<%= profile_path(current_user.profile) %>">View My Profile</a>
+                  <% if current_user.profile.tutor? %>
+                    <a class="dropdown-item" href="/profiles/<%= current_user.id %>/students">View My Students</a>
+                  <% end %>
                 <% end %>
-                <% if current_user.profile.tutor? %>
-                  <a class="dropdown-item" href="/profiles/<%= current_user.id %>/students">View My Students</a>
-                <% end %>
-
+               
                 <%= link_to 'Sign Out', destroy_user_session_path, method: :delete, class: 'dropdown-item' %>
               </div>
           </li>
         </button>
       <% else %>
-        <button class="btn btn-outline-primary" type="button" style="margin-left: 10px;">
+        <button class="btn btn-outline-primary" type="button" style="margin:10px;">
           <a class="nav-link" href="<%= new_user_session_path %>">Log In</a>
         </button>
-        <button class="btn btn-outline-primary" type="button" style="margin-left: 10px;">
+        <button class="btn btn-outline-primary" type="button" style="margin: 10px;">
           <a class="nav-link" href="<%= new_user_registration_path %>">Sign up</a>
         </button>
       <% end %>
