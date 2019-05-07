@@ -1,23 +1,22 @@
 Rails.application.routes.draw do
   devise_for :users, controllers: {confirmations: 'confirmations', registrations: 'users/registrations' }
-  
-  default_url_options :host => "localhost:3000" #default host can be anything
+  default_url_options :host => "localhost:3000" 
   resources :charges
-# PROFILES ROUTES
-  get '/', to: 'profiles#home', as: 'home'
+
+  # PROFILES ROUTES
   get '/index', to: 'profiles#index', as: 'index'
-  get '/about', to: 'profiles#about', as: 'about'
   get '/profiles/new', to: 'profiles#new', as: 'new_profile'
   post '/profiles/new', to: 'profiles#create'
   get '/profiles/:id', to: 'profiles#show', as: 'profile'
-  
+  get '/profiles/:id/students', to: 'profiles#my_students', as: 'my_students'
+
   put "/profiles/:id", to: "profiles#update"
   patch "/profiles/:id", to: "profiles#update"
   get "/profiles/:id/edit", to: "profiles#edit", as: "edit_profile"
   delete "/profiles/:id", to: "profiles#destroy"
 
 
-# BOOKINGS ROUTES
+  # BOOKINGS ROUTES
   get '/bookings', to: 'bookings#index', as: 'bookings'
   get '/bookings/new', to: 'bookings#new', as: 'new_booking'
   post '/bookings/new', to: 'bookings#create'
@@ -40,9 +39,13 @@ Rails.application.routes.draw do
   patch "/reviews/:id", to: "reviews#update", as: "update_review"
   delete "/reviews/:id", to: "reviews#destroy", as: "delete_review"
 
-  root to: 'profiles#home'
+  # PAGES ROUTES
+  get '/', to: 'pages#home', as: 'home'
 
 
   # Charges routes
   get '/charges', to: 'charges#index', as:'payment'
+  root to: 'pages#home'
+
+
 end

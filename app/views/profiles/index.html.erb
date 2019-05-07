@@ -1,6 +1,3 @@
-
-<div style="margin: 50px;"><h1>All Tutors</h1></div>
-
   <div class="d-flex flex-wrap">
 
   <% @profiles.each do |profile| %>
@@ -10,7 +7,7 @@
             <% if profile.avatar.attached? %>
                 <%= image_tag profile.avatar, class: 'image-size' %>
             <% else %>
-                <div style="height: 100px;"><%= image_tag "https://avatarfiles.alphacoders.com/182/182752.jpg", class: 'image'%></div>
+                <div><%= image_tag "https://avatarfiles.alphacoders.com/182/182752.jpg", class: 'image'%></div>
             <% end %>
           <h2 class="card-title"><%= profile.first_name %> <%= profile.surname %></h2>
           <h6 class="card-subtitle mb-2 text-muted"><%= profile.skills %></h6>
