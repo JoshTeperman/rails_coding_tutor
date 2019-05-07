@@ -17,8 +17,8 @@ class Ability
     if user.present?
       can :create, [Review, Booking] 
       # can [:update, :edit], Review, reviewer_id: user.id
-      can [:update, :delete], Review do |review|
-        review.reviewer_id == current_user.id
+      can [:update, :destroy], Review do |review|
+        review.reviewer_id == user.id
       end
 
       can [:update, :edit], [Profile, Booking], user_id: user.id
