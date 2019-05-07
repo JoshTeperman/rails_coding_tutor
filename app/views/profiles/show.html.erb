@@ -31,12 +31,17 @@
   <% else %>
     <ul>
       <% @tutor.reviews.each do |review| %>
-
-        <li> <h6><strong> Content: </strong></h6> <p><%= review.content %></p> <h6><strong> Rating: </strong></h6> <p><%= review.rating %></p> </li>
-          <% if can? [:edit, :delete], Review %>       
-            <li><%= link_to "Delete Review", delete_review_path(review), method: :delete, data: { confirm: 'Are you sure?' } %></p>
-            <li><%= link_to "Edit Review", edit_review_path(review) %></li>
-          <% end %>
+        <li> 
+          <h6><strong> Content: </strong></h6> 
+          <p><%= review.content %></p> 
+          <h6><strong> Rating: </strong></h6> 
+          <p><%= review.rating %></p> 
+        </li>
+    
+        <% if review.reviewer_id == current_user.id %> 
+          <%= link_to "Delete", delete_review_path(review), method: :delete, data: { confirm: 'Are you sure?' } %>
+          <%= link_to "Edit", edit_review_path(review) %>
+        <% end %>
       <% end %>
     </ul>
   <% end %>

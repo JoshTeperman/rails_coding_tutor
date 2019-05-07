@@ -1,6 +1,6 @@
 class ReviewsController < ApplicationController
   # before_action :require_profile
-  loadauthorize_resource
+  load_and_authorize_resource
 
   def index
     @user = current_user
