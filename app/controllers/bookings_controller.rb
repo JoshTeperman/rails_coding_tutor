@@ -9,7 +9,6 @@ class BookingsController < ApplicationController
     # bookings as a student --->
     @student_bookings = current_user.bookings
     # raise
-
   end
 
   def create
@@ -39,7 +38,8 @@ class BookingsController < ApplicationController
 
   def show
     @booking = Booking.find(params[:id])
-  
+    @tutor_profile = Profile.find_by(tutor_id: @booking.tutor_id)
+    @tutor_name = @tutor_profile.first_name
   end
 
   def edit

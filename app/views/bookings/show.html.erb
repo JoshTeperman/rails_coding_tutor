@@ -1,11 +1,14 @@
-<h2>Booking #<%= @booking.id %></h2>
+<h2>Booking number = <%= @booking.id %></h2>
 
-<ul>
-  <li><%= @booking.date  %></li>
-  <li><%= @booking.location %></li>
-  <li><%= @booking.price %></li>
-  <li><%= @booking.duration %></li>
-</ul>
+<h3>Tutor name: <%= @tutor_name %> <%= @tutor_profile.surname %></h3>
+
+  <ul>
+    <li><%= @booking.date  %></li>
+    <li><%= @booking.location %></li>
+    <li><%= @booking.price %></li>
+    <li><%= @booking.duration %></li>
+    <li><%= @booking.tutor_id %></li>
+  </ul>
 
 <p><%= link_to "EDIT", edit_booking_path(@booking) %></p>
 <p><%= link_to "Delete", delete_booking_path(@booking.id), method: :delete, data: { confirm: 'Are you sure?' } %></p>

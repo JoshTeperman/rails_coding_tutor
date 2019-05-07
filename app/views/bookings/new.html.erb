@@ -1,4 +1,5 @@
-   <div class="text-center" style="margin: 30px;"><h1>New Booking with <%= @tutor_first_name %></h1></div>
+<div>
+<div class="text-center" style="margin: 30px;"><h1>New Booking with <%= @tutor_first_name %></h1></div>
   <form class="form-style" action="<%= new_booking_path %>" method="POST" enctype="multipart/form-data">
   <input type="hidden" value="<%= form_authenticity_token %>" name="authenticity_token" />
   <input type="hidden" name="price" class="form-control" value="" id="price"/>
@@ -11,7 +12,6 @@
       </h5>
 
        <div class="card-body px-lg-5 pt-0">
-
         <form class="text-center" style="color: #757575;">
   
          <!-- Date -->
@@ -19,26 +19,38 @@
                 <label for="date">Date</label>
                 <input type="date" name="date" class="form-control">
             </div>
-        
+            <br>
         <!-- Location -->
             <div class="md-form">
-                <label for="location">Location</label>
-                <input type="textarea" name="location" class="form-control">
+                <label for="location">Location</label><br>
+                <select name="location" id="location">
+                    <option value="">Please select</option>
+                    <option value="Melbourne" selected="selected">Melbourne</option>
+                    <option value="Sydney">Sydney</option>
+                    <option value="Tasmania">Tasmania</option>
+                </select>
             </div>
-    
+            <br>
         <!-- Duration -->    
-            <div class="md-form">
-                <label for="duration">Duration</label>
-                <input type="text" name="duration" class="form-control" id="duration">
+             <div class="md-form">
+                <label for="duration">Duration (minutes)</label><br>
+                <select name="duration" id="duration">
+                    <option value="">Please select</option>
+                    <option value="15" selected="selected">15</option>
+                    <option value="30">30</option>
+                    <option value="60">60</option>
+                    <option value="90">90</option>
+                    <option value="90">120</option>
+                </select>
             </div>
-        
+            <br>
         <!-- Tutor -->    
             <div class="md-form">
                 <label for="tutor_id">Tutor</label>
                 <input type="text" name="tutor_id" class="form-control" value="<%= @tutor_id %>">
             </div>
 
-   <!-- Send button -->
+        <!-- Send button -->
             <button class="btn btn-outline-info btn-rounded btn-block z-depth-0 my-4 waves-effect" type="submit">Create</button>
             
 
@@ -54,5 +66,5 @@
         price.value = finalPrice
      })
 </script>
-
+</div>
   

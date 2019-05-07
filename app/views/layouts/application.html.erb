@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html>
   <head>
+  <h1><a name="linktotop"></a></h1>
     <title>RailsCodingTutor</title>
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
@@ -12,13 +13,15 @@
   <body>
 
   <%= render 'shared/navbar' %>
-  <div class="container">
+  
 
    <% flash.each do |key, value| %>
      <%= value %>
    <% end %>
    
    <%= yield %>
-  </div>
+  
+  <%= render 'shared/footer' %>
    </body>
+
 </html>

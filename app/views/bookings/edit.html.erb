@@ -1,24 +1,84 @@
-<h1>Edit (edit bookings)</h1>
-<p>(EDIT your booking)</p>
-
-<form class="form-style" action="<%= update_booking_path(@booking) %>" method="POST" enctype="multipart/form-data">
-<input type="hidden" value="<%= form_authenticity_token %>" name="authenticity_token" />
+  <div>
+  <div class="text-center" style="margin: 30px;"><h1>Edit your booking</h1><p>Booking number = <%= @booking.id %> </p></div>
+  <form class="form-style" action="<%= update_booking_path(@booking) %>" method="POST" enctype="multipart/form-data">
+  <input type="hidden" value="<%= form_authenticity_token %>" name="authenticity_token" />
+  <input type="hidden" name="price" class="form-control" value="" id="price"/>
+  <input type="hidden" name="hourly_rate" class="form-control" value="<%= @tutor_hourly_rate %>" id='hourly_rate' />
   <input type="hidden" name="_method" value="patch"/>
 
-  <label for="date">Date</label>
-  <input type="date" name="date" value="<%= @booking.date %>" />
 
-  <label for="location">Location</label>
-  <input type="textarea" name="location" value="<%= @booking.location %>" />
+    <div class="card">
+      <h5 class="card-header info-color white-text text-center py-4">
+          <strong>Edit a session</strong>
+      </h5>
 
-  <label for="price">Price</label>
-  <input type="textarea" name="price" value="<%= @booking.price %>" />
+  
+       <div class="card-body px-lg-5 pt-0">
+        <form class="text-center" style="color: #757575;">
 
-  <label for="duration">Duration</label>
-  <input type="text" name="duration" value="<%= @booking.duration %>" >
+         <!-- Date -->
+            <div class="md-form mt-3">
+                <label for="date">Date</label>
+                <input type="date" name="date" value="<%= @booking.date %>" class="form-control" />
+            </div>
+            <br>
+        <!-- Location -->
+            <div class="md-form">
+                <label for="location">Location</label><br>
+                <select name="location" id="location">
+                    <option value="">Please select</option>
+                    <option value="Melbourne" selected="selected">Melbourne</option>
+                    <option value="Sydney">Sydney</option>
+                    <option value="Tasmania">Tasmania</option>
+                </select>
+            </div>
+            <br>
 
-  <input type="submit" value="Update" />
-</form>
+        <!-- Duration -->    
+             <div class="md-form">
+                <label for="duration">Duration (minutes)</label><br>
+                <select name="duration" id="duration">
+                    <option value="">Please select</option>
+                    <option value="15" selected="selected">15</option>
+                    <option value="30">30</option>
+                    <option value="60">60</option>
+                    <option value="90">90</option>
+                    <option value="90">120</option>
+                </select>
+            </div>
+            <br>
+              
+        <!-- Tutor -->    
+            <div class="md-form">
+                <label for="tutor_id">Tutor</label>
+                <input type="text" name="tutor_id" class="form-control" value="<%= @tutor_id %>">
+            </div>
 
-<%= link_to "Delete", delete_booking_path(@booking.id), method: :delete, data: { confirm: 'Are you sure?' } %>
-<p><%= link_to "Go back to show all your bookings", booking_path %></p>
+        <!-- Send button -->
+            <button class="btn btn-outline-info btn-rounded btn-block z-depth-0 my-4 waves-effect" type="submit" value="Update">Update</button>
+
+          <%= link_to "Delete", delete_booking_path(@booking.id), method: :delete, data: { confirm: 'Are you sure?' } %>
+          <p><%= link_to "Back", booking_path %></p>
+  </form>
+
+<script>
+    const duration = document.querySelector('#duration');
+    const hourly_rate = document.querySelector('#hourly_rate'); 
+    const price = document.querySelector('#price');
+    duration.addEventListener('change', (e) => {
+        const durationValue = parseInt(e.target.value);
+        const finalPrice = parseInt(hourly_rate.value) * durationValue * (durationValue / 60)
+        price.value = finalPrice
+     })
+</script>
+</div>
+
+  
+
+
+
+
+ 
+
+
+

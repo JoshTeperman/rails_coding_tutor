@@ -1,6 +1,7 @@
 <div class="d-flex flex-wrap">
   <% if @tutor_bookings.nil? && @student_bookings.nil?%>
-    <h4>Looks like you don't have any bookings yet. Make a booking here: </h4>
+    <h3 >You don't have any bookings yet. Make a booking with a tutor to display your bookings.</h3>
+    <a href="<%= index_path %>" style="margin: 50px;"><p class="btn btn-default btn-rounded mb-4 bg-info text-white">Find a tutor?</p></a>
   <% else %>
     <% if @tutor_bookings %>
       <h3>Tutor Bookings</h3>
@@ -33,5 +34,7 @@
         </div>
       <% end %>
     <% end %>
+
   <% end %>
 </div>
+
