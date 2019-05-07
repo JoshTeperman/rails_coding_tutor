@@ -1,5 +1,5 @@
 class ApplicationController < ActionController::Base
-
+  before_action :has_profile?
   helper_method :profile_is_admin?
 
   rescue_from CanCan::AccessDenied do |exception|
@@ -18,5 +18,13 @@ class ApplicationController < ActionController::Base
   #     redirect_to new_profile_path unless current_user.profile
   #   end
   # end
+
+  private
+    def has_profile?
+      unless current_user.profile
+        redirect_to new_profile_path
+        flash[:error] = 'You need to complete your user profile before doing that'
+      end
+    end
 
 end

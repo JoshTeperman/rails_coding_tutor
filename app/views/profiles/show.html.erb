@@ -33,11 +33,10 @@
       <% @tutor.reviews.each do |review| %>
 
         <li> <h6><strong> Content: </strong></h6> <p><%= review.content %></p> <h6><strong> Rating: </strong></h6> <p><%= review.rating %></p> </li>
-       
-        <% if !signed_in? || current_user.id == review.reviewer_id %>
-          <li><%= link_to "Delete Review", delete_review_path(review), method: :delete, data: { confirm: 'Are you sure?' } %></p>
-          <li><%= link_to "Edit Review", edit_review_path(review) %></li>
-        <% end %>
+          <% if can? [:edit, :delete], Review %>       
+            <li><%= link_to "Delete Review", delete_review_path(review), method: :delete, data: { confirm: 'Are you sure?' } %></p>
+            <li><%= link_to "Edit Review", edit_review_path(review) %></li>
+          <% end %>
       <% end %>
     </ul>
   <% end %>
@@ -54,7 +53,7 @@
 <form class="form-style" action="<%= new_review_path %>" method="POST" enctype="multipart/form-data">
     <input type="hidden" value="<%= form_authenticity_token %>" name="authenticity_token" />
     <input type="hidden" value="<%= @profile.tutor_id %>" name="tutor_id" />
-    <input type="hidden" value="<%= current_user.id %>" name="_id" />
+    <input type="hidden" value="<%= current_user.id %>" name="reviewer_id" />
 
   <div class="modal fade" id="modalLoginForm" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
     aria-hidden="true">

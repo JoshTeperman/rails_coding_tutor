@@ -1,5 +1,6 @@
 class ReviewsController < ApplicationController
   # before_action :require_profile
+  loadauthorize_resource
 
   def index
     @user = current_user
@@ -20,6 +21,7 @@ class ReviewsController < ApplicationController
 
   def new
     @review = Review.new
+    raise
   end
 
   def show
