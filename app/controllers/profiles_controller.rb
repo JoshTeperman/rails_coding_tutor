@@ -1,15 +1,9 @@
 class ProfilesController < ApplicationController
   
-  def home
-  end
-
   def index
     admins = Profile.joins(:user).where(users: {admin?: true})
     moderators = Profile.joins(:user).where(users: {moderator?: true})
     @profiles = Profile.all.reject {|profile| admins.include?(profile) || moderators.include?(profile) }
-  end
-
-  def about
   end
 
   def new
