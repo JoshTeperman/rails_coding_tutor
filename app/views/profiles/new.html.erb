@@ -1,31 +1,65 @@
-<h1>New Profile</h1>
-<p>New (new profile form - after signing up / confirmation)</p>
-<form class="form-style" action="<%= new_profile_path %>" method="POST" enctype="multipart/form-data">
-
+<div>
+<div class="text-center" style="margin: 50px;"><h1>Create a new Profile</h1><p>New (new profile form - after signing up / confirmation) remove this after enabling confirmable again</p></div>
+  <form class="form-style" action="<%= new_profile_path %>" method="POST" enctype="multipart/form-data">
   <input type="hidden" value="<%= form_authenticity_token %>" name="authenticity_token" />
-  <label for="first_name">First Name</label>
-  <input type="text" name="first_name" />
 
-  <label for="name">Surname</label>
-  <input type="text" name="surname" />
+  <div class="card">
+      <h5 class="card-header info-color white-text text-center py-4">
+          <strong>Edit your profile</strong>
+      </h5>
+  <div class="card-body px-lg-5 pt-0">
 
-  <label for="skills">Skills</label>
-  <input type="textarea" name="skills" />
+  <form class="text-center" style="color: #757575;">
 
-  <label for="bio">Bio</label>
-  <input type="textarea" name="bio" />
+   <!-- Become a tutor option -->
+    <div class="md-form">
+      <label for="tutor?">Would you like to create a tutor profile?</label>
+      <input type="checkbox" name="tutor?" value="true"> Yes
+    </div>
 
-  <label for="hourly_rate">Hourly Rate</label>
-  <input type="text" name="hourly_rate">
+    <!-- FirstName -->
+    <div class="md-form mt-3">
+      <label for="first_name">First Name</label>
+      <input type="text" class="form-control" name="first_name" />
+    </div>
 
-  <label for="tutor?">Would you like to create a tutor profile?</label>
-  <input type="checkbox" name="tutor?" value="true"> Yes
+     <!-- Surname -->
+    <div class="md-form">
+      <label for="surname">Surname</label>
+      <input type="text" class="form-control" name="first_name" />
+    </div>
 
-  <label for="avatar">Avatar</label>
-  <input type="file" name="avatar">
+    <!--Skills -->
+    <div class="md-form">
+      <label for="skills">Skills</label>
+      <input type="textarea" class="form-control" name="skills" /> 
+    </div>
 
-  <input type="submit" id="submit" value="Create" />
+     <!-- Bio -->    
+    <div class="md-form">
+      <label for="bio">Bio</label>
+      <input type="textarea" class="form-control" name="bio" />
+    </div>
+
+     <!-- Hourly Rate -->    
+    <div class="md-form">
+      <label for="hourly_rate">Hourly Rate</label>
+      <input type="text" class="form-control" name="hourly_rate" />
+    </div>
+
+     <!-- Avatar -->    
+    <div class="md-form">
+      <label for="avatar">Avatar</label>
+      <input type="file" class="form-control" name="avatar">
+    </div>
+    <br>
+    <p style="margin-left: 400px;">You can always edit your profile later.</p>
+<!-- Send button -->
+    <button class="btn btn-outline-info btn-rounded btn-block z-depth-0 my-4 waves-effect" type="submit" value="Create">Create</button>
+  </form>
+  
+  <%= link_to 'Back', :back %>
 </form>
-
+</div>
 
 

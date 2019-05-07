@@ -1,6 +1,6 @@
 <nav class="navbar navbar-expand-sm bg-dark navbar-dark">
     <!-- Brand -->
-  <a class="navbar-brand" href="#">LOGO</a>
+  <a class="navbar-brand" href="#"><i class="fa fab fa-connectdevelop fa-2x" style="color:white"></i></a>
 
   <!-- Links -->
   <ul class="navbar-nav">
@@ -16,12 +16,17 @@
     </li>
     <li>
       <button class="btn btn-outline-primary" type="button" style="margin: 10px;">
-        <a class="nav-link" href="<%= bookings_path %>">Bookings</a>
+        <a class="nav-link" href="#">Become a tutor</a>
     </button>   
     </li>
     <li>
       <button class="btn btn-outline-primary" type="button" style="margin: 10px;">
-        <a class="nav-link" href="#">Become a tutor</a>
+        <a class="nav-link" href="<%= index_path %>">Find a tutor</a>
+    </button>   
+    </li>
+      <li>
+      <button class="btn btn-outline-primary" type="button" style="margin-left: 680px; margin-top: 10px;">
+        <a class="nav-link" href="<%= bookings_path %>">Bookings</a>
     </button>   
     </li>
   
@@ -30,7 +35,7 @@
     <form class="form-inline">
 
       <% if user_signed_in? %>
-        <button class="btn btn-outline-primary" type="button" style="margin-left: 10px;">
+        <button class="btn btn-outline-primary" type="button" style="margin-left: 20px;">
           <li class="nav-item dropdown">
             <a class="nav-link dropdown-toggle" href="#" id="navbardrop" data-toggle="dropdown">Settings</a>
               <div class="dropdown-menu">
@@ -52,4 +57,3 @@
     </form>
   </ul>
 </nav>
-

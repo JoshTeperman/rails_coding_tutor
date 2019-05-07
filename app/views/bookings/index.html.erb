@@ -1,11 +1,12 @@
 
-  <div style="margin: 50px;"><h1>My Bookings</h1></div>
+  <div style="margin: 100px; margin-right: 60px; padding: 20px;"><h1 style="font-size: 60px;">My Bookings</h1></div>
 
-  <div class="d-flex flex-wrap">
+  <div class="d-flex flex-wrap" style="margin: 100px;">
 
-  <% if @bookings.count.zero? %>
-    <h3>You don't have any bookings yet. Make a booking here</h3>
-  <% end %>
+      <% if @bookings.count.zero? %>
+        <h3 >You don't have any bookings yet. Make a booking with a tutor to display your bookings.</h3>
+        <a href="<%= index_path %>" style="margin: 50px;"><p class="btn btn-default btn-rounded mb-4 bg-info text-white">Find a tutor?</p></a>
+      <% end %>
 
     <% @bookings.each do |booking| %>
       <div class="card m-2" style="width: 21.5rem;">
@@ -23,4 +24,4 @@
   
 </div>
 
-  <p class="btn btn-default btn-rounded mb-4 bg-info text-white"><%= link_to "Create new booking", new_booking_path %></p>
+  
