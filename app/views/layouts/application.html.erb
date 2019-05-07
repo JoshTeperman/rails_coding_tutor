@@ -1,24 +1,22 @@
 <!DOCTYPE html>
 <html>
   <head>
-  <h1><a name="linktotop"></a></h1>
-    <title>RailsCodingTutor</title>
+    <title>Coding Tutor | Coding Community</title>
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
-
     <%= stylesheet_link_tag  'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
 
   <body>
-
   <%= render 'shared/navbar' %>
 
-   <% flash.each do |key, value| %>
-     <%= value %>
-   <% end %>
-   
+  <% flash.each do |key, value| %>
+    <%= value %>
+  <% end %>
+  
    <%= yield %>
+   <%= render 'shared/footer' %>
    </body>
 
 </html>
