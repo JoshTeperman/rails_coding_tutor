@@ -89,7 +89,6 @@ class ProfilesController < ApplicationController
   end
 
   def load_profile
-    @user = current_user
     @profile = current_user.profile
   end
 
