@@ -13,15 +13,12 @@
   <body>
 
   <%= render 'shared/navbar' %>
-  
 
    <% flash.each do |key, value| %>
      <%= value %>
    <% end %>
    
    <%= yield %>
-  
-  <%= render 'shared/footer' %>
    </body>
 
 </html>

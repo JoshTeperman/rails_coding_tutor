@@ -1,14 +1,9 @@
 class ProfilesController < ApplicationController
   
-  def home
-  end
-
   def index
-    @profiles = Profile.all
-    # raise
-  end
-
-  def about
+    admins = Profile.joins(:user).where(users: {admin?: true})
+    moderators = Profile.joins(:user).where(users: {moderator?: true})
+    @profiles = Profile.all.reject {|profile| admins.include?(profile) || moderators.include?(profile) }
   end
 
   def new
@@ -35,6 +30,22 @@ class ProfilesController < ApplicationController
     @profile = Profile.find(params[:id])
     @tutor = User.find_by(id: @profile.user_id)
   end
+
+  def my_students
+    tutor_id = current_user.profile.tutor_id
+    my_bookings = Booking.where(tutor_id: tutor_id)
+    @my_students = my_bookings.map {|booking| booking.users.each{|student| student}}.flatten.uniq
+    # raise
+    # @my_students = User.all.select do |user|
+    #   current_user.bookings.map do |booking|
+    #     booking.users.include?(User.find(user.id))
+    #   end
+    # end
+
+    # @my_students = User.all.select{|student| student.bookings.include?(Booking.where(tutor_id: current_user.profile.tutor_id))}
+    # raise
+  end
+
 
   def edit
     @profile = Profile.find(params[:id])
