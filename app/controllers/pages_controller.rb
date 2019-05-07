@@ -1,5 +1,6 @@
 class PagesController < ApplicationController
   def home
+    # raise
   end
 
   def about
@@ -7,7 +8,6 @@ class PagesController < ApplicationController
 
   def contact_us
   end
-
 
   def how_it_works
   end

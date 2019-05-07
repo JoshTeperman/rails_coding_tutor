@@ -1,5 +1,9 @@
 class ProfilesController < ApplicationController
-  
+  load_and_authorize_resource
+
+  before_action :is_tutor?, only: :show
+  skip_before_action :has_profile?, only: [:new, :create]
+
   def index
     admins = Profile.joins(:user).where(users: {admin?: true})
     moderators = Profile.joins(:user).where(users: {moderator?: true})
@@ -14,8 +18,6 @@ class ProfilesController < ApplicationController
   def create
     @user = current_user
     @profile = current_user.create_profile(profile_params)
-    # @profile = Profile.new(profile_params)
-    # @profile.user_id = current_user.id
 
     if @profile.save
       flash[:success] = "Profile saved"
@@ -29,7 +31,6 @@ class ProfilesController < ApplicationController
   def show
     @profile = Profile.find(params[:id])
     @tutor = User.find_by(id: @profile.user_id)
-  
   end
 
   def my_students
@@ -77,5 +78,12 @@ class ProfilesController < ApplicationController
     params.permit(:tutor?, :admin?, :first_name, :surname, :skills, :bio, :hourly_rate, :avatar)
   end
 
+  def is_tutor?
+    profile = Profile.find(params[:id])
+    unless profile.tutor? || profile.user_id == current_user.id
+      redirect_to index_path
+      flash[:error] = 'Sorry, you can only view Tutor profiles'
+    end
+  end
 
 end

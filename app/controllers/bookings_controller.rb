@@ -1,6 +1,6 @@
 class BookingsController < ApplicationController
-  # before_action :require_profile
-
+  authorize_resource
+  
   def index
     # bookings as a tutor --->
     tutor_id = current_user.profile.tutor_id

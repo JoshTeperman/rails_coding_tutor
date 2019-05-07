@@ -3,7 +3,7 @@
 <form class="form-style" action="<%= new_review_path %>" method="POST" enctype="multipart/form-data">
 
   <input type="hidden" value="<%= form_authenticity_token %>" name="authenticity_token" />
-  <input type="hidden" value="<%= @reviewer_id %>" name="reviewer_id" />
+  <input type="hidden" value="<%= current_user.id %>" name="reviewer_id" />
   <input type="hidden" value="<%= @tutor_id %>" name="tutor_id" />
   <label for="content">Content</label>
   <input type="text" name="content" />

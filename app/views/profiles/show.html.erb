@@ -49,9 +49,9 @@
 
 <!-- Your avatar picture -->
       <% if @profile.avatar.attached? %>
-        <div class="image_profile"><%= image_tag @profile.avatar.service_url, class: 'image_profile' %></div>
+        <div class="image_profile"><%= image_tag @profile.avatar.service_url, class: 'image' %></div>
       <% else %>
-        <%= image_tag "https://avatarfiles.alphacoders.com/182/182752.jpg", class: 'image_profile' %>
+        <%= image_tag "https://avatarfiles.alphacoders.com/182/182752.jpg", class: 'image' %>
       <% end %>
 
 
@@ -110,12 +110,18 @@
   <% else %>
     <ul>
       <% @tutor.reviews.each do |review| %>
-
-        <li> <h6><strong> Content: </strong></h6> <p><%= review.content %></p> <h6><strong> Rating: </strong></h6> <p><%= review.rating %></p> </li>
-       
-        <% if !signed_in? || current_user.id == review.reviewer_id %>
-          <li><%= link_to "Delete Review", delete_review_path(review), method: :delete, data: { confirm: 'Are you sure?' } %></p>
-          <li><%= link_to "Edit Review", edit_review_path(review) %></li>
+        <li> 
+          <h6><strong> Content: </strong></h6> 
+          <p><%= review.content %></p> 
+          <h6><strong> Rating: </strong></h6> 
+          <p><%= review.rating %></p> 
+        </li>
+        <%# <% if can? [:destroy, :update], Review %> 
+        <% if signed_in? %>
+          <% if review.reviewer_id == current_user.id || current_user.admin? || current_user.moderator? %>
+            <%= link_to "Delete", delete_review_path(review), method: :delete, data: { confirm: 'Are you sure?' } %>
+            <%= link_to "Edit", edit_review_path(review) %>
+          <% end %>
         <% end %>
       <% end %>
     </ul>
@@ -137,7 +143,7 @@
 <form class="form-style" action="<%= new_review_path %>" method="POST" enctype="multipart/form-data">
     <input type="hidden" value="<%= form_authenticity_token %>" name="authenticity_token" />
     <input type="hidden" value="<%= @profile.tutor_id %>" name="tutor_id" />
-    <input type="hidden" value="<%= current_user.id %>" name="_id" />
+    <input type="hidden" value="<%= current_user.id %>" name="reviewer_id" />
 
   <div class="modal fade" id="modalLoginForm" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
     aria-hidden="true">
