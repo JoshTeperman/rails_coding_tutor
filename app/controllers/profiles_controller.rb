@@ -31,7 +31,6 @@ class ProfilesController < ApplicationController
   def show
     @profile = Profile.find(params[:id])
     @tutor = User.find_by(id: @profile.user_id)
-    # raise
   end
 
   def my_students
