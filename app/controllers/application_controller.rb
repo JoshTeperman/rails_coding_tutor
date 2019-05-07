@@ -21,7 +21,7 @@ class ApplicationController < ActionController::Base
 
   private
     def has_profile?
-      unless current_user.profile
+      if signed_in? && !current_user.profile
         redirect_to new_profile_path
         flash[:error] = 'You need to complete your user profile before doing that'
       end

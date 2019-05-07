@@ -24,11 +24,7 @@
         <a class="nav-link" href="<%= index_path %>">Find a tutor</a>
     </button>   
     </li>
-      <li>
-      <button class="btn btn-outline-primary" type="button" style="margin-left: 680px; margin-top: 10px;">
-        <a class="nav-link" href="<%= bookings_path %>">Bookings</a>
-    </button>   
-    </li>
+
   
 
         <!-- Dropdown -->
@@ -36,10 +32,11 @@
 
 
       <% if user_signed_in? %>
-        <button class="btn btn-outline-primary" type="button" style="margin-left: 20px;">
+        <button class="btn btn-outline-primary" type="button" style="margin: 10px;">
           <li class="nav-item dropdown">
             <a class="nav-link dropdown-toggle" href="#" id="navbardrop" data-toggle="dropdown">Profile</a>
               <div class="dropdown-menu">
+                <a class="dropdown-item" href="<%= bookings_path %>">Bookings</a>
                 <% if current_user.profile %>
                   <a class="dropdown-item" href="<%= profile_path(current_user.profile) %>">View My Profile</a>
                 <% end %>
@@ -52,10 +49,10 @@
           </li>
         </button>
       <% else %>
-        <button class="btn btn-outline-primary" type="button" style="margin-left: 10px;">
+        <button class="btn btn-outline-primary" type="button" style="margin: 10px;">
           <a class="nav-link" href="<%= new_user_session_path %>">Log In</a>
         </button>
-        <button class="btn btn-outline-primary" type="button" style="margin-left: 10px;">
+        <button class="btn btn-outline-primary" type="button" style="margin: 10px;">
           <a class="nav-link" href="<%= new_user_registration_path %>">Sign up</a>
         </button>
       <% end %>
