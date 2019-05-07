@@ -8,7 +8,6 @@ class PagesController < ApplicationController
   def contact_us
   end
 
-
   def how_it_works
   end
 
