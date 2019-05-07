@@ -6,9 +6,9 @@
     <br>
 
       <% if @profile.avatar.attached? %>
-        <div class="image_profile"><%= image_tag @profile.avatar.service_url, class: 'image_profile' %></div>
+        <div class="image_profile"><%= image_tag @profile.avatar.service_url, class: 'image' %></div>
       <% else %>
-        <%= image_tag "https://avatarfiles.alphacoders.com/182/182752.jpg", class: 'image_profile' %>
+        <%= image_tag "https://avatarfiles.alphacoders.com/182/182752.jpg", class: 'image' %>
       <% end %>
 <div class="container" style="background-color: grey; margin: 10px; padding: 10px; color: white;">
     <h2>Skills : <p style="font-size: 20px;"><%= @profile.skills %></p></h2> 

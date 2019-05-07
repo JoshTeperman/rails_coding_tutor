@@ -79,7 +79,8 @@ class ProfilesController < ApplicationController
   end
 
   def is_tutor?
-    unless Profile.find(params[:id]).tutor?
+    profile = Profile.find(params[:id])
+    unless profile.tutor? || profile.user_id == current_user.id
       redirect_to index_path
       flash[:error] = 'Sorry, you can only view Tutor profiles'
     end

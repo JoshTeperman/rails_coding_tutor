@@ -25,30 +25,28 @@
     </button>   
     </li>
 
-  
-
-        <!-- Dropdown -->
     <li>
-
-
       <% if user_signed_in? %>
-        <button class="btn btn-outline-primary" type="button" style="margin: 10px;">
-          <li class="nav-item dropdown">
-            <a class="nav-link dropdown-toggle" href="#" id="navbardrop" data-toggle="dropdown">Profile</a>
+        <% if current_user.profile %>
+          <button class="btn btn-outline-primary" type="button" style="margin: 10px;">
+            <li class="nav-item dropdown">
+              <a class="nav-link dropdown-toggle" href="#" id="navbardrop" data-toggle="dropdown">Profile</a>
               <div class="dropdown-menu">
                 <a class="dropdown-item" href="<%= bookings_path %>">Bookings</a>
-                <% if current_user.profile %>
-                  <a class="dropdown-item" href="<%= profile_path(current_user.profile) %>">View My Profile</a>
-                <% end %>
+                <a class="dropdown-item" href="<%= profile_path(current_user.profile) %>">View My Profile</a>
                 <% if current_user.profile.tutor? %>
                   <a class="dropdown-item" href="/profiles/<%= current_user.id %>/students">View My Students</a>
                 <% end %>
-
                 <%= link_to 'Sign Out', destroy_user_session_path, method: :delete, class: 'dropdown-item' %>
               </div>
-          </li>
-        </button>
-      <% else %>
+            </li>
+          </button>
+        <% end %>
+      <% end %>
+    </li>
+
+    <li>
+      <% if !signed_in? %>
         <button class="btn btn-outline-primary" type="button" style="margin: 10px;">
           <a class="nav-link" href="<%= new_user_session_path %>">Log In</a>
         </button>
@@ -56,7 +54,6 @@
           <a class="nav-link" href="<%= new_user_registration_path %>">Sign up</a>
         </button>
       <% end %>
-
     </li>
   </ul>
 </nav>
