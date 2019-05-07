@@ -20,7 +20,7 @@ class Ability
       can [:update, :destroy], Review do |review|
         review.reviewer_id == user.id
       end
-
+      
       can [:update, :edit], [Profile, Booking], user_id: user.id
       can :delete, [Booking, Review], user_id: user.id
         # Abilities for Moderator user
