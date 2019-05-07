@@ -2,10 +2,13 @@ class BookingsController < ApplicationController
   # before_action :require_profile
 
   def index
-    @user = current_user
-    @bookings = @user.bookings
-    # @bookings.each {|booking| @tutor_profile = Profile.find_by(tutor_id: booking.tutor_id) }
-    # @tutor_name = @tutor_profile.first_name
+    # bookings as a tutor --->
+    tutor_id = current_user.profile.tutor_id
+    @tutor_bookings = Booking.where(tutor_id: tutor_id)
+
+    # bookings as a student --->
+    @student_bookings = current_user.bookings
+    # raise
   end
 
   def create
