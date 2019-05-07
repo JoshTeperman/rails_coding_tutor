@@ -1,4 +1,5 @@
 class ProfilesController < ApplicationController
+  before_action :load_profile, only: [:update]
   load_and_authorize_resource
 
   before_action :is_tutor?, only: :show
@@ -54,6 +55,7 @@ class ProfilesController < ApplicationController
   end
 
   def update
+    # raise
     @user = current_user
     @profile = @user.profile
     if @profile
@@ -85,5 +87,11 @@ class ProfilesController < ApplicationController
       flash[:error] = 'Sorry, you can only view Tutor profiles'
     end
   end
+
+  def load_profile
+    @user = current_user
+    @profile = current_user.profile
+  end
+
 
 end
