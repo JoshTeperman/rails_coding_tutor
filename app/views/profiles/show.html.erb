@@ -1,4 +1,4 @@
-
+<div class="show_profile_box">
 <!-- Edit your first name and surname modal-->
     <div class="container ">
     <form class="form-style" action="<%= new_profile_path(@profile) %>" method="POST" enctype="multipart/form-data">
@@ -112,7 +112,7 @@
   </div>
 
   <!-- Your skills content-->    
-<div class="container" style="background-color: grey; margin: 10px; padding: 10px; color: white;">
+<div class="container" style="margin: 10px; padding: 10px;">
     <h2>Skills
      <% if @profile.user == current_user %>
       <a href="" class="btn btn-default btn-rounded mb-4" data-toggle="modal" data-target="#modalskillsform"><i class="fa far fa-edit"></i></a> 
@@ -148,7 +148,7 @@
   </div>
 
 <!-- Your bio content--> 
-<div class="container" style="background-color: grey; margin: 10px; padding: 10px; color: white;"> 
+<div class="container" style="margin: 10px; padding: 10px;"> 
     <h2>Bio 
      <% if @profile.user == current_user %>
       <a href="" class="btn btn-default btn-rounded mb-4" data-toggle="modal" data-target="#modalbioform"><i class="fa far fa-edit"></i></a> 
@@ -288,7 +288,7 @@
   <% end %>
 
 <!-- Link to back-->
-  <h3><%= link_to 'Back', index_path %></h3>
-  <br>
+  <button class="btn btn-default btn-rounded mb-4 bg-info text-white"><%= link_to 'Back', index_path %></button>
+</div>
 
 </div>
