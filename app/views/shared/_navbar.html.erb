@@ -5,22 +5,22 @@
   <!-- Links -->
   <ul class="navbar-nav">
     <li>
-      <button class="btn btn-outline-primary" type="button" style="margin: 10px;">
+      <button class="btn btn" type="button" style="margin: 10px;">
         <a class="nav-link" href="<%= root_path %>">Home</a>
       </button>
     </li>
     <li>
-      <button class="btn btn-outline-primary" type="button" style="margin: 10px;">
+      <button class="btn btn" type="button" style="margin: 10px;">
         <a class="nav-link" href="#about">About</a>
       </button> 
     </li>
     <li>
-      <button class="btn btn-outline-primary" type="button" style="margin: 10px;">
+      <button class="btn btn" type="button" style="margin: 10px;">
         <a class="nav-link" href="#">Become a tutor</a>
     </button>   
     </li>
     <li>
-      <button class="btn btn-outline-primary" type="button" style="margin: 10px;">
+      <button class="btn btn" type="button" style="margin: 10px;">
         <a class="nav-link" href="<%= index_path %>">Find a tutor</a>
     </button>   
     </li>
@@ -28,7 +28,7 @@
     <li>
       <% if user_signed_in? %>
         <% if current_user.profile %>
-          <button class="btn btn-outline-primary" type="button" style="margin: 10px;">
+          <button class="btn btn" type="button" style="margin: 10px; font-size: 20px;">
             <li class="nav-item dropdown">
               <a class="nav-link dropdown-toggle" href="#" id="navbardrop" data-toggle="dropdown">Profile</a>
               <div class="dropdown-menu">
@@ -41,9 +41,12 @@
               </div>
             </li>
           </button>
+          
         <% end %>
       <% end %>
     </li>
+
+    <li> <div style="margin: 15px;" ><i class="fa fas fa-user-circle fa-3x" style="color:white"></i></div> </li>
 
     <li>
       <% if !signed_in? %>
