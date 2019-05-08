@@ -1,3 +1,32 @@
 // Place all the styles related to the user_bookings controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+.box {
+    display: flex;
+    height: 100%;
+    width: 100%;
+    flex-wrap: wrap;
+    flex-direction: row;
+}
+
+
+.card {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    min-width: 0;
+    word-wrap: break-word;
+    background-color: #fff;
+    background-clip: border-box;
+    border: 1px solid rgba(0, 0, 0, 0.125);
+    border-radius: 0.25rem;
+    box-shadow: 0 3px 6px rgba(0,0,0,0.16), 0 3px 6px rgba(0,0,0,0.23);
+}
+
+  
+  .student_bookings:hover {
+    box-shadow: 0 10px 15px rgba(0,0,0,0.35), 0 10px 10px rgba(0,0,0,0.52);
+  }
+
+ 
