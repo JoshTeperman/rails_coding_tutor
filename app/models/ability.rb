@@ -7,7 +7,7 @@ class Ability
 
     # Abilities for all users, even if not logged_in
     can :create, Profile
-    can :show, Profile, user_id: user.id
+    can :view, Profile
     can :read, Profile, tutor?: true
     can :read, Review
 
@@ -22,7 +22,7 @@ class Ability
         review.reviewer_id == user.id
       end
 
-      can [:update, :edit], [Profile] do |profile|
+      can [:update, :edit, :show], [Profile] do |profile|
         profile.user_id == user.id
       end
 

@@ -1,5 +1,5 @@
 class ProfilesController < ApplicationController
-  before_action :load_profile
+  before_action :load_profile, except: [:index]
   load_and_authorize_resource
 
   before_action :is_tutor?, only: :show
@@ -78,6 +78,7 @@ class ProfilesController < ApplicationController
   end
 
   def load_profile
+    
     @profile = current_user.profile
   end
 end
