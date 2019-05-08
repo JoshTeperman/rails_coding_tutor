@@ -95,7 +95,7 @@
       <% if @profile.tutor? %>
         <h2>Hourly Rate: <p style="font-size: 20px;"><%= @profile.hourly_rate %></p></h2>
       <% unless @tutor.reviews.count.zero? %>
-        <h2>Average Rating: <p style="font-size: 20px;"><%= @profile.average_rating %></p></h2>
+        <h2>Average Rating: <p style="font-size: 20px;"><%= @profile.average_rating.zero? ? 0 : @profile.average_rating %></p></h2>
       <% end %>
     <% end %>
   </ul>
@@ -163,7 +163,15 @@
 
           <div class="md-form mb-4"> 
             <label data-error="wrong" data-success="right" for="rating"> Rating <i class="fa fas fa-star"></i></label>
-            <input type="text" id="rating" class="form-control validate" name="rating">
+            <select name="rating" id="rating">
+              <option value="" selected="selected">Please select</option>
+              <option value="0">0</option>
+              <option value="1">1</option>
+              <option value="2">2</option>
+              <option value="3">3</option>
+              <option value="4">4</option>
+              <option value="5">5</option>
+            </select>
           </div>
 
         </div>

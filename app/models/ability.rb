@@ -7,6 +7,7 @@ class Ability
 
     # Abilities for all users, even if not logged_in
     can :create, Profile
+    can :show, Profile, user_id: user.id
     can :read, Profile, tutor?: true
     can :read, Review
 
@@ -25,7 +26,11 @@ class Ability
         profile.user_id == user.id
       end
 
-      can [:update, :edit], [Profile, Booking], user_id: user.id
+      can [:manage], [Booking] do |booking|
+        booking.users.select { |participant| participant.id == user.id } || booking.tutor_id == user.id
+      end
+
+      # can [:update, :edit], [Profile, Booking], user_id: user.id
       can :delete, [Booking, Review], user_id: user.id
         # Abilities for Moderator user
         if user.moderator?
