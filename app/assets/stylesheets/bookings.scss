@@ -18,6 +18,7 @@
     background-clip: border-box;
     border: 1px solid rgba(0, 0, 0, 0.125);
     border-radius: 0.25rem;
+    box-shadow: 0 3px 6px rgba(0,0,0,0.16), 0 3px 6px rgba(0,0,0,0.23);
 }
 
 // .card-body {
@@ -57,3 +58,5 @@
     flex-wrap: wrap;
     flex-direction: row;
 }
+
+

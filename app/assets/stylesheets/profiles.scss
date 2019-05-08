@@ -19,3 +19,16 @@
 .card-body {
   background-color: white;
 }
+
+form.form-style {
+  width: 100vw;
+  height: 100vh;
+}
+
+.show_profile_box {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  width: 100vw;
+}

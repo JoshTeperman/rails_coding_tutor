@@ -21,6 +21,7 @@
 @import "users.scss";
 @import "pages.scss";
 @import "bookings.scss";
+@import "user_bookings.scss";
 
 
 // Gems ---> 
@@ -31,6 +32,17 @@
   * {
     margin: 0px;
   }
+
+  body {
+    margin: 0;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+    font-size: 1rem;
+    font-weight: 400;
+    line-height: 1.5;
+    color: #212529;
+    text-align: center;
+    background-color: #fff;
+}
   
   .container {
     width: 100%;
@@ -39,12 +51,43 @@
     padding-left: 0px;
     margin-right: 0px;
     margin-left: 0px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
   }
 
 
 
 .bg-dark {
   background-color: !important;
-  background: linear-gradient(#00F260, #0575E6);
-  border: solid black;
+  background: linear-gradient(#000C40, #F0F2F0);
+  // border: solid black;
+}
+
+.card {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  min-width: 0;
+  word-wrap: break-word;
+  background-color: #fff;
+  background-clip: border-box;
+  border: 1px solid rgba(0, 0, 0, 0.125);
+  border-radius: 0.25rem;
+  box-shadow: 0 5px 20px rgba(0, 0, 0, 0.16), 0 5px 10px rgba(0, 0, 0, 0.3);
+}
+
+
+
+.card:hover {
+  box-shadow: 0 14px 28px rgba(0,0,0,0.25), 0 10px 10px rgba(0,0,0,0.22);
+}
+
+
+.show_profile_box {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  width: 100vw;
 }
