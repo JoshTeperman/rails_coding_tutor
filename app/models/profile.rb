@@ -2,17 +2,16 @@ require 'pry'
 
 class Profile < ApplicationRecord
   belongs_to :user
+  validates :hourly_rate, numericality: { greater_than: 0 }
+
 
   before_create :set_tutor_id
-  # before_action :calc_average_rating
   has_one_attached :avatar
 
   def update_average_rating
     calc_average_rating
   end
 
-
-  # validates :tutor?, :first_name, :surname, :skills, presence: true
 
   private
     def set_tutor_id

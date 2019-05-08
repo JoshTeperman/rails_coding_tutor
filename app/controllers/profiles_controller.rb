@@ -1,7 +1,6 @@
 class ProfilesController < ApplicationController
-  before_action :load_profile#, :calc_average_rating
-
-  load_and_authorize_resource #:through => :current_user#, :singleton => true, :shallow => true
+  before_action :load_profile
+  load_and_authorize_resource
 
   before_action :is_tutor?, only: :show
   skip_before_action :has_profile?, only: [:new, :create]
@@ -10,12 +9,10 @@ class ProfilesController < ApplicationController
     admins = Profile.joins(:user).where(users: {admin?: true})
     moderators = Profile.joins(:user).where(users: {moderator?: true})
     @profiles = Profile.all.reject {|profile| admins.include?(profile) || moderators.include?(profile) }
-    # raise
   end
 
   def new
     @profile = Profile.new
-    # raise
   end
 
   def create
@@ -40,15 +37,6 @@ class ProfilesController < ApplicationController
     tutor_id = current_user.profile.tutor_id
     my_bookings = Booking.where(tutor_id: tutor_id)
     @my_students = my_bookings.map {|booking| booking.users.each{|student| student}}.flatten.uniq
-    # raise
-    # @my_students = User.all.select do |user|
-    #   current_user.bookings.map do |booking|
-    #     booking.users.include?(User.find(user.id))
-    #   end
-    # end
-
-    # @my_students = User.all.select{|student| student.bookings.include?(Booking.where(tutor_id: current_user.profile.tutor_id))}
-    # raise
   end
 
 
@@ -57,7 +45,6 @@ class ProfilesController < ApplicationController
   end
 
   def update
-    # raise
     @user = current_user
     @profile = @user.profile
     if @profile
