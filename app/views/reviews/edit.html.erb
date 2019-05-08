@@ -8,7 +8,15 @@
   <input type="text" name="content" value="<%= @review.content %>" /> 
 
   <label for="rating">Rating</label>
-  <input type="text" name="rating" value="<%= @review.rating %>"/>
+  <select name="rating" id="rating">
+    <option value="" selected="selected">Please select</option>
+    <option value="0">0</option>
+    <option value="1">1</option>
+    <option value="2">2</option>
+    <option value="3">3</option>
+    <option value="4">4</option>
+    <option value="5">5</option>
+  </select>
 
   <input type="submit" value="Update" />
 </form>

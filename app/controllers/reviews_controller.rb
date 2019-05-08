@@ -14,7 +14,7 @@ class ReviewsController < ApplicationController
       if @review.save
         redirect_to profile_path(@tutor.profile)
       else
-        render new_review_path(@tutor)
+        render profile_path(@tutor.profile.id)
       end
     end
   end
