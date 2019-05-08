@@ -21,7 +21,7 @@ class BookingsController < ApplicationController
       redirect_to payment_path(:price => @booking[:price])
       
     else
-      flash[:error] = "Error: Could not create booking."
+      flash[:error] = "Error: Could not create booking. #{@booking.errors.full_messages}"
       redirect_to new_booking_path(:tutor => @tutor)
     end
 
@@ -33,6 +33,8 @@ class BookingsController < ApplicationController
     @tutor_first_name = @tutor.first_name
     @tutor_hourly_rate = @tutor.hourly_rate
     @booking = Booking.new
+  
+    # raise
   end
 
 

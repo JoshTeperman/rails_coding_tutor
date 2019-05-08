@@ -12,16 +12,17 @@ class ReviewsController < ApplicationController
       @tutor = User.joins(:profile).where(profiles: { tutor_id: params[:tutor_id] }).first
       @review = @tutor.reviews.create(review_params)
       if @review.save
+        @tutor.profile.update_average_rating
         redirect_to profile_path(@tutor.profile)
       else
-        render new_review_path(@tutor)
+        render profile_path(@tutor.profile.id)
       end
     end
   end
 
   def new
     @review = Review.new
-    raise
+    # raise
   end
 
   def show
@@ -36,6 +37,7 @@ class ReviewsController < ApplicationController
     @review = Review.find(params[:id])
     tutor = User.find_by(id: @review.user_id)
     if @review.update(review_params)
+      tutor.profile.update_average_rating
       flash[:success] = 'Successfully updated'
       redirect_to profile_path(tutor.profile)
     else
