@@ -11,7 +11,7 @@
       <h5 class="card-header info-color white-text text-center py-4">
           <strong>Edit your profile</strong>
       </h5>
-  <div class="card-body px-lg-5 pt-0">
+  <div class="card-body px-lg-5 pt-0" style="background-image: url(/backgrond.png);">
 
   <form class="text-center" style="color: #757575;">
 
@@ -41,7 +41,7 @@
 
      <!-- Hourly Rate -->    
     <div class="md-form">
-      <label for="hourly_rate">Hourly Rate</label>
+    <label for="hourly_rate">Hourly Rate</label>
     <input type="text" class="form-control" name="hourly_rate" value="<%= @profile.hourly_rate %>" />
     </div>
 
@@ -49,6 +49,11 @@
     <div class="md-form">
       <label for="avatar">Avatar</label>
       <input type="file" class="form-control" name="avatar">
+    </div>
+
+     <div class="md-form">
+      <label for="tutor?">Tutor status (On/Off)</label>
+      <input type="checkbox" name="tutor?" value="true"> Yes
     </div>
 
 

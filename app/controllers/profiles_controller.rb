@@ -1,5 +1,5 @@
 class ProfilesController < ApplicationController
-  load_and_authorize_resource
+  # load_and_authorize_resource
 
   before_action :is_tutor?, only: :show
   skip_before_action :has_profile?, only: [:new, :create]

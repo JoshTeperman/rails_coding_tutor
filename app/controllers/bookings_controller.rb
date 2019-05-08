@@ -1,5 +1,5 @@
 class BookingsController < ApplicationController
-  authorize_resource
+  # authorize_resource
   
   def index
     # bookings as a tutor --->
