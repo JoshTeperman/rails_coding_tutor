@@ -1,5 +1,6 @@
 class ProfilesController < ApplicationController
-  before_action :load_profile
+  before_action :load_profile#, :calc_average_rating
+
   load_and_authorize_resource #:through => :current_user#, :singleton => true, :shallow => true
 
   before_action :is_tutor?, only: :show
