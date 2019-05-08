@@ -22,7 +22,7 @@ class Ability
         review.reviewer_id == user.id
       end
 
-      can [:update, :edit, :show], [Profile] do |profile|
+      can [:update, :edit, :show, :my_students], [Profile] do |profile|
         profile.user_id == user.id
       end
 
