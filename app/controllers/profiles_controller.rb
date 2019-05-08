@@ -1,6 +1,6 @@
 class ProfilesController < ApplicationController
-  before_action :load_profile, only: [:update]
-  load_and_authorize_resource
+  before_action :load_profile
+  load_and_authorize_resource #:through => :current_user#, :singleton => true, :shallow => true
 
   before_action :is_tutor?, only: :show
   skip_before_action :has_profile?, only: [:new, :create]
@@ -9,6 +9,7 @@ class ProfilesController < ApplicationController
     admins = Profile.joins(:user).where(users: {admin?: true})
     moderators = Profile.joins(:user).where(users: {moderator?: true})
     @profiles = Profile.all.reject {|profile| admins.include?(profile) || moderators.include?(profile) }
+    # raise
   end
 
   def new
@@ -91,6 +92,4 @@ class ProfilesController < ApplicationController
   def load_profile
     @profile = current_user.profile
   end
-
-
 end
