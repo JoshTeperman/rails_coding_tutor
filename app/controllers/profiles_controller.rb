@@ -8,7 +8,8 @@ class ProfilesController < ApplicationController
   def index
     admins = Profile.joins(:user).where(users: {admin?: true})
     moderators = Profile.joins(:user).where(users: {moderator?: true})
-    @eager_loading = User.includes(:profile)
+    # @eager_loading = User.includes(:profile)
+    # @eager_loading_profiles = Profile.includes(:)
     @profiles = Profile.all.reject {|profile| admins.include?(profile) || moderators.include?(profile) }
   end
 
