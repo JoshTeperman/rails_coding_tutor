@@ -1,7 +1,7 @@
 <div class="whole">
   <% if @tutor_bookings.count.zero? && @student_bookings.count.zero?%>
     <h3 >You don't have any bookings yet. Make a booking with a tutor to display your bookings.</h3>
-    <a href="<%= index_path %>" style="margin: 50px;"><p class="btn btn-default btn-rounded mb-4 bg-info text-white">Find a tutor?</p></a>
+    <%= link_to 'Back', :back, class: "btn btn-default btn-rounded mb-4 bg-info text-white" %>
   <% else %>
   
     <% if @tutor_bookings.count > 0 %>
