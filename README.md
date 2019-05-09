@@ -1,54 +1,167 @@
-# README - CodingTutor
+# CodingTutor 
 
-
-
-URL: www.blahblahblah.herokuapps.com
----
-## Description
-### Problem Definition / Purpose
-
-CodingTutor is a two-way tutoring marketplace for Software Developers based in Australia. Students can search for and select Tutors based primaritly on skill set, location and reputation, and book a session by themself or teaming up with other students as a group. 
-
-### Functionality / Features
-- screenshots
-
-### Tech Stack
-- HTML, CSS, SASS
-- Ruby, Ruby on Rails
-- Heroku
-
-### Configuration / Installation Instructions 
-Gmail account
-email address: ca.codingtutor@gmail.com
-password: nl*V@hKGZ1I6
+[GithHub Repo](https://github.com/JoshTeperman/rails_coding_tutor)\
+[View Live Application](https://vast-citadel-37963.herokuapp.com/)
 
 ---
-## Design Documentation
+## Contents
+<!-- links  -->
+**[Section 1: Description](#description)**\
+**[About](#about)**\
+**[Tech Stack](#tech-stack)**\
+**[Configuration](#configuration)**\
+**[Section 2: Design](#description)**\
+**[Wireframes](#wireframes)**\
+**[ERD](#erd)**\
+**[The Database](#the-database)**\
+**[User Stories](#user-stories)**
 
 
+## Section 1: DESCRIPTION
 
-### Design process
+### __About CodingTutor__
+<!-- General description of the app, its features-->
+<!-- Screenshots -->
 
-### User stories / User Journey
-- stories
-- Workflow diagram of user journey/s.
+### __Tech Stack__
+- Front-end: HTML, ERB, CSS, Sass, Javascript
+- Back-end: Ruby, Ruby on Rails
+- Database: PostgreSQL Database with ActiveRecord
+- Deployment: Heroku
 
-### Wireframes
-
-### ERD (Entity Relationship Diagrams)
+### __Configuration / Installation Instructions__
+<!-- Copy  -->
+1) Gmail account
+  - emailress: ca.codingtutor@gmail.com
+  - password: nl*V@hKGZ1I6
 
 ---
-## Planning process
+## Section 2: DESIGN
+
+### __Design process__
+
+### __User Journey__
+<!-- Workflow diagram of user journey/s. -->
+
+### __Features__
+
+---
+## Section 3: PROCESS
 - project plan & timeline
 - Screenshots of Trello board(s)
+- GitHub
+- Progress
 
 ---
-## Answers to the Short Answer questions (Section 2.2)
+## Section 4: SHORT ANSWER QUESTIONS
 
-by Josh & Sunny
+### 1) What is the need (i.e. challenge) that you will be addressing in your project?
+
+### 2) Identify the problem you’re trying to solve by building this particular marketplace App? Why is it a problem that needs solving?
+CodingTutor is a two-way tutoring marketplace for Software Developers based in Australia. Students can search for and select Tutors based primaritly on skill set, location and reputation, and book a session by themself or teaming up with other students as a group. 
+
+### 3) Describe the project will you be conducting and how. your App will address the needs.
+
+### 4) Describe the network infrastructure the App may be based on.
+
+### 5) Identify and describe the software to be used in your App.
+
+### 6) Identify the database to be used in your App and provide a justification for your choice.
+
+### 7) Identify and describe the production database setup (i.e. postgres instance).
+
+### 8) Describe the architecture of your App.
+
+### 9) Explain the different high-level components (abstractions) in your App.
+
+### 10) Detail any third party services that your App will use.
+
+### 11) Describe (in general terms) the data structure of marketplace apps that are similar to your own (e.g. eBay, Airbnb).
+
+### 12) Discuss the database relations to be implemented.
+
+### 13) Describe your project’s models in terms of the relationships (active record associations) they have with each other.
+
+### 14) Provide your database schema design.
+
+### 15) Provide User stories for your App.
+- user stories ("as a tutor, I should be able to ...")
+- decribe scenarios ("logged_in user looks at X page...") 
+
+User Stories (MVP) 
+
+Tutor wants to be able to ...
+Create a new account
+Login and check your bookings (calendar / list)
+View your students profiles
+Accept / Create new Booking
+View booking information page
+Edit bookings / delete booking (needs authorization)
+Edit your profile (picture, add new skill / add new information - About Me etc, prices)
+Check payment history 
+View Student Reviews
+
+Student wants to be able to …
+Create an account
+Login and check your bookings / View past bookings
+Edit bookings (edit / cancel etc)
+Edit profile (login details, picture, skills, about me)
+View Other Students Profiles 
+View Tutors 
+Make a booking / Make a payment
+Check payment history
+Make reviews
+Make complaint
+
+Moderator wants to be able to …
+View all Users
+View Complaints (Flags)
+Moderate content (reviews / profiles)
+Flag Users / Content > Notify Admin
+Soft ban (1 day)
+Moderate content (delete reviews etc)
+
+Admin wants to be able to …
+View financial dashboard	
+Full moderator authorization	
+
+
+(Bucket List User Stories)
+
+Send Messages
+View Notifications / Inbox / Messages
+Filters (payment history / view all students / view all past lessons)
+Group Classes 
+
+### 16) Provide Wireframes for your App.
+
+### 17) Describe the way tasks are allocated and tracked in your project.
+
+### 18) Discuss how Agile methodology is being implemented in your project.
+
+### 19) Provide an overview and description of your Source control process.
+
+### 20) Provide an overview and description of your Testing process.
+
+### 21) Discuss and analyse requirements related to information system security.
+
+### 22) Discuss methods you will use to protect information and data.
+
+### 23) Research what your legal obligations are in relation to handling user data.
+
+---
+## Section 4: Reflection
+### Challenges
+- what was difficult?
+### What we learned
+- how would we do things differently next time?
+### Extending the App
+- what features would we add? 
+### Maintenance
+- any requirements for ongoing management of the app
 
 --- 
-## Josh Notes
+## Section 5: Appendix
 
 ### SINGLE PAGE SCROLLING
 https://www.uxpin.com/studio/blog/4-types-creative-website-scrolling-patterns/
