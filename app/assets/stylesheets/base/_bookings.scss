@@ -1,0 +1,115 @@
+// Place all the styles related to the bookings controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+
+
+.tutor_bookings {
+    display: flex;
+    flex-wrap: wrap;
+    // flex-direction: row;
+    // justify-content: center;
+}
+
+.box {
+    display: flex;
+    height: 100%;
+    width: 100%;
+    flex-wrap: wrap;
+    flex-direction: row;
+}
+
+
+.new-booking-container {
+    display: flex;
+    // height: calc(100%-70px);
+    // width: 100%;
+    // height: 100%;
+    align-items: center;
+    justify-content: center;
+
+}
+
+.edit-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100%;
+}
+
+.edit-card {
+    height: 60%;
+    width: 100%;
+    margin: 10%;
+}
+
+
+.show-booking-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100%;
+
+}
+
+.show-booking-card {
+    height: 80%;
+    width: 70%;
+    margin: 10%;
+    background-color: #fff;
+    background-clip: border-box;
+    border: 1px solid rgba(0, 0, 0, 0.125);
+    border-radius: 0.25rem;
+    box-shadow: 0 5px 20px rgba(0, 0, 0, 0.16), 0 5px 10px rgba(0, 0, 0, 0.3);
+}
+
+// form.form-style {
+//     width: 30%;
+//     height: 10%;
+//   }
+
+// .card-booking {
+//     height: 60%;
+//     width: 90%;
+// }
+
+// .student_bookings {
+//     display: flex;
+//     flex-wrap: wrap;
+    // flex-direction: row;
+    // justify-content: center;
+// }
+
+// .btn-block {
+//     display: block;
+//     width: 20%;
+// }
+
+// .card {
+//     position: relative;
+//     display: flex;
+//     justify-content: center;
+//     flex-direction: column;
+//     align-items: center;
+//     min-width: 0;
+//     word-wrap: break-word;
+//     background-color: #fff;
+//     background-clip: border-box;
+//     border: 1px solid rgba(0, 0, 0, 0.125);
+//     border-radius: 0.25rem;
+//     box-shadow: 0 3px 6px rgba(0,0,0,0.16), 0 3px 6px rgba(0,0,0,0.23);
+// }
+
+// .card-body {
+//     flex: 1 1 auto;
+//     padding: 1.25rem;
+//     width: 50%;
+// }
+
+
+
+
+// .d-flex {
+//     display: flex !important;
+//     justify-content: center;
+//     align-items: center;
+// }

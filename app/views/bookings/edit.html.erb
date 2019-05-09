@@ -1,13 +1,13 @@
-  <div>
-  <div class="text-center" style="margin: 30px;"><h1>Edit your booking</h1><p>Booking number = <%= @booking.id %> </p></div>
+<div class="edit-container">
+  
   <form class="form-style" action="<%= update_booking_path(@booking) %>" method="POST" enctype="multipart/form-data">
   <input type="hidden" value="<%= form_authenticity_token %>" name="authenticity_token" />
   <input type="hidden" name="price" class="form-control" value="" id="price"/>
   <input type="hidden" name="hourly_rate" class="form-control" value="<%= @tutor_hourly_rate %>" id='hourly_rate' />
   <input type="hidden" name="_method" value="patch"/>
 
-
-    <div class="card">
+    <div class="edit-card-container">
+    <div class="edit-card">
       <h5 class="card-header info-color white-text text-center py-4">
           <strong>Edit a session</strong>
       </h5>
@@ -61,19 +61,24 @@
           <p><%= link_to "Back", booking_path %></p>
   </form>
 
-<script>
-    const duration = document.querySelector('#duration');
-    const hourly_rate = document.querySelector('#hourly_rate'); 
-    const price = document.querySelector('#price');
-    duration.addEventListener('change', (e) => {
-        const durationValue = parseInt(e.target.value);
-        const finalPrice = parseInt(hourly_rate.value) * durationValue * (durationValue / 60)
-        price.value = finalPrice
-     })
-</script>
+    </div>
+
+
+
+    <script>
+        const duration = document.querySelector('#duration');
+        const hourly_rate = document.querySelector('#hourly_rate'); 
+        const price = document.querySelector('#price');
+        duration.addEventListener('change', (e) => {
+            const durationValue = parseInt(e.target.value);
+            const finalPrice = parseInt(hourly_rate.value) * durationValue * (durationValue / 60)
+            price.value = finalPrice
+        })
+    </script>
 </div>
 
-  
+ 
+
 
 
 

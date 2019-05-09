@@ -17,13 +17,19 @@
  // Custom bootstrap variables must be set or imported *before* bootstrap.
 
 // StyleSheets --->
-@import "profiles.scss";
-@import "users.scss";
-@import "pages.scss";
-@import "bookings.scss";
-@import "user_bookings.scss";
+// @import "base/pages.scss";
+// @import "base/profiles.scss";
+// @import "base/users.scss";
 
+// @import "base/bookings.scss";
+// @import "base/user_bookings.scss";
 
+@import "base/shared/footer";
+@import "base/shared/navbar";
+@import "base/reviews";
+@import "base/pages";
+@import "base/profiles";
+@import "base/bookings";
 // Gems ---> 
 @import "bootstrap";
 @import "font-awesome";
@@ -41,88 +47,255 @@
     line-height: 1.5;
     color: #212529;
     text-align: center;
-    background-color: #fff;
+    min-height: 100%;
+  /* equal to footer height */
+    margin-bottom: -2.5rem; 
+    position: relative;
+    // background-color: #fff;
 }
   
-  .container {
-    width: 100%;
-    background-color: white;
-    padding-right: 0px;
-    padding-left: 0px;
-    margin-right: 0px;
-    margin-left: 0px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-  }
+
+//   .container {
+//     width: 100%;
+   
+//     padding-right: 0px;
+//     padding-left: 0px;
+//     margin-right: 0px;
+//     margin-left: 0px;
+//     display: flex;
+//     justify-content: center;
+//     align-items: center;
+//   }
 
 
 
-.bg-dark {
-  background-color: !important;
-  background: linear-gradient(#000C40, #F0F2F0);
-  // border: solid black;
-}
 
-.card {
-  position: relative;
-  display: flex;
-  flex-direction: column;
-  min-width: 0;
-  word-wrap: break-word;
-  background-color: #fff;
-  background-clip: border-box;
-  border: 1px solid rgba(0, 0, 0, 0.125);
-  border-radius: 0.25rem;
-  box-shadow: 0 5px 20px rgba(0, 0, 0, 0.16), 0 5px 10px rgba(0, 0, 0, 0.3);
-}
+// .card {
+//   position: relative;
+//   display: flex;
+//   flex-direction: column;
+//   min-width: 0;
+//   word-wrap: break-word;
+//   background-color: #fff;
+//   background-clip: border-box;
+//   border: 1px solid rgba(0, 0, 0, 0.125);
+//   border-radius: 0.25rem;
+//   box-shadow: 0 5px 20px rgba(0, 0, 0, 0.16), 0 5px 10px rgba(0, 0, 0, 0.3);
+// }
 
 
 
-.card:hover {
-  box-shadow: 0 14px 28px rgba(0,0,0,0.25), 0 10px 10px rgba(0,0,0,0.22);
-}
+// .card:hover {
+//   box-shadow: 0 14px 28px rgba(0,0,0,0.25), 0 10px 10px rgba(0,0,0,0.22);
+// }
 
 
-.show_profile_box {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  height: 100vh;
-  width: 100vw;
-}
+// .show_profile_box {
+//   display: flex;
+//   justify-content: center;
+//   align-items: center;
+//   height: 100vh;
+//   width: 100vw;
+// }
 
-// <!-- image of profile in profile show page-->
-.image {
-  height: 20vh;
-  width: 13vw;
-  border-radius: 50%;
-}
-
-
-.image_size {
-  height: 10vh;
-  width: 7vw;
-  border-radius: 50%;
-}
+// // <!-- image of profile in profile show page-->
+// .image {
+//   height: 20vh;
+//   width: 13vw;
+//   border-radius: 50%;
+// }
 
 
+// .image_size {
+//   height: 10vh;
+//   width: 7vw;
+//   border-radius: 50%;
+// }
 
-.btn:hover
-{
-     -webkit-animation: swing 1s ease;
-        animation: swing 1s ease;
-        -webkit-animation-iteration-count: 1;
-        animation-iteration-count: 1;
-}
 
-.jumbotron.p-0 {
-  width: 100vw;
-}
 
-.img-fluid {
-  max-width: 100%;
-  height: auto;
-  width: 100vw;
-  opacity:0.28;
-}
+// .btn:hover
+// {
+//      -webkit-animation: swing 1s ease;
+//         animation: swing 1s ease;
+//         -webkit-animation-iteration-count: 1;
+//         animation-iteration-count: 1;
+// }
+
+// .jumbotron.p-0 {
+//   width: 100vw;
+// }
+
+// .img-fluid {
+//   max-width: 100%;
+//   height: auto;
+//   width: 100vw;
+//   opacity:0.28;
+// }
+
+
+
+
+
+
+// // PAGES HTML 
+
+
+// h2.display-4 {
+//   font-size: 5.5rem;
+//   padding: 10%;
+//   font-weight: 300;
+// }
+
+// .jumbotron {
+//   padding: 2rem 1rem;
+//   margin-bottom: 2rem;
+//   background: linear-gradient(#F0F2F0, #6B78BA);
+//   border-radius: 0.3rem;
+//   height: 93vh;
+//   // display: flex;
+//   // align-items: center;
+//   // flex-wrap: wrap;
+// }
+
+// small, .small {
+//   font-size: 90%;
+//   font-weight: 400;
+// }
+
+// .content {
+//   margin-top: 5rem;
+//   margin-bottom: 1rem;
+//   padding-bottom: 3rem;
+// }
+
+
+
+// .jumbotron-2 {
+//   padding: 2rem 1rem;
+//   // margin-bottom: 2rem;
+//   background: linear-gradient(#FFFFFF),#233C7A;
+//   border-radius: 0.3rem;
+//   height: 58vh;
+//   display: flex;
+//   align-items: center;
+//   // flex-wrap: wrap;
+// }
+
+// .content-2 {
+//   width: 50%;
+// }
+
+
+// .jumbotron-3 {
+//   margin-top: 10rem;
+//   padding: 2rem 1rem;
+//   // margin-bottom: 2rem;
+//   background: linear-gradient(#FFFFFF,#373E82);
+//   border-radius: 0.3rem;
+//   height: 85vh;
+//   // display: flex;
+//   // align-items: center;
+//   // flex-wrap: wrap;
+// }
+
+// .content-3 {
+//   width: 100%;
+// }
+
+
+// .jumbotron-4 {
+//   padding: 2rem 1rem;
+//   margin-bottom: 2rem;
+//   background: #FFFFFF;
+//   border-radius: 0.3rem;
+//   height: 75vh;
+//   // display: flex;
+//   // align-items: center;
+//   // flex-wrap: wrap;
+// }
+
+
+// .contact span{
+//   display: block;
+//   font-size: 1rem;
+//   font-weight: 300;
+//   line-height: 1.2;
+// }
+
+
+// //footer 
+// footer.page-footer.font-small.mdb-color.pt-4.bg-dark.navbar-dark {
+//   display: flex;
+//   justify-content: center;
+// }
+
+// // Edit bookings
+
+// .edit-container {
+//   height: calc(100vh-50px);
+//   width: 100vw;
+// }
+
+// .edit-card-container {
+//   display: flex;
+//   justify-content: center;
+// }
+
+// .edit-card {
+//   border: 1px solid black;
+//   margin: 10%;
+//   position: relative;
+//   display: flex;
+//   flex-direction: column;
+//   min-width: 0;
+//   word-wrap: break-word;
+//   background-color: #fff;
+//   background-clip: border-box;
+//   border: 1px solid rgba(0, 0, 0, 0.125);
+//   border-radius: 0.25rem;
+//   box-shadow: 0 5px 20px rgba(0, 0, 0, 0.16), 0 5px 10px rgba(0, 0, 0, 0.3);
+//   width: 35vw;
+// }
+
+
+// //profiles
+
+// .show_profile_box {
+//   height: calc(100vh - 50px);
+//   width: 100vw;
+// }
+
+// .profile-show-container {
+//   display: flex;
+//   justify-content: center;
+//   flex-direction: column;
+//   height: 100vh;
+// }
+
+// .profile-show-card {
+//   height: 100%;
+//   border: 1px solid black;
+//   margin: 10%;
+//   position: relative;
+//   display: flex;
+//   flex-direction: column;
+//   min-width: 0;
+//   word-wrap: break-word;
+//   background-color: #fff;
+//   background-clip: border-box;
+//   border: 1px solid rgba(0, 0, 0, 0.125);
+//   border-radius: 0.25rem;
+//   box-shadow: 0 5px 20px rgba(0, 0, 0, 0.16), 0 5px 10px rgba(0, 0, 0, 0.3);
+//   width: 35vw;
+// }
+
+
+
+
+// // jieyi
+
+// .profile-container {
+//   // background: red;
+//   height: calc(100% - 50px);
+// }

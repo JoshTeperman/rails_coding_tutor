@@ -41,6 +41,7 @@ Rails.application.routes.draw do
 
   # PAGES ROUTES
   get '/', to: 'pages#home', as: 'home'
+  get '/pages/about', to: 'pages#about', as: 'about'
 
 
   # Charges routes

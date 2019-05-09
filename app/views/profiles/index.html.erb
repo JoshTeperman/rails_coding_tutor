@@ -1,28 +1,30 @@
+<div class="index-container">
   <div class="d-flex flex-wrap">
 
-  <% @profiles.each do |profile| %>
-    <% if profile.tutor? %>  
-      <div class="card m-2" style="width: 21.5rem;">
-        <div class="card-body text-center">
-            <% if profile.avatar.attached? %>
-                <%= image_tag profile.avatar, class: 'image_size' %>
-            <% else %>
-                <div><%= image_tag "https://avatarfiles.alphacoders.com/182/182752.jpg", class: 'image_size'%></div>
-            <% end %>
-          <h2 class="card-title"><%= profile.first_name %> <%= profile.surname %></h2>
-          <h6 class="card-subtitle mb-2 text-muted"><%= profile.skills %></h6>
-      
-          Profile <%= link_to ('<i class="fa fas fa-user-circle fa-2x"></i>').html_safe, profile_path(profile) %>
-          New Booking <%= link_to ('<i class="fa fas fa-book fa-2x"></i>').html_safe, new_booking_path(:tutor => profile.tutor_id) %>
-        </div>
+    <% @profiles.each do |profile| %>
+      <% if profile.tutor? %>  
+        <div class="card m-2" style="width: 21.5rem;">
+          <div class="card-body text-center">
+              <% if profile.avatar.attached? %>
+                  <%= image_tag profile.avatar, class: 'image_size' %>
+              <% else %>
+                  <div><%= image_tag "https://avatarfiles.alphacoders.com/182/182752.jpg", class: 'image_size'%></div>
+              <% end %>
+            <h2 class="card-title"><%= profile.first_name %> <%= profile.surname %></h2>
+            <h6 class="card-subtitle mb-2 text-muted"><%= profile.skills %></h6>
+            
+        
+            Profile <%= link_to ('<i class="fa fas fa-user-circle fa-2x"></i>').html_safe, profile_path(profile) %>
+            New Booking <%= link_to ('<i class="fa fas fa-book fa-2x"></i>').html_safe, new_booking_path(:tutor => profile.tutor_id) %>
+          </div>
 
-      </div>
+        </div>
+      <% end %>
     <% end %>
-  <% end %>
+  </div>
 </div>
 
-
-
+<%= render 'shared/footer' %>
 
 
 

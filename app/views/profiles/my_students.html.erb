@@ -1,10 +1,20 @@
-<h1>My Students</h1>
-<% if @my_students.count.zero? %>
-    <h3 >You don't have any students yet.</h3>
-    <%= link_to 'Back', :back, class: "btn btn-default btn-rounded mb-4 bg-info text-white" %>
-  <% else %>
-  <% @my_students.each do |student|%>
-    <p><%= student.profile.first_name %> <%= student.profile.surname %></p>
-    <%= link_to 'View Profile', profile_path(student.profile.id) %>
-  <% end %>
-<% end %>
+<div class="students-container">
+  <div class="students-box">
+    <h1>My Students</h1>
+    <% if @my_students.count.zero? %>
+        <h3 >You don't have any students yet.</h3>
+        <%= link_to 'Back', :back, class: "btn btn-default btn-rounded mb-4 bg-info text-white" %>
+      <% else %>
+      <% @my_students.each do |student|%>
+        <div class="card m-2" style="width: 21.5rem;">
+          <div class="card-body">
+        <h3><%= student.profile.first_name %> <%= student.profile.surname %></h3>
+        <h6 class="card-subtitle mb-2 text-muted"><%= student.profile.bio %> <%= student.profile.skills %></h6>
+        <%= link_to 'View Profile', profile_path(student.profile.id) %>
+      <% end %>
+          </div>
+      </div>
+    <% end %>
+  </div>
+</div>
+<%= render 'shared/footer' %>
