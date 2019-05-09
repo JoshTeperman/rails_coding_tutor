@@ -41,7 +41,7 @@
 ### __Design process__
 
 ### __User Journey__
-<!-- Workflow diagram of user journey/s. -->
+![User Journeys Flowchart](./docs/user-journeys.png "User Journeys Flowchart")
 
 ### __Features__
 
@@ -83,57 +83,80 @@ CodingTutor is a two-way tutoring marketplace for Software Developers based in A
 ### 13) Describe your project’s models in terms of the relationships (active record associations) they have with each other.
 
 ### 14) Provide your database schema design.
+[View at dbdesigner.net](https://www.dbdesigner.net/designer/schema/243055)
+
+![ERD](./docs/ERD.png "ERD")
 
 ### 15) Provide User stories for your App.
-- user stories ("as a tutor, I should be able to ...")
-- decribe scenarios ("logged_in user looks at X page...") 
 
-User Stories (MVP) 
+__USER STORIES__
 
-Tutor wants to be able to ...
-Create a new account
-Login and check your bookings (calendar / list)
-View your students profiles
-Accept / Create new Booking
-View booking information page
-Edit bookings / delete booking (needs authorization)
-Edit your profile (picture, add new skill / add new information - About Me etc, prices)
-Check payment history 
-View Student Reviews
+1) *"As a Guest (User who is not signed in), I should be able to ..."*
+- View the Home Page, read about the app's purpose and it's basic functionality
+- View a clear call to action on the front page 'Find a Tutor' that links to the Index/Search page. 
+- View more information / tutorials on how to use the app, including what it means to be a tutor
+- View Contact Details to get in touch with the creators and find out more
+- Create a new Account with an email address and password, and receive and email to confirm creation of my new account
+2) *"As a Student (Normal User), I should be able to ..."*
+- Login and create a Profile, write a bio, list my skills, and upload an optional avatar photo. Edit my profile at any time
+- Use a default profile avatar photo
+- View all of the Tutor's active on the platform, including their profile details (bio, skills), as well as hourly rate. 
+- Select a tutor and create a new booking with that tutor. 
+- Have the booking price be calculated automatically based on the duration and tutor's hourly rate. Pay for the booking using Stripe and my Credit Card, and view a confirmaton screen when the payment has been processed. 
+- Write a review for any Tutor. 
+- Edit or cancel any (and only) bookings I am a participant in
+- Review my past bookings and upcoming bookings, whicih includes booking data and time, tutor name, and students who participated in the booking
+- Edit / Delete and (and only) reviews I created
+- Have the option to create a Tutor account by checking a box on the Create Profile page
 
-Student wants to be able to …
-Create an account
-Login and check your bookings / View past bookings
-Edit bookings (edit / cancel etc)
-Edit profile (login details, picture, skills, about me)
-View Other Students Profiles 
-View Tutors 
-Make a booking / Make a payment
-Check payment history
-Make reviews
-Make complaint
+3) *"As a Tutor, I should be able to ..."*
+- Have all the same functionality as a normal user (Tutors can be Students as well)
+- Decide at any time whether uncheck the tutor option, which hides my profile from the Tutors index page. I should still be able to see my tutor history (my students, past bookings) in my own private page. 
+- View my student profiles (cannot see profiles of users who are not my students)
+- View reviews of myself
 
-Moderator wants to be able to …
-View all Users
-View Complaints (Flags)
-Moderate content (reviews / profiles)
-Flag Users / Content > Notify Admin
-Soft ban (1 day)
-Moderate content (delete reviews etc)
+4) *"As an Administrator User, I should be able to ..."*
+- Edit / Delete content, including reviews and bookings
+- View an Administrator Dashboard
+- View all profiles and all bookings
+- View financial data
 
-Admin wants to be able to …
-View financial dashboard	
-Full moderator authorization	
+5) *"As a Moderator User, I should be able to ..."*
+- Edit and delete reviews only
 
+__Bucket List User Stories for Version 1.1__
 
-(Bucket List User Stories)
+*"In the next version of our app, users should be able to..."* 
 
-Send Messages
-View Notifications / Inbox / Messages
-Filters (payment history / view all students / view all past lessons)
-Group Classes 
+1) __Normal Users__
+- Search / Sort / Filter Tutor Profiles based on name, skills, location
+- Add multiple students to a booking
+- Request changes to a booking and have Tutors accept or reject changes
+- Send messages to other users
+- Follow or 'favourite' tutors
+- Make a complaint about a tutor who behaved inappropriately
+- View Notifications (inbox message etc)
+- View upcoming bookings in calendar style
+- Directly add bookings to Google Calendar 
+- Set up video calls directly through the platform
+- Set up recurring meetings 
+
+2) __Tutors__
+- Confirm or reject changes / requests for new bookings before a booking can be created
+- Create and review lesson notes
+- Append notes to students 
+- Review financial data
+
+3) __Administrators & Moderators__ 
+- Admins create Moderator users
+- View detailed user stats (filter by location, skills, activity etc)
+- View user history
+- Receive notifications for flagged content, 
+- Moderators can escalate issues to Moderators
+
 
 ### 16) Provide Wireframes for your App.
+[View at Figma.com](https://www.figma.com/file/N3IWB9shy8LfcphJliE2F1rz/Rails_Project?node-id=72%3A117)
 
 ### 17) Describe the way tasks are allocated and tracked in your project.
 
