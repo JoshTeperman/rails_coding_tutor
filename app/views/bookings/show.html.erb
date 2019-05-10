@@ -2,21 +2,21 @@
 
 <div class="show-booking-container">
   <div class="show-booking-card">
-    <h2>Booking number = <%= @booking.id %></h2>
+   
 
-    <h3>Tutor name: <%= @tutor_name %> <%= @tutor_profile.surname %></h3>
+    <h2>Tutor name: <%= @tutor_name %> <%= @tutor_profile.surname %></h2>
 
       <ul>
-        <p>Date: <%= @booking.date  %></p>
-        <p>Location: <%= @booking.location %></p>
-        <p>Price: $<%= @booking.price %></p>
-        <p>Duration: <%= @booking.duration %></p>
-        <p>Tutor_id: <%= @booking.tutor_id %></p>
+        <p><strong>Date: </strong><%= @booking.date  %></p>
+        <p><strong>Location: </strong><%= @booking.location %></p>
+        <p><strong>Price: </strong>$<%= @booking.price %></p>
+        <p><strong>Duration: </strong><%= @booking.duration %> mins</p>
+    
       </ul>
 
-    <p><%= link_to "EDIT", edit_booking_path(@booking) %></p>
-    <p><%= link_to "Delete", delete_booking_path(@booking.id), method: :delete, data: { confirm: 'Are you sure?' } %></p>
-    <p><%= link_to "Back", bookings_path %></p>
+    <p><%= link_to "EDIT", edit_booking_path(@booking) %> |
+    <%= link_to "Delete", delete_booking_path(@booking.id), method: :delete, data: { confirm: 'Are you sure?' } %> |
+    <%= link_to "Back", bookings_path %></p>
     
   </div>
 </div>
