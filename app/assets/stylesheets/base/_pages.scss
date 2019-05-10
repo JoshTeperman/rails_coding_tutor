@@ -1,17 +1,29 @@
 // Place all the styles related to the pages controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
-
-.jumbotron {
-  padding: 2rem 1rem;
-  margin-bottom: 2rem;
+#main-jumbotron{
   background: linear-gradient(#F0F2F0, #6B78BA);
-  border-radius: 0.3rem;
-  height: 93vh;
-  // display: flex;
-  // align-items: center;
-  // flex-wrap: wrap;
+  height: calc(100vh - 70px);
+  margin: 0px;
+  padding: 80px;
+  display: flex;  
+  flex-direction: column;
+  justify-content: space-evenly;
+  align-items: center;
+
+  .jumbotron-title {
+    font-size: 5.5rem;
+  }
+
+  .jumbotron-content {
+
+  }
+
+
 }
+
+
+
 
 .content {
   margin-top: 5rem;
