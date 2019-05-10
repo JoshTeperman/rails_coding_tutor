@@ -12,11 +12,11 @@ class Ability
     can :read, Review
 
     # Guest user if not logged_in
-    user ||= User.new 
+    user ||= User.new
 
     # Abilities for logged in users
     if user.present?
-      can :create, [Review, Booking] 
+      can :create, [Review, Booking]
 
       can [:update, :destroy], Review do |review|
         review.reviewer_id == user.id
