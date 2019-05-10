@@ -17,7 +17,7 @@ class Ability
     # Abilities for logged in users
     if user.present?
       can :create, [Review, Booking] 
-      # can [:update, :edit], Review, reviewer_id: user.id
+
       can [:update, :destroy], Review do |review|
         review.reviewer_id == user.id
       end

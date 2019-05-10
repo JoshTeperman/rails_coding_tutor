@@ -1,5 +1,4 @@
 class ReviewsController < ApplicationController
-  # before_action :require_profile
   load_and_authorize_resource
 
   def index

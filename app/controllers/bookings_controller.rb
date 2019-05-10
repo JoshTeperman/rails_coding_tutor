@@ -1,5 +1,6 @@
 class BookingsController < ApplicationController
-  # authorize_resource
+  load_and_authorize_resource
+  before_action :user_is_signed_in?
   
   def index
     # bookings as a tutor --->
