@@ -52,6 +52,9 @@ Researching similar platforms
 
 ### __Features__
 
+
+
+
 ---
 ## Section 3: PROCESS
 - project plan & timeline
@@ -96,61 +99,183 @@ Both Tutors and Students will have the option of making their account private, s
 
 
 ### 4) Describe the network infrastructure the App may be based on.
-Heroku specific - what a dyno is
-Heroku is Platform as a Service (PAAS)
-Easy Deployment (either automated through GitHub or Heroku CLI)
 
-OUR APPLICATION / DEVELOPMENT PHASE
-Source Code / Dependencies
-Development Configuration 
-Development Database & Test Database
-Git & GitHub < store code / source control >
+Our application is deployed through the Platform as a Service (PAAS) Heroku, a popular software product that allows developers to push code directly from GitHub to the internet via Heroku's deployment platfrom and network infrastructure. 
 
-BUILD PHASE
-DEPLOY to HEROKI
-Push code from Git to Heroku : git push heroku master
-> Heroku initiates the build
-Build phase. At this phase, Heroku will first create any assets necessary for your application (output needed for the application to run, like compiling your code) then a Build Pack will combine this output with the application to create the slug. The slug is a finished product: it’s the bundled file that’s ready for execution.
+Heroku can be accessed either directly from GitHub or through the Heroku Command Line Interface (CLI), and allows developers to spin up an application quickly and for free without needing to purchase their own servers or deploy their own database / network infrastructure. 
+
+Our app is deployed through the following process:
+
+__APPLICATION DEVELOPMENT PHASE__
+- Software is developed on local computer using Ruby on Rails and deployed for local testing using inbuilt Rails Server (which hosts the application at a localhost port)
+- We write the source code, configure dependencies, configure the database
+- We store the code in a GitHub repository, both as a means of Version Control, and in preparation for Deployment
+
+__APPLICATION BUILD PHASE__
+- When our application is ready, we create a new app on Heroku and push the code in our GitHub repository directly to Heroku so that Heroku can prepare it for deployment
+- Heroku receives the code and initiates the build process
+- Heroku bundles assets necessary to run the application, like the your compiled code, and combines this them with the application to create a 'slug', which describes the bundled file that’s ready for deployment.
+
+__APPLICATION DEPLOYMENT / EXECUTION PHASE__
+- Heroku executes the slug using a mini-operating system called a Dyno, an isolated Unix container that provides an environment for the app to run in. Dynos are the resources that are needed to run and manage your app when it is deployed on Heroku's servers. To scale the app in the future you can add more Dynos, and this is all executed in the background. 
+- Heroku then applies to the slug environment variables from your config vars file that describe things like user credentials or other environment specifications, and finally any add-ons or third party services that extend the functionality of the application.
+- Heroku delivers the final product containing the slug, config, and any add-ons, as a 'version' of your code. Any new release will be considered a new version of the application, and saved by Heroku.
 
 
-Database 
-Dyno > An isolated Unix Container that provides an environment to run an app.
-
-Private Space (Private Server / LocalHost / Database)
-Internal App 
-Web App
-Internet 
-
-HTTP
-GET requests
-Rails routing 
 ### 5) Identify and describe the software to be used in your App.
+Software Languages:
+- Front-end: 
+  - HTML: HyperText Markup Language. A language used to constract web pages. Used mostly for structure, capable of basic styling for elements.
+  - ERB: Embedded Ruby. Used to write ruby logic directly in an HTML page that compiles and is read by the browser as HTML.
+  - CSS: Cascading Style Sheets. Language used to 'style' a web-page. Makes HTML look pretty. Mostly styles static elements, though can be used to create minimal animations.
+  - Sass: Syntactically Awesome Style Sheets. Adds some additional features to CSS while also able to be written as standard CSS. Additional features include, variables, nested elements (for cleaner organisation and grouping of elements), mixins (methods)
+  - JavaScript: A flexible Object-Oriented-Language. The most popular language for writing front-end code in web development. Most advantageous use-case is allowing for animation of elements, responding to events like onClick, and dynamically transforming the data on a web-page without querying the database.
+- Back-end: 
+  - Ruby: Another flexible Object-Oriented-Language. Cannot be used to write front-end code, but is very commonly used to write business and other back-end logic in web applications. 
+
+Software Frameworks:
+- Ruby on Rails: Web application framework written in Ruby. Used to create full-stack web applications. MVC (Model Controller View) framework using separation of concerns. Emphasises CoC 'Convention Over Configuration', in other words is meant to be able to be used out of the box with conventions specific to RoR, and a large degree of abstraction to automate many technical or time-consuming aspects of building a web application, like spawning databases and writing database migrations, creating controllers, views, routes, and handling different types of HTTP requests.
+
+Database Software:
+- PostgreSQL Database: A popular Relational Database Management System based on the SQL Database Language. Data is strutured in a way that allows for queries based on data objects and their relationships with each other, written natively or through an ORM.
+- ActiveRecord: An ORM 'Object Relational Mapping' tool. Abstracts SQL query language so that code can be written in another language like Ruby, and used to speak to the database and request information. 
+- Rake: Software Task Management and Build Automation tool written in Ruby. Can be used to define various tasks used in configuring software build, file compilation, database creation and management.
+
+Version Control:
+- Git and GitHub: Source Control software. Open-sourced popular software development tool that allows for either single programmerse to work on their local machine, or remote teams to work together on a project using the GitHub Web Application connected to a local CLI Command Line Interface. Most popular features are the ability to 'commit', or save a piece of software at a certain 'state', which can be returned to at a later date. Also allows asynchronous development of applications and features using 'branches' of software that are written concorrently but don't affect the core branch unless merged at a later time. 
+
+Deployment: 
+- Heroku: A popular Platform as a Service (PAAS) product that allows for deployment of web applications without owning your own database or server infrastructure. Users can push code in many different languages directly from GitHub to the internet via Heroku's deployment platfrom where it handles building and deployment of the application.
+
+_For other third party software, please see Third Party Services._
 
 
 
 ### 6) Identify the database to be used in your App and provide a justification for your choice.
 
+We used PostgreSQL for our application, for a few different reasons:
+- We wanted to use an SQL-language database. SQL databases arethe most popular by far which means they have significant documentation available on the internet and should be easy to troubleshoot.
+- PostgreSQL is a relational database, making it easy to manipulate and access data. 
+- PostgreSQL works very smoothly when building an app with Ruby on Rails, and deploying to Heroku.
+
 ### 7) Identify and describe the production database setup (i.e. postgres instance).
+We are using an instance of a PostgreSQL database. 
 PostgresQL - 
 Production - heroku rails db migrate - 
 how the database is set up for you - (local and then how you set it up in heroku )
+
 ### 8) Describe the architecture of your App.
 
+__Application Architecture Diagram__
+![Application Architecture](./docs/Application_Network_Diagram.png "Network Infrastructure Diagram") 
+
+1) The Client...
+- Displays the web page in a web browser
+- Handles User Interface and user interactions with the web page.
+- Sends and receives HTTP requests to and from the web server by interacting with the web page.
+
+2) Web Server
+- Processes HTTP requests and directs the request to the requested Route.
+
+3) Routes
+- A map of pathways defined by the application that define which functions are called in the controller depending on different requests from the server
+- Most common HTTP requests are:
+  - GET (request information from the database)
+  - DELETE (delete information in the database)
+  - POST (send new information to the database)
+  - PATCH / UPDATE (update / change existing information in the database)
+
+4) Controller
+- The location of the logic of the application. Contains functions that are called by requests from the web server 
+- Functions either:
+  - query information from the database 
+  - request files required to load a certain web page, or 'view'
+  - call information from external APIs or other web services
+  - parses or formats ready to be used in some following function or view
+  - run other types of logic specific to the application
+- Tells the web server how to display web pages with information received from the Database or 
+
+5) Views
+- The final representation of the initial request from the client. 
+- Tells the browser what to display to the user. Can be in many different formats, including HTML & CSS, JSON, Images, Pdf etc
+
+6) ORM
+- Parses code from the controller to native SQL language.
+- Allows the appliation to set and retrieve properties and relationships of database models (data)
+
+7) Database
+- PostgreSQL relational database that stores persistent information used by the application.
+
 ### 9) Explain the different high-level components (abstractions) in your App.
+- Active Record
+- HTML ERB
+- Ruby on Rails 
+  - forms
+  - 
+- 
+
 
 ### 10) Detail any third party services that your App will use.
+Services:
+- S3 Module: Image Storage from Amazon Web Services
+- Stripe: Payment processing Software as a Service (SASS) from Stripe. Allows users to pay for products or services within the app using credit card. 
+- Mailgun: Creates and sends email from a specified account to registered users, triggered by certain actions defined within the application.
+
+Gems / Modules:
+- Bootstrap: Software component library built by Twitter
+- Font Awesome: SVG Icon library
+- Devise: User Authentication module used to manage user registration, sign-in, passwords, confirmation etc
+- CanCan: Authorizations module used to define the scope of actions available to specific classes of users defined within the application
+- Faker: Used to generate random data for the database.
 
 ### 11) Describe (in general terms) the data structure of marketplace apps that are similar to your own (e.g. eBay, Airbnb).
-CodingCoach.io
-CodingMentor
-Twitter
-LinkedIn
+https://codingcoach.io/
+All data is hosted through GitHub Pages. Theis app functions only as a portal for developers to search and contact mentors. There is no payment mechanism, messaging, or anything beyond the search feature so they don't need to store or manipulate data beyond user profiles. 
+
+https://www.codementor.io/
+This app provides a range of different services beyond simple Profile Search. There are different tiers of login, places to post content, payment portal for services, reviews etc etc. Therefore they are using some type of database, most likely hosted on their ow server or on a powerful SaSS like Amazon Web Services. Their code will be complex, most likely structured to account for a large range of database model relationships (Users having many teachers, teachers having many reviews).
+
 
 ### 12) Discuss the database relations to be implemented.
+We used a range of database relations. 
+Users have a single profile, many reviews, many bookings and many orders. Therefore to describe the other side of those relationships, profiles, reviews, bookings, and orders all belong_to user. For the Users > Bookings and Users > Orders relationships, both are defined by a single additional instance, a User_Booking or a User_Order, therefore we used has_and_belongs_to_many. 
+
 
 
 
 ### 13) Describe your project’s models in terms of the relationships (active record associations) they have with each other.
+
+We used the following active record associations:
+
+__User__
+- has_many :user_bookings
+- has_many :bookings, through: :user_bookings
+- has_one :profile
+- has_many :reviews
+- has_and_belongs_to_many :orders
+
+__Profile__
+- belongs_to :user
+
+__Booking__
+- has_many :user_bookings
+- has_many :users
+
+__User_Booking__
+- belongs_to :user
+- belongs_to :booking
+
+__Review__
+- belongs_to :user
+
+__Order__
+- has_and_belongs_to_many :users
+
+__User_Order__
+- belongs_to :user
+- belongs_to :order
+
+
 
 ### 14) Provide your database schema design.
 [View at dbdesigner.net](https://www.dbdesigner.net/designer/schema/243055)
@@ -226,6 +351,9 @@ __Bucket List User Stories for Version 1.1__
 
 ### 16) Provide Wireframes for your App.
 [View at Figma.com](https://www.figma.com/file/N3IWB9shy8LfcphJliE2F1rz/Rails_Project?node-id=72%3A117)
+
+
+
 
 ### 17) Describe the way tasks are allocated and tracked in your project.
 
