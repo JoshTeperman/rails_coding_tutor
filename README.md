@@ -22,16 +22,18 @@
 ### __About CodingTutor__
 <!-- General description of the app, its features-->
 <!-- Screenshots -->
+CodingTutor is a Code Mentoring and Tutoring platfrom built for and by Australian Programmers. Inspired by open source and private projects that operate globally but under-represent Australian developers, CodingTutor is an open-source project built to foster the development of the next generation of Australian software engineers.
 
-### __Tech Stack__
+In current version 1.0 users create a default account (Student), and can opt in to creating a Tutor account, adding their profile to the list of Tutors students can book coaching with.  
+
+### __Tech Stack__    
 - Front-end: HTML, ERB, CSS, Sass, Javascript
 - Back-end: Ruby, Ruby on Rails
 - Database: PostgreSQL Database with ActiveRecord
 - Deployment: Heroku
 
 ### __Configuration / Installation Instructions__
-<!-- Copy  -->
-1) Gmail account
+Gmail account
   - emailress: ca.codingtutor@gmail.com
   - password: nl*V@hKGZ1I6
 
@@ -39,6 +41,10 @@
 ## Section 2: DESIGN
 
 ### __Design process__
+Market Research:
+Talking to Developers
+Researching similar platforms
+
 
 ### __User Journey__
 ![User Journeys Flowchart](./docs/user-journeys.png "User Journeys Flowchart")
@@ -56,20 +62,75 @@
 ## Section 4: SHORT ANSWER QUESTIONS
 
 ### 1) What is the need (i.e. challenge) that you will be addressing in your project?
+The need we are addressing is reducing the friction in finding coaching, and teaching & monetization opportunities for Programmers in Australia. 
+
+Most people don't know how to find a mentor or don't have the time. The best way to find a mentor will always be through developing real relationships and trust with people in your own network, however traditional networking still limits you to who you know, and possibly second degree connections, or 'friends of friends'. 
+
+In the same sense, many experienced Programmers want to give back to the community through mentoring or coaching, or possibly start a coaching or consulting business for some side income. 
+
+Our project attempts to provide a platform where these two groups of people can find each other more easily, and facilities their interactions and transactions.
+
 
 ### 2) Identify the problem you’re trying to solve by building this particular marketplace App? Why is it a problem that needs solving?
-CodingTutor is a two-way tutoring marketplace for Software Developers based in Australia. Students can search for and select Tutors based primaritly on skill set, location and reputation, and book a session by themself or teaming up with other students as a group. 
 
-### 3) Describe the project will you be conducting and how. your App will address the needs.
+The justification for a service that bring mentors and mentees together is well established. The problem for Australian engineers is a lack of options that are built with them in mind. We know this because:
+- a) We asked around - through networking and speaking to our peers, we found that almost unanimously juinior developers were looking for mentoring, and a good number of senior developers with either looking for a way to give back or wanted options for side-income.
+- b) We are scratching our own itch - When looking for mentors in Melbourne we couldn't find a platform that had a lot of options for finding local mentors in Melbourne or that was easy to use. 
+
+There are already a plethora of established options for Programmers to find each other - Social Media platforms like LinkedIn, Facebook & Twitter, Tech crowd-sourcing platforms like AngelList, Freelancer, TopCoder - even mentoring platfroms in the mould of our platform like CodingCoach and CodeMentor - however none of these lived up to our idea of what a platform for Australians should look like. Either they were too social / had too much noise (social media), provided outsourcing services but didn't encourage mentoring (Freelancer etc), or were exactly what we were looking for but had almost no Australian options (CodingCoach, which has 3 Australians on the platform!).
+
+There is clearly a need for these types of platforms, but nothing that is meeting our needs, as Australian Programmers.
+
+### 3) Describe the project will you be conducting and how your App will address the needs.
+
+At scale, a two-way marketplace is the most efficient way for tutors and learners to find each other and transact, and should enhance traditional mentor / mentee relationships and freelancing for developers.
+
+CodingTutor will be a two-way-marketplace Mentoring and Tutoring platform built in the mould of CodingCoach or CodeMetor, but with customised for Australians. 
+
+Mentees will be able to view a full list of Developers who have signed up for a Tutor account, search and filter by skill / language, location, and reputation, book a session by themself or teaming up with other students as a group. 
+
+Tutors will be able to curate their profile, offer their services and set their own prices, and manage the entire interaction within stedents within app. They will receive reviews similar to LinkedIn's Recommendations feature and thus will be rewarded for quality, increasing the amount of interest they receive from other students.
+
+Both Tutors and Students will have the option of making their account private, simply by disabling the "Tutor" option on their profile, while still recording their history of Tutoring Sessions, their notes, and their lists of Students and Tutors. The platform should allow anyone to use it flexibly, choosing when, where and how they interact with others, and whether they choose to monetise their relationships or not. 
+
 
 ### 4) Describe the network infrastructure the App may be based on.
+Heroku specific - what a dyno is
+Heroku is Platform as a Service (PAAS)
+Easy Deployment (either automated through GitHub or Heroku CLI)
 
+OUR APPLICATION / DEVELOPMENT PHASE
+Source Code / Dependencies
+Development Configuration 
+Development Database & Test Database
+Git & GitHub < store code / source control >
+
+BUILD PHASE
+DEPLOY to HEROKI
+Push code from Git to Heroku : git push heroku master
+> Heroku initiates the build
+Build phase. At this phase, Heroku will first create any assets necessary for your application (output needed for the application to run, like compiling your code) then a Build Pack will combine this output with the application to create the slug. The slug is a finished product: it’s the bundled file that’s ready for execution.
+
+
+Database 
+Dyno > An isolated Unix Container that provides an environment to run an app.
+
+Private Space (Private Server / LocalHost / Database)
+Internal App 
+Web App
+Internet 
+
+HTTP
+GET requests
+Rails routing 
 ### 5) Identify and describe the software to be used in your App.
 
 ### 6) Identify the database to be used in your App and provide a justification for your choice.
 
 ### 7) Identify and describe the production database setup (i.e. postgres instance).
-
+PostgresQL - 
+Production - heroku rails db migrate - 
+how the database is set up for you - (local and then how you set it up in heroku )
 ### 8) Describe the architecture of your App.
 
 ### 9) Explain the different high-level components (abstractions) in your App.
@@ -77,6 +138,10 @@ CodingTutor is a two-way tutoring marketplace for Software Developers based in A
 ### 10) Detail any third party services that your App will use.
 
 ### 11) Describe (in general terms) the data structure of marketplace apps that are similar to your own (e.g. eBay, Airbnb).
+CodingCoach.io
+CodingMentor
+Twitter
+LinkedIn
 
 ### 12) Discuss the database relations to be implemented.
 
@@ -174,10 +239,18 @@ __Bucket List User Stories for Version 1.1__
 
 ---
 ## Section 4: Reflection
-### Challenges
+### Challenges 
 - what was difficult?
-### What we learned
-- how would we do things differently next time?
+### What we learned / What would we do differently next time
+Write the readme first - Questions like these help to clarify the purpose of an app and aid in decision making and direction of the project:
+- what problem are we solving?
+- how do we know that problem exists?
+- why do we need to build this app in particular, to meet that need?
+- what are we doing differently from other solutions to this problem?
+- what features are needed to solve this need?
+Bootstrap Styling
+- either user Bootstrap for everything, just for mock-up (then replace with natively styled elements), or in very limited capaicty (buttons, navbar etc)
+
 ### Extending the App
 - what features would we add? 
 ### Maintenance
