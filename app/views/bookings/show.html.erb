@@ -1,15 +1,24 @@
-<h2>Booking number = <%= @booking.id %></h2>
 
-<h3>Tutor name: <%= @tutor_name %> <%= @tutor_profile.surname %></h3>
 
-  <ul>
-    <li><%= @booking.date  %></li>
-    <li><%= @booking.location %></li>
-    <li><%= @booking.price %></li>
-    <li><%= @booking.duration %></li>
-    <li><%= @booking.tutor_id %></li>
-  </ul>
+<div class="show-booking-container">
+  <div class="show-booking-card">
+    <h2>Booking number = <%= @booking.id %></h2>
 
-<p><%= link_to "EDIT", edit_booking_path(@booking) %></p>
-<p><%= link_to "Delete", delete_booking_path(@booking.id), method: :delete, data: { confirm: 'Are you sure?' } %></p>
-<p><%= link_to "View Bookings", bookings_path %></p>
+    <h3>Tutor name: <%= @tutor_name %> <%= @tutor_profile.surname %></h3>
+
+      <ul>
+        <p>Date: <%= @booking.date  %></p>
+        <p>Location: <%= @booking.location %></p>
+        <p>Price: $<%= @booking.price %></p>
+        <p>Duration: <%= @booking.duration %></p>
+        <p>Tutor_id: <%= @booking.tutor_id %></p>
+      </ul>
+
+    <p><%= link_to "EDIT", edit_booking_path(@booking) %></p>
+    <p><%= link_to "Delete", delete_booking_path(@booking.id), method: :delete, data: { confirm: 'Are you sure?' } %></p>
+    <p><%= link_to "Back", bookings_path %></p>
+    
+  </div>
+</div>
+
+<%= render 'shared/footer' %>

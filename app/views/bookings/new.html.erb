@@ -1,64 +1,66 @@
-<div>
+<div class="new-booking-container">
   <form class="form-style" action="<%= new_booking_path %>" method="POST" enctype="multipart/form-data">
     <input type="hidden" value="<%= form_authenticity_token %>" name="authenticity_token" />
     <input type="hidden" name="price" value="" id="price"/>
     <input type="hidden" name="hourly_rate" value="<%= @tutor_hourly_rate %>" id='hourly_rate' />
     <input type="hidden" name="tutor_id" value="<%= @tutor_id %>">
 
-    <div class="card">
+    <div class="card-booking">
       <h5 class="card-header info-color white-text text-center py-4">
         <strong>Book a session with <%= @tutor_first_name %></strong>
       </h5>
       <div class="card-body px-lg-5 pt-0">
-      <form class="text-center" style="color: #757575;">
-        <!-- Date -->
-        <div class="md-form mt-3">
-            <label for="date">Date</label>
-            <input type="date" name="date" class="form-control">
-        </div>
-        <!-- Location -->
-        <div class="md-form">
-            <label for="location">Location</label>
-            <select name="location" id="location">
+        <div class="text-center" style="color: #757575;">
+          <!-- Date -->
+          <div class="md-form mt-3">
+              <label for="date">Date</label>
+              <input type="date" name="date" class="form-control">
+          </div>
+          <!-- Location -->
+          <div class="md-form">
+              <label for="location">Location</label>
+              <select name="location" id="location">
+                  <option value="" selected="selected">Please select</option>
+                  <option value="Melbourne">Melbourne</option>
+                  <option value="Sydney">Sydney</option>
+                  <option value="Adelaide">Adelaide</option>
+                  <option value="Brisbane">Brisbane</option>
+                  <option value="Perth">Perth</option>
+                  <option value="Darwin">Darwin</option>
+                  <option value="Hobart">Hobart</option>
+                  <option value="Skype">Skype</option>
+                  <option value="Zoom">Zoom</option>
+              </select>
+          </div>
+          <!-- Duration -->    
+          <div class="md-form">
+            <label for="duration">Duration (minutes)</label>
+            <select name="duration" id="duration">
                 <option value="" selected="selected">Please select</option>
-                <option value="Melbourne">Melbourne</option>
-                <option value="Sydney">Sydney</option>
-                <option value="Adelaide">Adelaide</option>
-                <option value="Brisbane">Brisbane</option>
-                <option value="Perth">Perth</option>
-                <option value="Darwin">Darwin</option>
-                <option value="Hobart">Hobart</option>
-                <option value="Skype">Skype</option>
-                <option value="Zoom">Zoom</option>
+                <option value="15" >15</option>
+                <option value="30">30</option>
+                <option value="60">60</option>
+                <option value="90">90</option>
+                <option value="90">120</option>
             </select>
-        </div>
-        <!-- Duration -->    
-        <div class="md-form">
-          <label for="duration">Duration (minutes)</label>
-          <select name="duration" id="duration">
-              <option value="" selected="selected">Please select</option>
-              <option value="15" >15</option>
-              <option value="30">30</option>
-              <option value="60">60</option>
-              <option value="90">90</option>
-              <option value="90">120</option>
-          </select>
-        </div>
-        <!-- Send button -->
-        <button class="btn btn-outline-info btn-rounded btn-block z-depth-0 my-4 waves-effect" type="submit">Create</button>
-      </form>
+          </div>
+          <!-- Send button -->
+          <button class="btn btn-outline-info btn-rounded btn-block z-depth-0 my-4 waves-effect" type="submit">Create</button>
+      </div>
     </div>
   </form>
-<script>
-  const duration = document.querySelector('#duration');
-  const hourly_rate = document.querySelector('#hourly_rate'); 
-  const price = document.querySelector('#price');
-  duration.addEventListener('change', (e) => {
-      const durationValue = parseInt(e.target.value);
-      const finalPrice = parseInt(hourly_rate.value) * durationValue * (durationValue / 60)
-      price.value = finalPrice
-    })
-</script>
 
 </div>
+
+ <script>
+    const duration = document.querySelector('#duration');
+    const hourly_rate = document.querySelector('#hourly_rate'); 
+    const price = document.querySelector('#price');
+    duration.addEventListener('change', (e) => {
+        const durationValue = parseInt(e.target.value);
+        const finalPrice = parseInt(hourly_rate.value) * durationValue * (durationValue / 60)
+        price.value = finalPrice
+      })
+</script>
+
 

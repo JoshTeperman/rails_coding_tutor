@@ -1,294 +1,305 @@
-<div class="show_profile_box">
-<!-- Edit your first name and surname modal-->
-    <div class="container ">
-    <form class="form-style" action="<%= new_profile_path(@profile) %>" method="POST" enctype="multipart/form-data">
+ <div class="profile-card">   
+    <div class="profile-container">
+      <div class="name">
+        <h1> <%= @profile.first_name %> <%= @profile.surname %>   
+        <% if @profile.user == current_user %>
+          <a href="" class="btn btn-default btn-rounded mb-4" data-toggle="modal" data-target="#modalnameform"><i class="fa far fa-edit"></i></a>
+        <% end %>
+        </h1>
+      </div>
+      <div class="avatar">
+        <% if @profile.avatar.attached? %>
+          <div class="image_profile"><%= image_tag @profile.avatar.service_url, class: 'image' %>
+            <% if @profile.user == current_user %>
+              <a href="" class="btn btn-default btn-rounded mb-4" data-toggle="modal" data-target="#modalavatarform"><i class="fa far fa-edit"></i></a>
+            <% end %>
+          </div>
+        <% else %>
+          <div> <%= image_tag "https://avatarfiles.alphacoders.com/182/182752.jpg", class: 'image' %>
+            <% if @profile.user == current_user %>
+              <a href="" class="btn btn-default btn-rounded mb-4" data-toggle="modal" data-target="#modalavatarform"><i class="fa far fa-edit"></i></a>
+            <% end %>
+          </div>
+        <% end %> 
+      </div>
+      <div class="skills">
+        <h2>Skills
+          <% if @profile.user == current_user %>
+            <a href="" class="btn btn-default btn-rounded mb-4" data-toggle="modal" data-target="#modalskillsform">
+              <i class="fa far fa-edit"></i>
+            </a> 
+          <% end %>
+        </h2> 
+        <p style="font-size: 20px;"><%= @profile.skills %></p>
+      </div> 
+      <div class="bio">
+        <h2>Bio 
+        <% if @profile.user == current_user %>
+          <a href="" class="btn btn-default btn-rounded mb-4" data-toggle="modal" data-target="#modalbioform">
+            <i class="fa far fa-edit"></i>
+          </a> 
+        <% end %>
+        </h2>
+        <p style="font-size: 20px;"><%= @profile.bio %></p>
+      </div> 
+      <div class="hourly-rate">
+        <% if @profile.tutor? %>
+          <h2>Hourly Rate
+            <% if @profile.user == current_user %>
+              <a href="" class="btn btn-default btn-rounded mb-4" data-toggle="modal" data-target="#modalhourly_rateform">
+                <i class="fa far fa-edit"></i>
+              </a>
+            <% end %>
+            <div style="margin: 10px;"><p style="font-size: 20px;">$<%= @profile.hourly_rate %></p></div>
+            <% unless @tutor.reviews.count.zero? %>
+              <h2>Average Rating: 
+                <p style="font-size: 20px;"><%= @profile.average_rating.zero? ? 0 : @profile.average_rating %></p>
+              </h2>
+            <% end %>
+          </h2>
+        <% end %>
+      </div>
+      <div class="reviews">
+        <% if @profile.tutor? %>
+          <h2> Reviews : </h2>
+          <% if @tutor.reviews.count.zero? %>
+            <p>This tutor hasn't received any reviews yet.</p>
+          <% else %>
+            <ul>
+              <% @tutor.reviews.each do |review| %>
+                <li class="review"> 
+                  <h6><strong> Content: </strong></h6> 
+                  <p><%= review.content %></p> 
+                  <h6><strong> Rating: </strong></h6> 
+                  <p><%= review.rating %></p> 
+                </li>
+              <%# <% if can? [:destroy, :update], Review %> 
+                <% if signed_in? && (review.reviewer_id == current_user.id || current_user.admin? || current_user.moderator? ) %>
+                  <%= link_to "Delete", delete_review_path(review), method: :delete, data: { confirm: 'Are you sure?' } %>
+                  <%= link_to "Edit", edit_review_path(review) %>
+                <% end %>
+              <% end %>
+            </ul>
+          <% end %>
+        <% end %>
+        <% if current_user && @profile != current_user.profile %>
+          <form class="form-style" action="<%= new_review_path %>" method="POST" enctype="multipart/form-data">
+            <input type="hidden" value="<%= form_authenticity_token %>" name="authenticity_token" />
+            <input type="hidden" value="<%= @profile.tutor_id %>" name="tutor_id" />
+            <input type="hidden" value="<%= current_user.id %>" name="reviewer_id" />
+          <!-- Write a review button-->
+            <div class="write-review-button">
+              <a href="" class="btn btn-default btn-rounded mb-4 bg-info text-white" data-toggle="modal" data-target="#modalReviewForm">Write a Review for this tutor</a>
+            </div>
+          </form>
+        <!-- IF signed_ in, will be able to create a review -->
+        <% elsif !signed_in? %>
+          <p>Please <%= link_to 'log in', new_user_session_path %> to create a review</p>
+        <% end %>
+      </div>
+ </div>
+
+
+ <form class="form-style" action="<%= new_profile_path(@profile) %>" method="POST" enctype="multipart/form-data">
     <input type="hidden" value="<%= form_authenticity_token %>" name="authenticity_token" />
     <input type="hidden" name="_method" value="patch"/>
+    <!-- Edit your Name modal-->
+    <div class="modal fade" id="modalnameform" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
+            aria-hidden="true">
+            <div class="modal-dialog" role="document">
+              <div class="modal-content">
+                <div class="modal-header text-center">
+                  <h4 class="modal-title w-100 font-weight-bold">Change your name <small class="form-text text-muted mb-4">(This will appear when a tutor views your profile)</small></h4>
+                  <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                  </button>
+                </div>
+                <div class="modal-body mx-3">
+                  <div class="md-form mb-5">
+                    <label data-error="wrong" data-success="right" for="first_name">First Name</label>
+                    <input type="text" id="first_name" class="form-control validate" name="first_name" value="<%= @profile.first_name %>">
+                  </div>
 
-      <div class="modal fade" id="modalnameform" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
-        aria-hidden="true">
+                  <div class="md-form mb-4">
+                    <label data-error="wrong" data-success="right" for="surname">Surname</label>
+                    <input type="text" id="surname" class="form-control validate" name="surname" value="<%= @profile.surname %>" />
+                  </div>
+
+                </div>
+                <div class="modal-footer d-flex justify-content-center">
+                  <button class="btn btn-default" type="submit" value="Update">Update</button>
+                </div>
+              </div>
+            </div>
+    </div>
+
+    <!-- Edit your avatar picture modal-->
+    <div class="modal fade" id="modalavatarform" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
+          aria-hidden="true">
         <div class="modal-dialog" role="document">
           <div class="modal-content">
             <div class="modal-header text-center">
-              <h4 class="modal-title w-100 font-weight-bold">Change your name <small class="form-text text-muted mb-4">(This will appear when a tutor views your profile)</small></h4>
-              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                <span aria-hidden="true">&times;</span>
-              </button>
+                <h4 class="modal-title w-100 font-weight-bold">Change your avatar <small class="form-text text-muted mb-4">(Upload a photo of yourself)</small></h4>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                  <span aria-hidden="true">&times;</span>
+                </button>
             </div>
+
             <div class="modal-body mx-3">
               <div class="md-form mb-5">
-                <label data-error="wrong" data-success="right" for="first_name">First Name</label>
-                <input type="text" id="first_name" class="form-control validate" name="first_name" value="<%= @profile.first_name %>">
+                  <label data-error="wrong" data-success="right" for="avatar">Avatar<small class="form-text text-muted mb-4">Let people recognise you</small></label>
+                  <input type="file" id="avatar" class="form-control validate" name="avatar">
+              </div>
+              </div> 
+
+              <div class="modal-footer d-flex justify-content-center">
+                <button class="btn btn-default" type="submit" value="Update">Update</button>
+              </div>
+          </div>
+        </div>
+    </div>
+
+    <!-- Edit your skills content-->
+    <div class="modal fade" id="modalskillsform" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
+          aria-hidden="true">
+        <div class="modal-dialog" role="document">
+          <div class="modal-content">
+            <div class="modal-header text-center">
+                <h4 class="modal-title w-100 font-weight-bold">Change your skills list <small class="form-text text-muted mb-4">Show your skills</small></h4>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                  <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+
+            <div class="modal-body mx-3">
+              <div class="md-form mb-5">
+                  <label data-error="wrong" data-success="right" for="skills">Skills<small class="form-text text-muted mb-4">Add more skills?</small></label>
+                  <input type="textarea" id="skills" class="form-control validate" name="skills" value="<%= @profile.skills %>">
+              </div>
+              </div> 
+
+              <div class="modal-footer d-flex justify-content-center">
+                <button class="btn btn-default" type="submit" value="Update">Update</button>
+              </div>
+          </div>
+        </div>
+    </div>
+
+    <!-- Edit your BIO modal-->
+    <div class="modal fade" id="modalbioform" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
+          aria-hidden="true">
+        <div class="modal-dialog" role="document">
+          <div class="modal-content">
+            <div class="modal-header text-center">
+                <h4 class="modal-title w-100 font-weight-bold">Change your Bio <small class="form-text text-muted mb-4">Tell others about yourself.</small></h4>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                  <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+
+            <div class="modal-body mx-3">
+              <div class="md-form mb-5">
+                  <label data-error="wrong" data-success="right" for="bio">Bio<small class="form-text text-muted mb-4">Update your bio so people know what you're up to</small></label>
+                  <input type="textarea" id="bio" class="form-control validate" class="form-control" name="bio" value="<%= @profile.bio %>" />
+              </div>
+              </div> 
+
+              <div class="modal-footer d-flex justify-content-center">
+                <button class="btn btn-default" type="submit" value="Update">Update</button>
+              </div>
+          </div>
+        </div>
+    </div>
+
+    <!-- Edit your hourly-rate modal-->
+    <div class="modal fade" id="modalhourly_rateform" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
+            aria-hidden="true">
+          <div class="modal-dialog" role="document">
+            <div class="modal-content">
+              <div class="modal-header text-center">
+                  <h4 class="modal-title w-100 font-weight-bold">Change your Hourly Rate <small class="form-text text-muted mb-4">Set a price</small></h4>
+                  <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                  </button>
               </div>
 
-              <div class="md-form mb-4">
-                <label data-error="wrong" data-success="right" for="surname">Surname</label>
-                <input type="text" id="surname" class="form-control validate" name="surname" value="<%= @profile.surname %>" />
-              </div>
+              <div class="modal-body mx-3">
+                <div class="md-form mb-5">
+                    <label data-error="wrong" data-success="right" for="hourly_rate">Hourly Rate<small class="form-text text-muted mb-4">Set your price high and the chances of getting a student will be low</small></label>
+                    <input type="text" class="form-control validate" name="hourly_rate" value="<%= @profile.hourly_rate %>" />
+                </div>
+              </div> 
 
-            </div>
-            <div class="modal-footer d-flex justify-content-center">
-              <button class="btn btn-default" type="submit" value="Update">Update</button>
+                <div class="modal-footer d-flex justify-content-center">
+                  <button class="btn btn-default" type="submit" value="Update">Update</button>
+                </div>
             </div>
           </div>
-        </div>
-      </div>
-    <br>
+    </div>
 
-    <!-- Your Profile name -->
-    <h1> <%= @profile.first_name %> <%= @profile.surname %> 
-    <% if @profile.user == current_user %>
-    <a href="" class="btn btn-default btn-rounded mb-4" data-toggle="modal" data-target="#modalnameform"><i class="fa far fa-edit"></i></a>
-    <% end %>
-    </h1>
-    <br>
-
-  <!-- Edit your avatar picture modal-->
-  <div class="modal fade" id="modalavatarform" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
-        aria-hidden="true">
-      <div class="modal-dialog" role="document">
-        <div class="modal-content">
-          <div class="modal-header text-center">
-              <h4 class="modal-title w-100 font-weight-bold">Change your avatar <small class="form-text text-muted mb-4">(Upload a photo of yourself)</small></h4>
-              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                <span aria-hidden="true">&times;</span>
-              </button>
-          </div>
-
-          <div class="modal-body mx-3">
-            <div class="md-form mb-5">
-                <label data-error="wrong" data-success="right" for="avatar">Avatar<small class="form-text text-muted mb-4">Let people recognise you</small></label>
-                <input type="file" id="avatar" class="form-control validate" name="avatar">
-            </div>
-           </div> 
-
-            <div class="modal-footer d-flex justify-content-center">
-              <button class="btn btn-default" type="submit" value="Update">Update</button>
-            </div>
-        </div>
-      </div>
-  </div>
-
-<!-- Your avatar picture -->
-      <% if @profile.avatar.attached? %>
-        <div class="image_profile"><%= image_tag @profile.avatar.service_url, class: 'image' %>
-        <% if @profile.user == current_user %>
-           <a href="" class="btn btn-default btn-rounded mb-4" data-toggle="modal" data-target="#modalavatarform"><i class="fa far fa-edit"></i></a>
-        <% end %>
-        </div>
-      <% else %>
-        <div> <%= image_tag "https://avatarfiles.alphacoders.com/182/182752.jpg", class: 'image' %>
-        <% if @profile.user == current_user %>
-         <a href="" class="btn btn-default btn-rounded mb-4" data-toggle="modal" data-target="#modalavatarform"><i class="fa far fa-edit"></i></a>
-        <% end %>
-        </div>
-      <% end %>
+ </form>
 
 
- <!-- Edit your skills content-->
-<div class="modal fade" id="modalskillsform" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
-        aria-hidden="true">
-      <div class="modal-dialog" role="document">
-        <div class="modal-content">
-          <div class="modal-header text-center">
-              <h4 class="modal-title w-100 font-weight-bold">Change your skills list <small class="form-text text-muted mb-4">Show your skills</small></h4>
-              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                <span aria-hidden="true">&times;</span>
-              </button>
-          </div>
 
-          <div class="modal-body mx-3">
-            <div class="md-form mb-5">
-                <label data-error="wrong" data-success="right" for="skills">Skills<small class="form-text text-muted mb-4">Add more skills?</small></label>
-                <input type="textarea" id="skills" class="form-control validate" name="skills" value="<%= @profile.skills %>">
-            </div>
-           </div> 
-
-            <div class="modal-footer d-flex justify-content-center">
-              <button class="btn btn-default" type="submit" value="Update">Update</button>
-            </div>
-        </div>
-      </div>
-  </div>
-
-  <!-- Your skills content-->    
-<div class="container" style="margin: 10px; padding: 10px;">
-    <h2>Skills
-     <% if @profile.user == current_user %>
-      <a href="" class="btn btn-default btn-rounded mb-4" data-toggle="modal" data-target="#modalskillsform"><i class="fa far fa-edit"></i></a> 
-    <% end %>
-    </h2> 
-    <p style="font-size: 20px;"><%= @profile.skills %></p>
-</div>   
-
-<!-- Edit your bio content-->    
-<div class="modal fade" id="modalbioform" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
-        aria-hidden="true">
-      <div class="modal-dialog" role="document">
-        <div class="modal-content">
-          <div class="modal-header text-center">
-              <h4 class="modal-title w-100 font-weight-bold">Change your Bio <small class="form-text text-muted mb-4">Tell others about yourself.</small></h4>
-              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                <span aria-hidden="true">&times;</span>
-              </button>
-          </div>
-
-          <div class="modal-body mx-3">
-            <div class="md-form mb-5">
-                <label data-error="wrong" data-success="right" for="bio">Bio<small class="form-text text-muted mb-4">Update your bio so people know what you're up to</small></label>
-                <input type="textarea" id="bio" class="form-control validate" class="form-control" name="bio" value="<%= @profile.bio %>" />
-            </div>
-           </div> 
-
-            <div class="modal-footer d-flex justify-content-center">
-              <button class="btn btn-default" type="submit" value="Update">Update</button>
-            </div>
-        </div>
-      </div>
-  </div>
-
-<!-- Your bio content--> 
-<div class="container" style="margin: 10px; padding: 10px;"> 
-    <h2>Bio 
-     <% if @profile.user == current_user %>
-      <a href="" class="btn btn-default btn-rounded mb-4" data-toggle="modal" data-target="#modalbioform"><i class="fa far fa-edit"></i></a> 
-     <% end %>
-    </h2>
-    <p style="font-size: 20px;"><%= @profile.bio %></p>
-</div>   
-
-<!-- Edit your hourly_rate, tutors!-->    
-<div class="modal fade" id="modalhourly_rateform" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
-        aria-hidden="true">
-      <div class="modal-dialog" role="document">
-        <div class="modal-content">
-          <div class="modal-header text-center">
-              <h4 class="modal-title w-100 font-weight-bold">Change your Hourly Rate <small class="form-text text-muted mb-4">Set a price</small></h4>
-              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                <span aria-hidden="true">&times;</span>
-              </button>
-          </div>
-
-          <div class="modal-body mx-3">
-            <div class="md-form mb-5">
-                <label data-error="wrong" data-success="right" for="hourly_rate">Hourly Rate<small class="form-text text-muted mb-4">Set your price high and the chances of getting a student will be low</small></label>
-                <input type="text" class="form-control validate" name="hourly_rate" value="<%= @profile.hourly_rate %>" />
-            </div>
-           </div> 
-
-            <div class="modal-footer d-flex justify-content-center">
-              <button class="btn btn-default" type="submit" value="Update">Update</button>
-            </div>
-        </div>
-      </div>
-  </div>
-
-<!-- Your hourly rate and average rating content (IF YOU ARE A TUTOR THOUGH)--> 
-      <% if @profile.tutor? %>
-        <h2>Hourly Rate
-          <% if @profile.user == current_user %>
-            <a href="" class="btn btn-default btn-rounded mb-4" data-toggle="modal" data-target="#modalhourly_rateform"><i class="fa far fa-edit"></i></a>
-          <% end %></h2>
-        <div style="margin: 10px;"><p style="font-size: 20px;">$<%= @profile.hourly_rate %></p></div>
-      <% unless @tutor.reviews.count.zero? %>
-        <h2>Average Rating: <p style="font-size: 20px;"><%= @profile.average_rating.zero? ? 0 : @profile.average_rating %></p></h2>
-      <% end %>
-    <% end %>
-  </ul>
-
-<!-- Your reviews (IF YOU ARE A TUTOR THOUGH)-->
-<% if @profile.tutor? %>
-  <h2> Reviews : </h2>
-  <% if @tutor.reviews.count.zero? %>
-      <p>This tutor hasn't received any reviews yet.</p>
-  <% else %>
-    <ul>
-      <% @tutor.reviews.each do |review| %>
-        <li> 
-          <h6><strong> Content: </strong></h6> 
-          <p><%= review.content %></p> 
-          <h6><strong> Rating: </strong></h6> 
-          <p><%= review.rating %></p> 
-        </li>
-        <%# <% if can? [:destroy, :update], Review %> 
-        <% if signed_in? %>
-          <% if review.reviewer_id == current_user.id || current_user.admin? || current_user.moderator? %>
-            <%= link_to "Delete", delete_review_path(review), method: :delete, data: { confirm: 'Are you sure?' } %>
-            <%= link_to "Edit", edit_review_path(review) %>
-          <% end %>
-        <% end %>
-      <% end %>
-    </ul>
-  <% end %>
-<% end %>
-
-<!-- edit && delete profile link-->
-<% if @profile.user == current_user %>
-  <%= link_to "Edit all fields manually", edit_profile_path(current_user.profile) %>
-  <% unless current_user.admin? %>  
-    | <%= link_to "Delete Account", profile_path(@profile.id), method: :delete, data: { confirm: 'Are you sure?' } %>
-  <% end %>
-<% end %>
-</form>
-
-
-<!-- Write a review modal-->
 <% if current_user && @profile != current_user.profile %>
-<form class="form-style" action="<%= new_review_path %>" method="POST" enctype="multipart/form-data">
+  <form class="form-style" action="<%= new_review_path %>" method="POST" enctype="multipart/form-data">
     <input type="hidden" value="<%= form_authenticity_token %>" name="authenticity_token" />
     <input type="hidden" value="<%= @profile.tutor_id %>" name="tutor_id" />
     <input type="hidden" value="<%= current_user.id %>" name="reviewer_id" />
-
-  <div class="modal fade" id="modalLoginForm" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
-    aria-hidden="true">
-    <div class="modal-dialog" role="document">
-      <div class="modal-content">
-        <div class="modal-header text-center">
-          <h4 class="modal-title w-100 font-weight-bold">Write a Review</h4>
-          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-            <span aria-hidden="true">&times;</span>
-          </button>
-        </div>
-        <div class="modal-body mx-3">
-          <div class="md-form mb-5">
-          <label data-error="wrong" data-success="right" for="content"> Content <i class="fa fas fa-comment"></i></label>  
-            <input type="text" id="content" class="form-control validate" name="content">
+      <!-- Write review modal-->
+      <div class="modal fade" id="modalReviewForm" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
+          aria-hidden="true">
+          <div class="modal-dialog" role="document">
+            <div class="modal-content">
+              <div class="modal-header text-center">
+                <h4 class="modal-title w-100 font-weight-bold">Write a Review</h4>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                  <span aria-hidden="true">&times;</span>
+                </button>
+              </div>
+              <div class="modal-body mx-3">
+                <div class="md-form mb-5">
+                  <label data-error="wrong" data-success="right" for="content"> Content <i class="fa fas fa-comment"></i></label>  
+                  <input type="text" id="content" class="form-control validate" name="content">
+                </div>
+                <div class="md-form mb-4"> 
+                  <label data-error="wrong" data-success="right" for="rating"> Rating <i class="fa fas fa-star"></i></label>
+                  <select name="rating" id="rating">
+                    <option value="" selected="selected">Please select</option>
+                    <option value="0">0</option>
+                    <option value="1">1</option>
+                    <option value="2">2</option>
+                    <option value="3">3</option>
+                    <option value="4">4</option>
+                    <option value="5">5</option>
+                  </select>
+                </div>
+              </div>
+              <div class="modal-footer d-flex justify-content-center">
+                <button class="btn btn-default bg-info text-white" type="submit" value="Submit review" >Submit review</button>
+              </div>
+            </div>
           </div>
-
-          <div class="md-form mb-4"> 
-            <label data-error="wrong" data-success="right" for="rating"> Rating <i class="fa fas fa-star"></i></label>
-            <select name="rating" id="rating">
-              <option value="" selected="selected">Please select</option>
-              <option value="0">0</option>
-              <option value="1">1</option>
-              <option value="2">2</option>
-              <option value="3">3</option>
-              <option value="4">4</option>
-              <option value="5">5</option>
-            </select>
-          </div>
-
         </div>
-        <div class="modal-footer d-flex justify-content-center">
-          <button class="btn btn-default bg-info text-white" type="submit" value="Submit review" >Submit review</button>
-        </div>
-      </div>
-    </div>
-  </div>
+<% elsif !signed_in? %>
+  <p>Please <%= link_to 'log in', new_user_session_path %> to create a review</p>
+<% end %>
+  </form>
 
-<!-- Write a review button-->
-  <div class="hi">
-    <a href="" class="btn btn-default btn-rounded mb-4 bg-info text-white" data-toggle="modal" data-target="#modalLoginForm">Write a Review for this tutor</a>
-  </div>
-</form>
 
-<!-- IF signed_ in, will be able to create a review -->
-  <% elsif !signed_in? %>
-    <p>Please <%= link_to 'log in', new_user_session_path %> to create a review</p>
-  <% end %>
 
-<!-- Link to back-->
-  <button class="btn btn-default btn-rounded mb-4 bg-info text-white"><%= link_to 'Back', index_path %></button>
+<!-- Edit all fields && delete account-->
+    <% if @profile.user == current_user %>
+      <%= link_to "Edit all fields manually", edit_profile_path(current_user.profile) %>
+      <% unless current_user.admin? %>  
+        | <%= link_to "Delete Account", profile_path(@profile.id), method: :delete, data: { confirm: 'Are you sure?' } %>
+      <% end %>
+    <% end %>
+
+    <!-- Link to back-->
+    <button class="btn btn-default btn-rounded mb-4 bg-info text-white"><%= link_to 'Back', index_path %></button>
 </div>
 
-</div>
+
+<%= render 'shared/footer' %>
+
