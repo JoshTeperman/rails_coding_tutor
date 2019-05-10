@@ -224,7 +224,6 @@ __Bucket List User Stories for Version 1.1__
 - Receive notifications for flagged content, 
 - Moderators can escalate issues to Moderators
 
-
 ### 16) Provide Wireframes for your App.
 [View at Figma.com](https://www.figma.com/file/N3IWB9shy8LfcphJliE2F1rz/Rails_Project?node-id=72%3A117)
 
