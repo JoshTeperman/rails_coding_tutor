@@ -1,0 +1,96 @@
+// Place all the styles related to the profiles controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+
+.index-container {
+ padding: 3%;
+ margin-left: 3%;
+}
+
+
+// .image {
+//   height: 50px;
+//   width: 50px;
+//   border-radius: 50%;
+// }
+
+
+.image-size {
+  height: 30%;
+  width: 20%;
+  border-radius: 50%;
+
+}
+
+.card-body {
+  background-color: white;
+  word-wrap: break-word;
+  background-color: #fff;
+  background-clip: border-box;
+  border: 1px solid rgba(0, 0, 0, 0.125);
+  border-radius: 0.25rem;
+  box-shadow: 0 5px 20px rgba(0, 0, 0, 0.16), 0 5px 10px rgba(0, 0, 0, 0.3);
+}
+
+.card-body:hover {
+    box-shadow: 0 14px 28px rgba(0,0,0,0.25), 0 10px 10px rgba(0,0,0,0.22);
+}
+
+.edit-profile-card {
+  height: 20vh;
+  width: 20vw;
+}
+
+.edit-profile-container {
+  display: flex;
+  justify-content: center;
+}
+
+.students-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  width: 100vw;
+
+}
+
+
+.students-box {
+  height: 50vh;
+  width: 50vw;
+}
+
+.profile-card {
+  height: 60%;
+  width: 100%;
+  background-color: #fff;
+  background-clip: border-box;
+  border: 1px solid rgba(0, 0, 0, 0.125);
+  border-radius: 0.25rem;
+  box-shadow: 0 5px 20px rgba(0, 0, 0, 0.16), 0 5px 10px rgba(0, 0, 0, 0.3);
+  
+}
+
+.profile-container {
+  height: 100%;
+  width: 100%;
+  padding: 5%;
+}
+
+
+
+.new-profile-card {
+  height: 20vh;
+  width: 100%;
+}
+
+.new-profile-container {
+  height: 100%;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  
+}
+

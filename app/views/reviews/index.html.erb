@@ -1,10 +1,10 @@
 <h1>REVIEWS INDEX</h1>
 
 
-<h1>SHOW ALL YOUR REVIEWS</h1>
+
 
 <h1>Reviews that user has given to others</h1>
-<h1>Show reviews</h1>
+
 <ul>
 <% @current_user.reviews.each do |review| %>
 
@@ -18,4 +18,6 @@
 
 <p><%= link_to "Go back to home", home_path %></p>
 
-  <p><%= link_to "Create new review", new_review_path %></p>
+
+
+  <%= render 'shared/footer' %>

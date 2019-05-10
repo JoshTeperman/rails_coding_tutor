@@ -1,16 +1,16 @@
 
 
-<div>
-  <div class="text-center" style="margin: 50px;"><h1>Edit Profile</h1></div>
+<div class="edit-profile-container">
+ 
   
   <form class="form-style" action="<%= new_profile_path(@profile) %>" method="POST" enctype="multipart/form-data">
   <input type="hidden" value="<%= form_authenticity_token %>" name="authenticity_token" />
   <input type="hidden" name="_method" value="patch"/>
 
-  <div class="card">
-      <h5 class="card-header info-color white-text text-center py-4">
+  <div class="edit-profile-card">
+      <h2 class="card-header info-color white-text text-center py-4">
           <strong>Edit your profile</strong>
-      </h5>
+      </h2>
   <div class="card-body px-lg-5 pt-0" style="background-image: url(/backgrond.png);">
 
   <form class="text-center" style="color: #757575;">
@@ -67,7 +67,7 @@
 
 </div>
 
-    
+
 
        
 
