@@ -2,6 +2,7 @@
 
 [GithHub Repo](https://github.com/JoshTeperman/rails_coding_tutor)\
 [View Live Application](https://vast-citadel-37963.herokuapp.com/)
+trello
 
 ---
 ## Contents
@@ -147,6 +148,11 @@ Deployment:
 - Heroku: A popular Platform as a Service (PAAS) product that allows for deployment of web applications without owning your own database or server infrastructure. Users can push code in many different languages directly from GitHub to the internet via Heroku's deployment platfrom where it handles building and deployment of the application.
 
 _For other third party software, please see Third Party Services._
+<<<<<<< HEAD
+=======
+
+
+>>>>>>> c80ba25fae6042020ee87ecfd99239a8ae83d96c
 
 ### 6) Identify the database to be used in your App and provide a justification for your choice.
 
@@ -237,6 +243,11 @@ This app provides a range of different services beyond simple Profile Search. Th
 We used a range of database relations. 
 Users have a single profile, many reviews, many bookings and many orders. Therefore to describe the other side of those relationships, profiles, reviews, bookings, and orders all belong_to user. For the Users > Bookings and Users > Orders relationships, both are defined by a single additional instance, a User_Booking or a User_Order, therefore we used has_and_belongs_to_many. 
 
+<<<<<<< HEAD
+=======
+
+
+>>>>>>> c80ba25fae6042020ee87ecfd99239a8ae83d96c
 
 ### 13) Describe your project’s models in terms of the relationships (active record associations) they have with each other.
 
@@ -347,19 +358,56 @@ __Bucket List User Stories for Version 1.1__
 ### 16) Provide Wireframes for your App.
 [View at Figma.com](https://www.figma.com/file/N3IWB9shy8LfcphJliE2F1rz/Rails_Project?node-id=72%3A117)
 
+
+
+
 ### 17) Describe the way tasks are allocated and tracked in your project.
 
+  github, slack, trello
+
 ### 18) Discuss how Agile methodology is being implemented in your project.
+  
+  During the two weeks of working on the Rails project, we implemented standups every morning, in such a way that we discuss what we worked on the day before, what we will be working on today, and what are our blockers at the moment. This allows us to break down the important things to do in more manageable units, making it efficient and clear for my team to focus on high-quality development, and also to improve collaboration. These daily standups are also important in keeping all team members equally informed and updated on the status of the project.
+
+  In addition, at the start and end of every day, my partner and I will always make sure to define our daily goals, and to make decision together especially when prioritizing the features to implement in our project. By using Trello, we keep track of the fundamental things that we were required to do and we made sure to write all the details that accumulates and contribute to the overall functionality of our project. 
+
+  Moreover, we tend to divide our work and task equally as we were focusing on creating a shared sense of ownership and goals for our team. This kind of method gave a sense of purpose to our team, rather than creating a false sense of urgency. Being purposeful defintely made us more productive as we became more eager to challenge ourselves to be faster and more efficient. 
+
+  Other than that, we also listed out the user’s stories && tutor's stories by trying to use our app in a user's perspective. This allows us to outline the structure of our app, in terms of the design planning, the architecture, the functionality, the features, and all the other small details that a user will prefer to have when using our app. Therefore, by focusing on the user’s needs, each feature that we've built delivers real value and not just an IT component. It provides a better opportunity to gain vital feedback earlier in the project so that any additional modification can be made as needed.
 
 ### 19) Provide an overview and description of your Source control process.
 
+  Since the start of the project, my partner and I have worked together and stored our works on github. Initially we have to decide on who to create a repository on github, and then we will create a separate branch from master in order to push our work to the branch and merge it later. By the end of the day, we tend to git add and git commit our work and push to github at least a few times per day. If we have any merge conflicts, we usually solve it together to ensure which specific version is the latest one. In addition, we also tend to double check pull requests before merging, and then finally pull to our master in our local machine. This allowed us to compare changes over time, see who last modified something that might be causing a problem, which files introduced an issue and when, and more. Using github also allows us to store our files in github and hence if we unintentionally screw things up, we can still easily recover them. 
+
 ### 20) Provide an overview and description of your Testing process.
+
+
+Manual testing
+  User story
 
 ### 21) Discuss and analyse requirements related to information system security.
 
+  The three main requirements related to information systems security are confidentially, integrity, and availability (CIA). The basis of an organization's security depends on a properly developed, well designed and good implementation of information systems' security policy in order to balance security goals with the needs of an organization.
+
+  Confidentially is the main goal of information system security. It refers to preventing confidential information from falling into the hands of unintended and unauthorized users. There are alot of different types of threats that might directly, or indirectly affect the users such as theft of intellectual property, identity theft, theft of equipment or information, sabotage etc. 
+
+  Next is Integrity. It refers to preventing unauthorized alteration and modification of data and programs that were made either by unintended users such as hackers, or by authorized users making unauthorized, illegal modifications.
+
+  Lastly is Availability. It refers to the preservation of data and resources available for authorized use, especially during emergencies, disasters or equipment failures. 
+
 ### 22) Discuss methods you will use to protect information and data.
 
+  In order to prevent the exploitation of confidential information from users, the best way to do this is to implement encryption processes for passwords, as well as develop access controls such as antivirus software, firewall and so on.
+
+  The prevention of illegal modification of data by both unauthorized and authorised users is important to maintain an organization's integrity. Hence, one should implement a backup policy to protect against corruption or accidental loss of data. 
+
+  The requirements regarding availablity can be tackled by developing a disaster recovery plan to ensure that the organization can continue to exist in the event of a disaster or loss of access by personnel.
+
 ### 23) Research what your legal obligations are in relation to handling user data.
+
+
+
+
 
 ---
 ## Section 4: Reflection
