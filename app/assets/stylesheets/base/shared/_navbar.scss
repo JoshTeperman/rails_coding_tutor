@@ -7,6 +7,22 @@ nav {
     justify-content: space-between;
   }
   
+  .nav-profile-info {
+    display: flex;
+    height: 70px;
+    justify-content: center;
+    align-items: center;
+    margin: 0 10px;
+    padding: 0px;
+    list-style: none;
+
+    li {
+      margin: 10px;
+      
+      color: rgba(255, 255, 255, 0.5);
+    }
+  }
+
 }
 
 
