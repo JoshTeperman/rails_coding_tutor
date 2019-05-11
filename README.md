@@ -357,13 +357,32 @@ __Bucket List User Stories for Version 1.1__
 
 ### 16) Provide Wireframes for your App.
 [View at Figma.com](https://www.figma.com/file/N3IWB9shy8LfcphJliE2F1rz/Rails_Project?node-id=72%3A117)
+Here are a few screenshots of Wireframes for our App : 
+1) (https://raw.githubusercontent.com/JoshTeperman/rails_coding_tutor/master/Wireframe-1.png)
+2) (https://raw.githubusercontent.com/JoshTeperman/rails_coding_tutor/master/Wireframe-2.png)
 
+We planned and design the architecture for all the html.erb files that we created. 
 
+Then we started out by sketching the structure of our app. Link to our sketches are down below :
+1) (https://raw.githubusercontent.com/JoshTeperman/rails_coding_tutor/master/Building%20Process-2.jpg)
+2) (https://raw.githubusercontent.com/JoshTeperman/rails_coding_tutor/master/Building%20Process-1.jpg)
+
+We've also created to different views (logged in versus logged out view), to outline how the structure of our page would appear in different circumstances. 
+
+1) The first one is the homepage, which consists of a description of our website/app, it navigates user to the login && sign up page, as well as the search page. 
+
+2) Next is the search page,( index.html.erb of PROFILE model) which is comprised of a list of tutor profiles which allows users(aka students) to look for a suitable tutor. 
+
+3) We also planned all the structure and how the CRUD elements are supposed to fit together in different pages (
+  create a new profile page, show your profile page, edit own profile page.)
+
+4) We also planned the core structures for all other models (Booking, Review..etc), as well as the sign up and log in page.
 
 
 ### 17) Describe the way tasks are allocated and tracked in your project.
 
-  github, slack, trello
+  Trello has played an important role in allocating and tracking our tasks throughout the rails project.
+  We separated our work into different categories (Trello cards) such as to-do-list, doing list, finished list, user stories list, and finally the wish list. We update our to do list everyday, as it is the easiest way to stay on top of our deadlines and tasks. We also tend to mark and update all our lists once any individual item on it is completed. We can always see what needs to be done, for example we aim to get the MVPs done, and only then we plan to add extra features after completing the core structure of our app. Since day one, we started listing all of our tasks and we also added due dates to complete them. For example we set a due date for our MVPs, and thus allowing us to have extra time to double check for any bugs, as well as allocating some days left for styling. What we've done were also to discuss the priority for each day in the morning, and then constantly check our trello to ensure that we are on track, as well as to remove any nonessential tasks. Nevertheless, we also tend to break up bigger tasks into smaller ones in order for us to manage our tasks more efficiently. On top of that, we also used google docs to write notes on the things that we were working on, to group the different sections of our app and list out all the small details that are related to a particular page (eg Profile model should have an index page that serves as a search page, Booking model should have...and so on). 
 
 ### 18) Discuss how Agile methodology is being implemented in your project.
   
@@ -371,9 +390,9 @@ __Bucket List User Stories for Version 1.1__
 
   In addition, at the start and end of every day, my partner and I will always make sure to define our daily goals, and to make decision together especially when prioritizing the features to implement in our project. By using Trello, we keep track of the fundamental things that we were required to do and we made sure to write all the details that accumulates and contribute to the overall functionality of our project. 
 
-  Moreover, we tend to divide our work and task equally as we were focusing on creating a shared sense of ownership and goals for our team. This kind of method gave a sense of purpose to our team, rather than creating a false sense of urgency. Being purposeful defintely made us more productive as we became more eager to challenge ourselves to be faster and more efficient. 
+  Moreover, we tend to divide our work and task equally as we were focusing on creating a shared sense of ownership and goals for our team. This kind of method gave a sense of purpose to our team, rather than creating a false sense of urgency. Being purposeful definitely made us more productive as we became more eager to challenge ourselves to be faster and more efficient. 
 
-  Other than that, we also listed out the user’s stories && tutor's stories by trying to use our app in a user's perspective. This allows us to outline the structure of our app, in terms of the design planning, the architecture, the functionality, the features, and all the other small details that a user will prefer to have when using our app. Therefore, by focusing on the user’s needs, each feature that we've built delivers real value and not just an IT component. It provides a better opportunity to gain vital feedback earlier in the project so that any additional modification can be made as needed.
+  Other than that, we also listed out the user stories && tutor stories by trying to use our app in a user's perspective. This allows us to outline the structure of our app, in terms of the design planning, the architecture, the functionality, the features, and all the other small details that a user will prefer to have when using our app. Therefore, by focusing on the user’s needs, each feature that we've built delivers real value and not just an IT component. It provides a better opportunity to gain vital feedback earlier in the project so that any additional modification can be made as needed.
 
 ### 19) Provide an overview and description of your Source control process.
 
@@ -381,9 +400,36 @@ __Bucket List User Stories for Version 1.1__
 
 ### 20) Provide an overview and description of your Testing process.
 
+  We did some manual testing by going through the whole list of user stories one by one. For example, a student wants to be able to : 1) Create an account, 
+       2) Login and check bookings,
+       3) Edit bookings (edit / cancel etc)
+       4) Edit profile (login details, picture, skills, about me)
+       5) View Tutors 
+       6) Make a booking / Make a payment
+       7) Make reviews
 
-Manual testing
-  User story
+  On top of that, we also did manual testing for tutor stories, and we also tested on every page of each Model's Crud. 
+  Eg :     PROFILE Model - Index (search page)
+                          - Show (specific user profile + all reviews + add review form)
+                          - New (new profile form - after signing up / confirmation)
+                          - Edit (edit profile)
+
+  We did all of the manual testing for all the models and controllers that we created (Profile, Booking, Rewiew, Page, User_booking, User, and others.)
+
+  In addition, we also did can can authorization testing to check if it works, for example :
+    1) Logged out users can’t create bookings or reviews
+    2) Logged out users can create Profiles
+    3) Logged out users can view profiles and reviews
+    4) Logged in users can’t Edit / Delete reviews of others
+    5) Logged in users can’t Edit / Delete bookings of others
+    6) Logged in users can’t Edit others’ Profiles
+    7) Logged in users can only see Edit / Delete buttons of other users
+
+ Moreover, we also did manual testing for DEVISE Tests to see whether it works for :
+    1) Sign up 
+    2) Log in 
+    3) Format of email during sign up
+    4) Check whether password and email are updated in the database
 
 ### 21) Discuss and analyse requirements related to information system security.
 
@@ -405,9 +451,15 @@ Manual testing
 
 ### 23) Research what your legal obligations are in relation to handling user data.
 
+The Privacy law involves the legal obligations that regulates the collection, storing, provision of access and the management of personal information on all individuals. While handling user data, the legal obligations are that we have to consider the safety of personal information about our users from threats such as hackers, cyber thefts and so on. One of the things we should for our app is to provide an in-app disclosure of the data collection and use. 
 
+Moreover, we also have to be transparent in how we handle user data, for example the collection of information about a user. That means disclosing the collection, use, and sharing of the data, and limiting the use of the data to the purposes disclosed, and the consent provided by the user.
 
+Furthermore, we are also obligated to protect systems’ and individual files with authorization and authentication. This can be done using can can in order to implement an ID and password in order to use our app. We are also required to manage access rights, for example unauthorized user cannot modify any of the details in our app. Encryption og passwords, files, and important datas at all times, especially when wireless devices are used, and keep track of wireless connectivity to prevent accidental file sharing. Another thing we could do is also to keep a record of the timestamp (date and time) when a piece of electronic data was originally recorded to prevent any unintentional modifications, alteration or manipulation at a future date. 
 
+It is also a must to update virus protection on a regular basis to prevent vulnerability of data, as well as limiting the physical access to booking details (location, date.. etc) which could potentially be dangerous if unintended users have access to all these info.
+
+In addition, it is also important to develop a back up plan or a disaster recovery plan to ensure data recoverability in case of emergencies. This can be done by creating backups of multiple copies in secured multiple locations. 
 
 ---
 ## Section 4: Reflection
