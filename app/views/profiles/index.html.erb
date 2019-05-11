@@ -18,8 +18,8 @@
             <% if profile != current_user.profile %>
               New Booking <%= link_to ('<i class="fa fas fa-book fa-2x"></i>').html_safe, new_booking_path(:tutor => profile.tutor_id) %>
             <% end %>
+              <p>Average Rating: <%= profile.average_rating.round(1) %></p>
           <% end %>
-          <p>Average Rating: <%= profile.average_rating.round(1) %></p>
         </div>
 
         </div>
