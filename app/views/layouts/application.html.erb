@@ -9,14 +9,13 @@
   </head>
 
   <body>
-  <%= render 'shared/navbar' %>
+    <%= render 'shared/navbar' %>
 
-  <% flash.each do |key, value| %>
-    <%= value %>
-  <% end %>
-  
-   <%= yield %>
-  
-   </body>
+
+    <%= flash_messages %>
+
+    <%= yield %>
+    
+  </body>
 
 </html>
