@@ -14,11 +14,16 @@
         <a class="nav-link" href="<%= about_path %>">About</a>
       </button> 
     </li>
-    <li>
-      <button class="btn btn" type="button" style="margin: 5px; font-size: 20px;">
-        <a class="nav-link" href="https://github.com/JoshTeperman/rails_coding_tutor">Become a tutor</a>
-    </button>   
-    </li>
+    <% unless !signed_in? %>
+      <% if current_user.profile.tutor? == false %>
+        <li>
+          <button class="btn btn" type="button" style="margin: 5px; font-size: 20px;">
+            <a class="nav-link" href="#">Become a tutor</a>
+        </button>   
+        </li>
+      <% end %>
+    <% end %>
+
     <li>
       <button class="btn btn" type="button" style="margin: 5px; font-size: 20px;">
         <a class="nav-link" href="<%= index_path %>">Find a tutor</a>
@@ -37,10 +42,9 @@
     </li>
 
 
-  
-     <li>
-      <% if user_signed_in? %>
-        <% if current_user.profile %>
+    <% if user_signed_in? %>
+      <% if current_user.profile %>
+      <li>
           <button class="btn btn" type="button" style="margin: 5px; font-size: 20px;">
             <li class="nav-item dropdown">
               <a class="nav-link dropdown-toggle" href="#" id="navbardrop" data-toggle="dropdown">Profile</a>
@@ -48,18 +52,21 @@
                 <a class="dropdown-item" href="<%= bookings_path %>">Bookings</a>
                 <a class="dropdown-item" href="<%= profile_path(current_user.profile) %>">View My Profile</a>
                 <% if current_user.profile.tutor? %>
-                  <a class="dropdown-item" href="/profiles/<%= current_user.id %>/students">View My Students</a>
+                  <a class="dropdown-item" href="/profiles/<%= current_user.profile.id %>/students">View My Students</a>
                 <% end %>
                 <%= link_to 'Sign Out', destroy_user_session_path, method: :delete, class: 'dropdown-item' %>
               </div>
             </li>
           </button>
-          
-        <% end %>
-        <li> <div style="margin-top: 23px;" ><i class="fa fas fa-user-circle fa-2x" style="color:white"></i></div> </li>
+      </li>
+      <ul class="nav-profile-info">
+        <li> <div><i class="fa fas fa-user-circle fa-2x" style="color:white"></i></div> </li>
+        <li>Signed in as <%= current_user.email %></li>
+      </ul>
       <% end %>
-    </li>
-
+    <% end %>
      
   </ul>
 </nav>
+
+<%# style="margin-top: 23px;"  %>

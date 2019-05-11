@@ -12,11 +12,11 @@ class Ability
     can :read, Review
 
     # Guest user if not logged_in
-    user ||= User.new 
+    user ||= User.new
 
     # Abilities for logged in users
     if user.present?
-      can :create, [Review, Booking] 
+      can :create, [Review, Booking]
 
       can [:update, :destroy], Review do |review|
         review.reviewer_id == user.id
@@ -25,6 +25,12 @@ class Ability
       can [:update, :edit, :show, :my_students], [Profile] do |profile|
         profile.user_id == user.id
       end
+
+      can :show, Profile do |profile|
+        student = User.find(profile.user_id)
+        student.bookings.select { |booking| booking.tutor_id == user.profile.tutor_id }
+      end
+
 
       can [:manage], [Booking] do |booking|
         booking.users.select { |participant| participant.id == user.id } || booking.tutor_id == user.id

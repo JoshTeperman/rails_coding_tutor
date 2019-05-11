@@ -1,16 +1,14 @@
 class ProfilesController < ApplicationController
-  before_action :load_profile, except: [:index]
+  before_action :load_profile, except: [:index, :show]
   load_and_authorize_resource
 
   before_action :is_tutor?, only: :show
   skip_before_action :has_profile?, only: [:new, :create]
 
   def index
-    admins = Profile.joins(:user).where(users: {admin?: true})
-    moderators = Profile.joins(:user).where(users: {moderator?: true})
-    # @eager_loading = User.includes(:profile)
-    # @eager_loading_profiles = Profile.includes(:)
-    @profiles = Profile.all.reject {|profile| admins.include?(profile) || moderators.include?(profile) }
+    admins = Profile.joins(:user).where(users: { admin?: true })
+    moderators = Profile.joins(:user).where(users: { moderator?: true })
+    @profiles = Profile.all.reject { |profile| admins.include?(profile) || moderators.include?(profile) }
   end
 
   def new
@@ -49,12 +47,11 @@ class ProfilesController < ApplicationController
   def update
     @user = current_user
     @profile = @user.profile
-    if @profile
-      @profile.update(profile_params)
+    if @profile.update(profile_params)
       flash[:success] = 'Successfully updated'
       redirect_to @profile
     else
-      flash[:error] = 'Error'
+      flash[:error] = "Error: #{@profile.errors.full_messages}"
       render :edit
     end
   end
@@ -73,14 +70,18 @@ class ProfilesController < ApplicationController
 
   def is_tutor?
     profile = Profile.find(params[:id])
-    unless profile.tutor? || profile.user_id == current_user.id
+    unless profile.tutor? || profile.user_id == current_user.id || my_student?(profile)
       redirect_to index_path
       flash[:error] = 'Sorry, you can only view Tutor profiles'
     end
   end
 
   def load_profile
-    
     @profile = current_user.profile
+  end
+
+  def my_student?(profile)
+    student = User.find(profile.user_id)
+    student.bookings.select { |booking| booking.tutor_id == current_user.profile.tutor_id }
   end
 end

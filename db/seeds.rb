@@ -1,3 +1,4 @@
+# require 'pry'
 require_relative '../lib/seeds/seeds.rb'
 
 puts 'Destroying old records...'
@@ -11,12 +12,12 @@ puts 'Starting Seeding...'
 
 puts 'Creating Admin User'
 user = User.new(email: 'admin@admin.com', password: 'password', password_confirmation: 'password', admin?: true, moderator?: true)
-
 # user.skip_confirmation!
 user.save
 
-profile = user.create_profile(tutor?: true, first_name: 'Admin', surname: 'User', skills: 'none', bio: 'Administrator', average_rating: 0, hourly_rate: 0)
+profile = user.create_profile(tutor?: true, first_name: 'Admin', surname: 'User', skills: 'none', bio: 'Administrator', average_rating: 0, hourly_rate: 100)
 profile.save
+
 
 # MODERATOR USER  ------------------------------------------------------------->
 
@@ -25,7 +26,7 @@ user = User.new(email: 'moderator@moderator.com', password: 'password', password
 # user.skip_confirmation!
 user.save
 
-profile = user.create_profile(tutor?: true, first_name: 'Moderator', surname: 'User', skills: 'none', bio: 'Moderator', average_rating: 0, hourly_rate: 0)
+profile = user.create_profile(tutor?: true, first_name: 'Moderator', surname: 'User', skills: 'none', bio: 'Moderator', average_rating: 0, hourly_rate: 100)
 profile.save
 
 

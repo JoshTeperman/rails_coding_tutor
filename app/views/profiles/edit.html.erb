@@ -52,8 +52,13 @@
     </div>
 
      <div class="md-form">
-      <label for="tutor?">Create Tutor Profile</label>
-      <input type="checkbox" name="tutor?" value="true" id="tutor?">
+      <input type="hidden" name="tutor?" value="false" id="tutor?" checked>
+      <% if @profile.tutor? %>
+        <input type="checkbox" name="tutor?" value="true" id="tutor?" checked>
+      <% else %>
+        <input type="checkbox" name="tutor?" value="true" id="tutor?">
+      <% end %>
+      <label for="tutor?">I want a Tutor account</label>
     </div>
 
 

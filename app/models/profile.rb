@@ -2,7 +2,8 @@ require 'pry'
 
 class Profile < ApplicationRecord
   belongs_to :user
-  validates :hourly_rate, numericality: { greater_than: 0 }
+  validates :hourly_rate, numericality: { greater_than: 0 }, presence: true, if: -> { tutor? == true }
+  # validates :description, presence: true, if: -> {current_step == steps.first || require_validation}
 
 
   before_create :set_tutor_id
