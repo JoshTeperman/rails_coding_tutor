@@ -162,8 +162,6 @@
             </div>
           </div>
         </div>
-<% elsif !signed_in? %>
-  <p>Please <%= link_to 'log in', new_user_session_path %> to create a review</p>
 <% end %>
   </form>
 
@@ -178,7 +176,7 @@
     <% end %>
 
     <!-- Link to back-->
-    <button class="btn btn-default btn-rounded mb-4 bg-info text-white"><%= link_to 'Back', :back %></button>
+    <button id="back-button" class="btn btn-default btn-rounded mb-4 bg-info text-white"><%= link_to 'Back', :back %></button>
 </div>
 
 

@@ -73,14 +73,18 @@ class ProfilesController < ApplicationController
 
   def is_tutor?
     profile = Profile.find(params[:id])
-    unless profile.tutor? || profile.user_id == current_user.id
+    unless profile.tutor? || profile.user_id == current_user.id || my_student?(profile)
       redirect_to index_path
       flash[:error] = 'Sorry, you can only view Tutor profiles'
     end
   end
 
   def load_profile
-    
     @profile = current_user.profile
+  end
+
+  def my_student?(profile)
+    student = User.find(profile.user_id)
+    student.bookings.select { |booking| booking.tutor_id == current_user.profile.tutor_id }
   end
 end

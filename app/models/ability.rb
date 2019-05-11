@@ -26,6 +26,12 @@ class Ability
         profile.user_id == user.id
       end
 
+      can :show, Profile do |profile|
+        student = User.find(profile.user_id)
+        student.bookings.select { |booking| booking.tutor_id == user.profile.tutor_id }
+      end
+
+
       can [:manage], [Booking] do |booking|
         booking.users.select { |participant| participant.id == user.id } || booking.tutor_id == user.id
       end
