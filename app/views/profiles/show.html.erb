@@ -60,7 +60,7 @@
         <% end %>
       </div>
       <div class="reviews">
-        <% if @profile.tutor? %>
+        <% if @profile.tutor? && @profile != current_user.profile %>
           <h2> Reviews : </h2>
           <% if @tutor.reviews.count.zero? %>
             <p>This tutor hasn't received any reviews yet.</p>
@@ -81,20 +81,21 @@
               <% end %>
             </ul>
           <% end %>
-        <% end %>
-        <% if current_user && @profile != current_user.profile %>
-          <form class="form-style" action="<%= new_review_path %>" method="POST" enctype="multipart/form-data">
-            <input type="hidden" value="<%= form_authenticity_token %>" name="authenticity_token" />
-            <input type="hidden" value="<%= @profile.tutor_id %>" name="tutor_id" />
-            <input type="hidden" value="<%= current_user.id %>" name="reviewer_id" />
-          <!-- Write a review button-->
-            <div class="write-review-button">
-              <a href="" class="btn btn-default btn-rounded mb-4 bg-info text-white" data-toggle="modal" data-target="#modalReviewForm">Write a Review for this tutor</a>
-            </div>
-          </form>
-        <!-- IF signed_ in, will be able to create a review -->
-        <% elsif !signed_in? %>
-          <p>Please <%= link_to 'log in', new_user_session_path %> to create a review</p>
+
+          <% if current_user && @profile != current_user.profile %>
+            <form class="form-style" action="<%= new_review_path %>" method="POST" enctype="multipart/form-data">
+              <input type="hidden" value="<%= form_authenticity_token %>" name="authenticity_token" />
+              <input type="hidden" value="<%= @profile.tutor_id %>" name="tutor_id" />
+              <input type="hidden" value="<%= current_user.id %>" name="reviewer_id" />
+            <!-- Write a review button-->
+              <div class="write-review-button">
+                <a href="" class="btn btn-default btn-rounded mb-4 bg-info text-white" data-toggle="modal" data-target="#modalReviewForm">Write a Review for this tutor</a>
+              </div>
+            </form>
+          <!-- IF signed_ in, will be able to create a review -->
+          <% elsif !signed_in? %>
+            <p>Please <%= link_to 'log in', new_user_session_path %> to create a review</p>
+          <% end %>
         <% end %>
       </div>
  </div>
