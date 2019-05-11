@@ -20,6 +20,9 @@
             <% end %>
               <p>Average Rating: <%= profile.average_rating.round(1) %></p>
           <% end %>
+          <% if profile.average_rating != nil %>
+            <p>Average Rating: <%= profile.average_rating.round(1) %></p>
+          <% end %>
         </div>
 
         </div>

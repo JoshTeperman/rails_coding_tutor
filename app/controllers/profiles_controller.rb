@@ -18,6 +18,7 @@ class ProfilesController < ApplicationController
   def create
     @user = current_user
     @profile = current_user.create_profile(profile_params)
+    # @profile.average_rating == nil ? @profile.average_rating = 0
 
     if @profile.save
       flash[:success] = "Profile saved"
