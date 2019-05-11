@@ -97,7 +97,6 @@ Tutors will be able to curate their profile, offer their services and set their 
 
 Both Tutors and Students will have the option of making their account private, simply by disabling the "Tutor" option on their profile, while still recording their history of Tutoring Sessions, their notes, and their lists of Students and Tutors. The platform should allow anyone to use it flexibly, choosing when, where and how they interact with others, and whether they choose to monetise their relationships or not. 
 
-
 ### 4) Describe the network infrastructure the App may be based on.
 
 Our application is deployed through the Platform as a Service (PAAS) Heroku, a popular software product that allows developers to push code directly from GitHub to the internet via Heroku's deployment platfrom and network infrastructure. 
@@ -120,7 +119,6 @@ __APPLICATION DEPLOYMENT / EXECUTION PHASE__
 - Heroku executes the slug using a mini-operating system called a Dyno, an isolated Unix container that provides an environment for the app to run in. Dynos are the resources that are needed to run and manage your app when it is deployed on Heroku's servers. To scale the app in the future you can add more Dynos, and this is all executed in the background. 
 - Heroku then applies to the slug environment variables from your config vars file that describe things like user credentials or other environment specifications, and finally any add-ons or third party services that extend the functionality of the application.
 - Heroku delivers the final product containing the slug, config, and any add-ons, as a 'version' of your code. Any new release will be considered a new version of the application, and saved by Heroku.
-
 
 ### 5) Identify and describe the software to be used in your App.
 Software Languages:
@@ -148,11 +146,6 @@ Deployment:
 - Heroku: A popular Platform as a Service (PAAS) product that allows for deployment of web applications without owning your own database or server infrastructure. Users can push code in many different languages directly from GitHub to the internet via Heroku's deployment platfrom where it handles building and deployment of the application.
 
 _For other third party software, please see Third Party Services._
-<<<<<<< HEAD
-=======
-
-
->>>>>>> c80ba25fae6042020ee87ecfd99239a8ae83d96c
 
 ### 6) Identify the database to be used in your App and provide a justification for your choice.
 
@@ -217,7 +210,6 @@ __Application Architecture Diagram__
   - 
 - 
 
-
 ### 10) Detail any third party services that your App will use.
 Services:
 - S3 Module: Image Storage from Amazon Web Services
@@ -236,18 +228,13 @@ https://codingcoach.io/
 All data is hosted through GitHub Pages. Theis app functions only as a portal for developers to search and contact mentors. There is no payment mechanism, messaging, or anything beyond the search feature so they don't need to store or manipulate data beyond user profiles. 
 
 https://www.codementor.io/
-This app provides a range of different services beyond simple Profile Search. There are different tiers of login, places to post content, payment portal for services, reviews etc etc. Therefore they are using some type of database, most likely hosted on their ow server or on a powerful SaSS like Amazon Web Services. Their code will be complex, most likely structured to account for a large range of database model relationships (Users having many teachers, teachers having many reviews).
+This app provides a range of different services beyond simple Profile Search. There are different tiers of login, places to post content, payment portal for services, reviews etc etc. Therefore they are using some type of database, most likely hosted on their ow server or on a powerful SaSS like Amazon Web Services. Their code will be complex, most likely structured to account for a large range of database model relationships (Users having many teachers, teachers having many reviews etc etc).
 
 
 ### 12) Discuss the database relations to be implemented.
 We used a range of database relations. 
 Users have a single profile, many reviews, many bookings and many orders. Therefore to describe the other side of those relationships, profiles, reviews, bookings, and orders all belong_to user. For the Users > Bookings and Users > Orders relationships, both are defined by a single additional instance, a User_Booking or a User_Order, therefore we used has_and_belongs_to_many. 
 
-<<<<<<< HEAD
-=======
-
-
->>>>>>> c80ba25fae6042020ee87ecfd99239a8ae83d96c
 
 ### 13) Describe your project’s models in terms of the relationships (active record associations) they have with each other.
 
@@ -400,7 +387,7 @@ We've also created to different views (logged in versus logged out view), to out
 
 ### 20) Provide an overview and description of your Testing process.
 
-  We did some manual testing by going through the whole list of user stories one by one. For example, a student wants to be able to : 1) Create an account, 
+  We did manual testing by going through the whole list of user stories one by one. For example, a student wants to be able to : 1) Create an account, 
        2) Login and check bookings,
        3) Edit bookings (edit / cancel etc)
        4) Edit profile (login details, picture, skills, about me)
@@ -430,6 +417,8 @@ We've also created to different views (logged in versus logged out view), to out
     2) Log in 
     3) Format of email during sign up
     4) Check whether password and email are updated in the database
+
+Lastly, we tested our application on multiple browsers (Chrome, Safari, Firefox, Internet Explorer), and on mobile (viewing the Heroku site directly through a phone web browser, and also during the production phase using a localhost connection: https://gist.github.com/harrisonmalone/c60269fe5b3a623e59f8ef56a0d8bb72)
 
 ### 21) Discuss and analyse requirements related to information system security.
 
@@ -477,6 +466,8 @@ Bootstrap Styling
 
 ### Extending the App
 - what features would we add? 
+
+
 ### Maintenance
 - any requirements for ongoing management of the app
 
