@@ -6,11 +6,9 @@ class ProfilesController < ApplicationController
   skip_before_action :has_profile?, only: [:new, :create]
 
   def index
-    admins = Profile.joins(:user).where(users: {admin?: true})
-    moderators = Profile.joins(:user).where(users: {moderator?: true})
-    # @eager_loading = User.includes(:profile)
-    # @eager_loading_profiles = Profile.includes(:)
-    @profiles = Profile.all.reject {|profile| admins.include?(profile) || moderators.include?(profile) }
+    admins = Profile.joins(:user).where(users: { admin?: true })
+    moderators = Profile.joins(:user).where(users: { moderator?: true })
+    @profiles = Profile.all.reject { |profile| admins.include?(profile) || moderators.include?(profile) }
   end
 
   def new
