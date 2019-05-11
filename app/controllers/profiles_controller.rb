@@ -47,12 +47,11 @@ class ProfilesController < ApplicationController
   def update
     @user = current_user
     @profile = @user.profile
-    if @profile
-      @profile.update(profile_params)
+    if @profile.update(profile_params)
       flash[:success] = 'Successfully updated'
       redirect_to @profile
     else
-      flash[:error] = 'Error'
+      flash[:error] = "Error: #{@profile.errors.full_messages}"
       render :edit
     end
   end
