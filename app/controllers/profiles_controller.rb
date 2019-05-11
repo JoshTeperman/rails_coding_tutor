@@ -1,5 +1,5 @@
 class ProfilesController < ApplicationController
-  before_action :load_profile, except: [:index]
+  before_action :load_profile, except: [:index, :show]
   load_and_authorize_resource
 
   before_action :is_tutor?, only: :show
