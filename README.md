@@ -445,7 +445,7 @@ We've also created to different views (logged in versus logged out view), to out
 
 ### 23) Research what your legal obligations are in relation to handling user data.
 
-The Privacy law involves the legal obligations that regulates the collection, storing, provision of access and the management of personal information on all individuals. While handling user data, the legal obligations are that we have to consider the safety of personal information about our users from threats such as hackers, cyber thefts and so on. One of the things we should for our app is to provide an in-app disclosure of the data collection and use. 
+The Privacy law involves the legal obligations that regulates the collection, storing, provision of access and the management of personal information on all individuals. While handling user data, the legal obligations are that we have to consider the safety of personal information about our users from threats such as hackers, cyber thefts and so on. One of the things we should consider for our app is to provide an in-app disclosure of the data collection and use. 
 
 Moreover, we also have to be transparent in how we handle user data, for example the collection of information about a user. That means disclosing the collection, use, and sharing of the data, and limiting the use of the data to the purposes disclosed, and the consent provided by the user.
 
