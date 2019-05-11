@@ -53,7 +53,7 @@
             <div style="margin: 10px;"><p style="font-size: 20px;">$<%= @profile.hourly_rate %></p></div>
             <% unless @tutor.reviews.count.zero? %>
               <h2>Average Rating: 
-                <p style="font-size: 20px;"><%= @profile.average_rating.zero? ? 0 : @profile.average_rating %></p>
+                <p style="font-size: 20px;"><%= @profile.average_rating.zero? ? 0 : @profile.average_rating.round(1) %></p>
               </h2>
             <% end %>
           </h2>
