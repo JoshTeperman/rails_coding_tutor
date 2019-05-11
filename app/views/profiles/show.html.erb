@@ -73,7 +73,6 @@
                   <h6><strong> Rating: </strong></h6> 
                   <p><%= review.rating %></p> 
                 </li>
-              <%# <% if can? [:destroy, :update], Review %> 
                 <% if signed_in? && (review.reviewer_id == current_user.id || current_user.admin? || current_user.moderator? ) %>
                   <%= link_to "Delete", delete_review_path(review), method: :delete, data: { confirm: 'Are you sure?' } %>
                   <%= link_to "Edit", edit_review_path(review) %>
