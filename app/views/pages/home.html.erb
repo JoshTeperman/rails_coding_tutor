@@ -1,40 +1,41 @@
-<div class="home-section">
-  <h2 class="section-title">Coding Tutor</h2>
-  <div class="section-content">
-      <h4>Supporting the next generation of Australian developers through facilitating amazing mentor relationships</h4>
-      <a class="btn btn-primary btn-lg" href="<%= index_path %>" role="button">Find a tutor now</a>
+<div class="home-page">
+
+  <div class="home section ">
+    <div class="section-content">
+        <h2 class="section-title">Coding Tutor</h2>
+        <h4>Supporting the next generation of Australian developers through facilitating amazing mentor relationships</h4>
+        <a class="btn btn-primary btn-lg" href="<%= index_path %>" role="button">Find a tutor now</a>
+    </div>
+    <hr>
   </div>
-  <hr>
+
+  <div class="about section">
+    <div class="section-content">
+      <h2 class="section-title">About</h2>
+      <h4>The best place to find amazing Australian software engineering mentors</h4>
+      <a class="btn btn-primary btn-lg" href="<%= about_path %>" role="button">Learn more</a>
+    </div>
+  </div>
+
+  <div class="how-it-works section">
+    <div class="section-content">
+      <h2 class="section-title">How it works</h2>
+      <h4>Based on your goal, your mentor will provide you with an individualized study plan based on your schedule and prior experience.</h4>
+      <a class="btn btn-primary btn-lg" href="#" role="button">Tutorials</a>
+    </div>        
+  </div>
+
+
+
+  <div class="contact-us section">
+    <div class="section-content">
+      <h2 class="section-title">Contact Us</h2>
+      <h4>Feel free to contact us via email or phone and our crew will contact you shortly.</h4>
+      <p class="lead">codingtutor@gmail.com</p>
+      <p class="lead"><a href="https://github.com/JoshTeperman/rails_coding_tutor/">GitHub</a></p>
+      <p><small class="form-text text-muted mb-4">If you’re ready to get started, enrol online today and get 50% off your first session.<small></p>
+      <p><small class="form-text text-muted mb-4"><a href="<%= new_user_registration_path %>">Sign up</a> to register a free account and get your coding skills improved! Have any questions?</p>
+    </div>   
+  </div>
+
 </div>
-
-<div class="jumbotron-2">
-  <h2 class="display-4">About</h2>
-  <div class="content-2">
-  <p class="lead">When it comes to Coding, we’re the experts. Our talented team of tutors are experienced teachers or top coding achievers, highly knowledgeable in all coding languages and experienced in teaching online.
-
-Each member of our team has passed the rigorous Coding selection criteria and a Working With Children Check (WWCC), and Rails coding tutors have a proven track record of helping students achieve their learning goals.</p>
-</div>
- 
-</div>
- <a class="btn btn-primary btn-lg" href="<%= about_path %>" role="button">Learn more</a>
-  
-
-<div class="jumbotron-3">
-  <h2 class="display-4">How it works</h2>
-  <div class="content-3">
-  <p class="lead">Based on your goal, your mentor will provide you with an individualized study plan based on your schedule and prior experience.</p>
-
-  
-      <a class="btn btn-primary btn-lg" href="#" role="button">Learn more</a>
-      </div>
-      
-</div>
-
-
-
-<div class="jumbotron-4">
-  <h2 class="display-4">Contact us</h2>
-  <p class="lead"><span> Feel free to contact us via email or phone and our crew will contact you shortly.</span> <span><small class="form-text text-muted mb-4">If you’re ready to get started, enrol online today and get 50% off your first session.<small></span><span><small class="form-text text-muted mb-4">Click on  <a href="<%= new_user_registration_path %>">Sign up</a> to register a free account and get your coding skills improved! Have any questions?<small></span></p>
-</div>
-
-<%= render 'shared/footer' %>
