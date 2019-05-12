@@ -168,9 +168,9 @@ puts 'Seeding bookings'
   booking = Booking.new(booking_params)
   booking.save
 
-  puts "Adding Booking to User..."
-  user.bookings << booking
-  user.save
+  puts "Adding Booking to User #{student.profile.first_name}..."
+  student.bookings << booking
+  student.save
 end
 
 puts 'Finished seeding'
