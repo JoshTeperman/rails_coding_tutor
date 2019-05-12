@@ -29,6 +29,16 @@ user.save
 profile = user.create_profile(tutor?: true, first_name: 'Moderator', surname: 'User', skills: 'none', bio: 'Moderator', average_rating: 0, hourly_rate: 100)
 profile.save
 
+# GUEST USER  ------------------------------------------------------------->
+
+puts 'Creating Guest User'
+user = User.new(email: 'guest@guest.com', password: 'password', password_confirmation: 'password', admin?: false, moderator?: false)
+# user.skip_confirmation!
+user.save
+
+profile = user.create_profile(tutor?: true, first_name: 'Guest', surname: 'User', skills: 'Excellent at being a Guest User. Big Fans of Sunny and Josh', bio: 'Welcome to Coding Tutor. This is a Guest Account', average_rating: 0, hourly_rate: 100)
+profile.save
+
 
 # STUDENT USERS  ------------------------------------------------------------->
 
