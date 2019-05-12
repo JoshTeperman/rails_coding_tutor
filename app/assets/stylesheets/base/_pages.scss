@@ -1,30 +1,74 @@
 // Place all the styles related to the pages controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
-#main-jumbotron{
-  background: linear-gradient(#F0F2F0, #6B78BA);
-  height: calc(100vh - 70px);
+.home-page {
+  height: auto;
+  display: flex;
+  flex-direction: column;
+  // justify-content: center;
+  align-items: center;
+}
+.section {
+  height: 100vh;  
+  width: 100%;
   margin: 0px;
   padding: 80px;
-  display: flex;  
-  flex-direction: column;
-  justify-content: space-evenly;
+  display: flex;
+  justify-content: center;
   align-items: center;
 
-  .jumbotron-title {
-    font-size: 5.5rem;
+  // justify-content: space-evenly;
+  // align-items: center;
+
+  
+  .section-title {
+    margin-left: 30px;
+    font-size: 150px;
+    text-align: left;
   }
+  .section-content {
+    height: 100%;
+    width: 600px;
+    margin-right: 20px;
+    display: flex;  
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    
+    h4 {
+      margin: 0px;
+    }
+   
+    hr {
+      width: 50px;
+      background-color: #6B78BA;
+      border: none;
+      height: 2px;
+      margin: 20px 0;
+    }
 
-  .jumbotron-content {
+    .btn {
+      width: auto;
+    }
+
+    // flex-direction: column;
+
 
   }
-
-
 }
 
+.home {
+  background: linear-gradient(#F0F2F0, #6B78BA);
+  height: calc(100vh - 70px);
+}
 
+.how-it-works {
+  background: linear-gradient(#F0F2F0, #6B78BA);
+}
 
-
+.contact-us {
+  padding-bottom: 0px;
+}
 .content {
   margin-top: 5rem;
   margin-bottom: 1rem;
@@ -32,49 +76,49 @@
 }
 
 
-.jumbotron-2 {
-  padding: 2rem 1rem;
-  // margin-bottom: 2rem;
-  background: linear-gradient(#FFFFFF),#233C7A;
-  border-radius: 0.3rem;
-  height: 58vh;
-  display: flex;
-  align-items: center;
-  // flex-wrap: wrap;
-}
+// .jumbotron-2 {
+//   padding: 2rem 1rem;
+//   // margin-bottom: 2rem;
+//   background: linear-gradient(#FFFFFF),#233C7A;
+//   border-radius: 0.3rem;
+//   height: 58vh;
+//   display: flex;
+//   align-items: center;
+//   // flex-wrap: wrap;
+// }
 
-.content-2 {
-  width: 50%;
-}
-
-
-.jumbotron-3 {
-  margin-top: 10rem;
-  padding: 2rem 1rem;
-  // margin-bottom: 2rem;
-  background: linear-gradient(#FFFFFF,#373E82);
-  border-radius: 0.3rem;
-  height: 85vh;
-  // display: flex;
-  // align-items: center;
-  // flex-wrap: wrap;
-}
-
-.content-3 {
-  width: 100%;
-}
+// .content-2 {
+//   width: 50%;
+// }
 
 
-.jumbotron-4 {
-  padding: 2rem 1rem;
-  margin-bottom: 2rem;
-  background: #FFFFFF;
-  border-radius: 0.3rem;
-  height: 75vh;
-  // display: flex;
-  // align-items: center;
-  // flex-wrap: wrap;
-}
+// .jumbotron-3 {
+//   margin-top: 10rem;
+//   padding: 2rem 1rem;
+//   // margin-bottom: 2rem;
+//   background: linear-gradient(#FFFFFF,#373E82);
+//   border-radius: 0.3rem;
+//   height: 85vh;
+//   // display: flex;
+//   // align-items: center;
+//   // flex-wrap: wrap;
+// }
+
+// .content-3 {
+//   width: 100%;
+// }
+
+
+// .jumbotron-4 {
+//   padding: 2rem 1rem;
+//   margin-bottom: 2rem;
+//   background: #FFFFFF;
+//   border-radius: 0.3rem;
+//   height: 75vh;
+//   // display: flex;
+//   // align-items: center;
+//   // flex-wrap: wrap;
+// }
 
 
 .contact span{
@@ -85,11 +129,11 @@
 }
 
 
-h2.display-4 {
-  font-size: 5.5rem;
-  padding: 10%;
-  font-weight: 300;
-}
+// h2.display-4 {
+//   font-size: 5.5rem;
+//   padding: 10%;
+//   font-weight: 300;
+// }
 
 small, .small {
   font-size: 90%;
@@ -97,8 +141,8 @@ small, .small {
 }
 
 
-p {
-  margin-top: 0;
-  margin-bottom: 1rem;
-  font-size: 1rem;
-}
+// p {
+//   margin-top: 0;
+//   margin-bottom: 1rem;
+//   font-size: 1rem;
+// }

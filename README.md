@@ -95,10 +95,10 @@ Gmail account for mailgun
 
 ### __Screenshots__
 
-![Home Page](./docs/home-page.png)\
-![Index Page / Tutors](./docs/index.png)\
-![Profile](./docs/profile.png)\
-![My Students](./docs/my-students.png)
+![Screenshot](./docs/website-screenshot1.png)\
+![Screenshot](./docs/website-screenshot2.png)\
+![Screenshot](./docs/website-screenshot3.png)\
+![Screenshot](./docs/website-screenshot4.png)
 
 ### __Inspiration / Original Idea__
 We were inspired by the awesome open-source website Coding Coach, based in the US: https://codingcoach.io/

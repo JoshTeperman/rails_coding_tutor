@@ -5,18 +5,16 @@
   <% else %>
   
     <% if @tutor_bookings.count > 0 %>
-      <div class="title"><h3>Tutor Bookings</h3></div>
+      <div class="title"><h3>My Bookings (as tutor)</h3></div>
       <div class="box">
       <% @tutor_bookings.each do |booking| %>
       <div class= "tutor_bookings">
         <div class="card m-2" style="width: 21.5rem;">
           <div class="card-body">
-            <h2 class="card-title"><%= booking.id %></h2>
-            <h5 class="card-title"><%= booking.date %></h5>
-            <h6 class="card-subtitle mb-2 text-muted"><%= booking.location %></h6>
-            <h6 class="card-subtitle mb-2 text-muted"><%= booking.price %></h6>
-            <h6 class="card-subtitle mb-2 text-muted"><%= booking.duration %></h6>
-            <h6 class="card-subtitle mb-2 text-muted" style="margin-top: 30px;"><%= link_to "View", booking_path(booking) %></h6>
+            <p><strong>Date: </strong><%= booking.date  %></p>
+            <p><strong>Location: </strong><%= booking.location %></p>
+            <p><strong>Price: </strong>$<%= booking.price %></p>
+            <p><strong>Duration: </strong><%= booking.duration %> mins</p>
           </div>
          </div>
         </div>
@@ -27,19 +25,17 @@
 
     
     <% if @student_bookings %>
-      <div class="title"><h3>Student Bookings</h3></div>
+      <div class="title"><h3>My Bookings (as student)</h3></div>
       <div class="box">
       <% @student_bookings.each do |booking| %>
       <div class="student_bookings">
         <div class="card m-2" style="width: 21.5rem;">
           <div class="card-body">
-            <h2 class="card-title"><%= booking.id %></h2>
-            <h5 class="card-title"><%= booking.date %></h5>
-            <h6 class="card-subtitle mb-2 text-muted"><%= booking.location %></h6>
-
-          <h6 class="card-subtitle mb-2 text-muted"><%= booking.price %></h6>
-            <h6 class="card-subtitle mb-2 text-muted"><%= booking.duration %></h6>
-            <h6 class="card-subtitle mb-2 text-muted" style="margin-top: 30px;"><%= link_to "View", booking_path(booking) %></h6>
+            <p><strong>Tutor: </strong><%= Profile.where(tutor_id: booking.tutor_id).last.first_name %></p>
+            <p><strong>Date: </strong><%= booking.date  %></p>
+            <p><strong>Location: </strong><%= booking.location %></p>
+            <p><strong>Price: </strong>$<%= booking.price %></p>
+            <p><strong>Duration: </strong><%= booking.duration %> mins</p>
           </div>
          </div>
       </div>
@@ -49,5 +45,3 @@
   <% end %>
  
 </div>
-
-<%= render 'shared/footer' %>
