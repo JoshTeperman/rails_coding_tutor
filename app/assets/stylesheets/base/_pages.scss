@@ -1,7 +1,7 @@
 // Place all the styles related to the pages controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
-#main-jumbotron{
+.home-section{
   background: linear-gradient(#F0F2F0, #6B78BA);
   height: calc(100vh - 70px);
   margin: 0px;
@@ -11,18 +11,16 @@
   justify-content: space-evenly;
   align-items: center;
 
-  .jumbotron-title {
+  .section-title {
     font-size: 5.5rem;
   }
 
-  .jumbotron-content {
+  .section-content {
 
   }
 
 
 }
-
-
 
 
 .content {

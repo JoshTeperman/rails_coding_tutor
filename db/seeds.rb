@@ -44,7 +44,7 @@ profile.save
 
 puts 'Creating Student Users'
 
-20.times do
+50.times do
 
   seed_email = 'admin@admin.com'
   while User.exists?(email: seed_email)
@@ -82,7 +82,7 @@ end
 
 puts 'Creating Tutor Users'
 
-20.times do
+50.times do
 
   seed_email = 'admin@admin.com'
   while User.exists?(email: seed_email)
@@ -136,10 +136,9 @@ puts 'Creating Tutor Users'
 end
 
 # BOOKINGS   ------------------------------------------------------------->
-puts 'Seeding bookings'
+puts 'Seeding bookings...'
 
-
-50.times do
+200.times do
 
   # Random Student
   students = User.joins(:profile).where(profiles: {tutor?: false})

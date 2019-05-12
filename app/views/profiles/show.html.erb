@@ -60,7 +60,7 @@
         <% end %>
       </div>
       <div class="reviews">
-        <% if @profile.tutor? && @profile != current_user.profile %>
+        <% if @profile.tutor?  %>
           <h2> Reviews : </h2>
           <% if @tutor.reviews.count.zero? %>
             <p>This tutor hasn't received any reviews yet.</p>
