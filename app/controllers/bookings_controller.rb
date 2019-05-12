@@ -9,7 +9,7 @@ class BookingsController < ApplicationController
 
     # bookings as a student --->
     @student_bookings = current_user.bookings
-    # raise
+
   end
 
   def create
