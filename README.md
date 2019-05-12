@@ -2,27 +2,46 @@
 
 [GithHub Repo](https://github.com/JoshTeperman/rails_coding_tutor)\
 [View Live Application](https://vast-citadel-37963.herokuapp.com/)
-trello
 
 ---
 ## Contents
 <!-- links  -->
-**[Section 1: Description](#description)**\
-**[About](#about)**\
-**[Tech Stack](#tech-stack)**\
-**[Configuration](#configuration)**\
-**[Section 2: Design](#description)**\
-**[Wireframes](#wireframes)**\
-**[ERD](#erd)**\
-**[The Database](#the-database)**\
-**[User Stories](#user-stories)**
+**[=> Section 1: Description](#Section-1:-Description)**
 
+**[About](#About-CodingTutor)**\
+**[Tech Stack](#Tech-Stack)**\
+**[Configuration](#Configuration-/-Installation-Instructions)**\
+**[Sitemap](#Sitemap)**\
+**[Features](#Features)**\
+**[Screenshots](#Screenshots)**\
+**[Our Inspiration & The Idea](#Inspiration-/-Original-Idea)**
 
-## Section 1: DESCRIPTION
+**[=> Section 2: Planning](#Section-2:-Planning)**
+
+**[Project Plan](#Project-Plan)**\
+**[Wireframes](#Wireframes)**\
+**[ERD](#ERD-/-Database-Relationships)**\
+**[User Journey Diagram](#User-Journey-Diagram)**\
+**[Team Communication](#Team-Communication)**\
+**[Task Management](#Task-Management)**\
+**[Version / Source-Control](#Version-/-Source-Control)**
+
+**[=> Section 3: Short Answer Questions](#Section-3:-Short-Answer-Questions)**
+
+**[=> Section 4: Reflection](#Section-4:-Reflection)**
+
+**[Challenges](#Challenges)**\
+**[Take-Aways](#Take-Aways)**\
+**[Extending-Coding-Tutor](#Extending-Coding-Tutor)**
+
+**[=> Section 4: Section 5: Appendix](#Section-5:-Appendix)**
+**[Single Page Scrolling](#Single-Page-Scrolling)**\
+**[Search & Filtering](#Search-&-Filtering)**
+
+## __Section 1: Description__
 
 ### __About CodingTutor__
-<!-- General description of the app, its features-->
-<!-- Screenshots -->
+
 CodingTutor is a Code Mentoring and Tutoring platfrom built for and by Australian Programmers. Inspired by open source and private projects that operate globally but under-represent Australian developers, CodingTutor is an open-source project built to foster the development of the next generation of Australian software engineers.
 
 In current version 1.0 users create a default account (Student), and can opt in to creating a Tutor account, adding their profile to the list of Tutors students can book coaching with.  
@@ -34,38 +53,130 @@ In current version 1.0 users create a default account (Student), and can opt in 
 - Deployment: Heroku
 
 ### __Configuration / Installation Instructions__
-Gmail account
-  - emailress: ca.codingtutor@gmail.com
+
+1) Within your computer terminal, Nnavigate the directory where you want to install the application files, and run 'git clone https://github.com/JoshTeperman/rails_coding_tutor.git'
+
+2) Run 'bundle install' to install the dependencies
+
+3) Run 'rails db:reset' to reset the database
+
+4) Run rails s to run the server in development mode
+
+5) In your browser, navigate to 'http://localhost:3000/' to view the website
+
+6) Either login using the default Guest Account:
+  - email: guest@guest.com
+  - password: password
+
+7) Or Sign Up to create a new account
+
+<!-- 
+Gmail account for mailgun
+  - email address: ca.codingtutor@gmail.com
   - password: nl*V@hKGZ1I6
+ -->
 
----
-## Section 2: DESIGN
+### __Sitemap__
 
-### __Design process__
-Market Research:
-Talking to Developers
-Researching similar platforms
-
-
-### __User Journey__
-![User Journeys Flowchart](./docs/user-journeys.png "User Journeys Flowchart")
+![Site Map](./docs/Site-Map.png "Site Map")
 
 ### __Features__
 
+- Secure Login, User Authentication and Authorization
+- Personalized User Profiles
+- Profile Photo upload with AWS image Storage 
+- Simple, intuitive UI with slimmed down content and features
+- View Tutor information to select a teacher for new mentoring session. Review Tutor bio, skill set, past reviews from other students, and average rating
+- Book tutors for mentoring sessions
+- Checkout / payment using Credit Card with Strip Integration
+- Give your tutor a review
+- Additional views for Tutor users - View My Students 
+- View a list of bookings (past and future) as Student and Tutor
 
+### __Screenshots__
 
+![Home Page](./docs/home-page.png)\
+![Index Page / Tutors](./docs/index.png)\
+![Profile](./docs/profile.png)\
+![My Students](./docs/my-students.png)
+
+### __Inspiration / Original Idea__
+We were inspired by the awesome open-source website Coding Coach, based in the US: https://codingcoach.io/
+Coding Coach is purely a registry of Developers offering to mentor students. The Application is very minimal, there is no student login, it's free to use, and consists of a simple home page and a search / find a mentor page with filtering. 
+
+![Coding Coach](./docs/codingcoach.png "Coding Coach Screenshot")
+
+We were initially users of this site before we had the idea, but since there are only 3 mentors listed that are located in Australia, we were inspired to develop something similar for Australia, but with some additional features.
+
+Our original idea then was to make a Mentoring / Teaching platform that we could pitch to the Australian community. We think the need is there (given that we are users), and we don't need to innovate beyond the original model as the idea depends mostly on the presence of Australian Mentors / Tutors on the site, moreso than coming up with something innovative.
 
 ---
-## Section 3: PROCESS
-- project plan & timeline
-- Screenshots of Trello board(s)
-- GitHub
-- Progress
+## __Section 2: Planning__
+
+### __Project Plan__
+
+After we decided on our initial idea, we wrote a Project Plan and approximate timeline:
+
+![Project Plan](./docs/project-plan.jpg "Project-Plan")
+
+Then we sat down together and sketched out some ideas:
+
+![MVP](./docs/mvp.jpg "MVP")
+![Views Sketch](./docs/views-sketch.jpg "Views Sketch")
+
+
+Then we decided on our colour palette and some design details:
+![Design](./docs/design.png "Design Details")
+
+
+Drafted our user-stories: 
+
+![User-Stories](./docs/user-stories-sketch.png "User Stories")
+
+### __Wireframes__
+
+![Wireframes (1)](./docs/wireframes1.png "Wireframes")
+![Wireframes (2)](./docs/wireframes2.png "Wireframes")
+![Wireframes (3)](./docs/wireframes3.png "Wireframes")
+![Wireframes (4)](./docs/wireframes4.png "Wireframes")
+![Wireframes (7)](./docs/wireframes7.png "Wireframes")
+
+
+### __ERD / Database Relationships__
+
+![ERD](./docs/ERD.png "ERD")
+
+### __User Journey Diagram__
+
+![User Journeys Flowchart](./docs/user-journeys.png "User Journeys Flowchart")
+
+### __Team Communication__
+
+![Team Chat](./docs/team-chat.png)
+
+
+#### __Task Management__
+
+We used Trello to manage our workflow. We have tried using colour schemes before but never found it worth the effort, so stuck with a simple Agile structure (Task List / To do, Doing, Done, and then a Bucket List / Wish List). The most important factor in this system is labelling tasks each person is doing with their initials and then moving the task to the appropriate list (doing / done) so the other person knows what's going on. 
+
+![Trello Board](./docs/trello0.png)
+![Trello Board](./docs/trello1.png)
+![Trello Board](./docs/trello2.png)
+
+### __Version / Source Control__
+
+We used Git CLI, GitHub and Heroku CLI for source control / version control. After initilizing a new repository, we were able to clone the repo for the other person, and set up multiple contributors. After that we would both work on separate local branches before pushing commits to the origin branch. Every day we would push the origin repository to a Heroku repository created on only one computer to confirm our build.
+
+![GitHub](./docs/github1.png)
+![GitHub](./docs/github2.png)
+![GitHub](./docs/github3.png)
+![GitHub](./docs/github4.png)
 
 ---
-## Section 4: SHORT ANSWER QUESTIONS
+## __Section 3: Short Answer Questions__
 
-### 1) What is the need (i.e. challenge) that you will be addressing in your project?
+### 1
+What is the need (i.e. challenge) that you will be addressing in your project?
 The need we are addressing is reducing the friction in finding coaching, and teaching & monetization opportunities for Programmers in Australia. 
 
 Most people don't know how to find a mentor or don't have the time. The best way to find a mentor will always be through developing real relationships and trust with people in your own network, however traditional networking still limits you to who you know, and possibly second degree connections, or 'friends of friends'. 
@@ -121,8 +232,9 @@ __APPLICATION DEPLOYMENT / EXECUTION PHASE__
 - Heroku delivers the final product containing the slug, config, and any add-ons, as a 'version' of your code. Any new release will be considered a new version of the application, and saved by Heroku.
 
 ### 5) Identify and describe the software to be used in your App.
+
 Software Languages:
-- Front-end: 
+- Front-end:  
   - HTML: HyperText Markup Language. A language used to constract web pages. Used mostly for structure, capable of basic styling for elements.
   - ERB: Embedded Ruby. Used to write ruby logic directly in an HTML page that compiles and is read by the browser as HTML.
   - CSS: Cascading Style Sheets. Language used to 'style' a web-page. Makes HTML look pretty. Mostly styles static elements, though can be used to create minimal animations.
@@ -155,10 +267,14 @@ We used PostgreSQL for our application, for a few different reasons:
 - PostgreSQL works very smoothly when building an app with Ruby on Rails, and deploying to Heroku.
 
 ### 7) Identify and describe the production database setup (i.e. postgres instance).
-We are using an instance of a PostgreSQL database. 
-PostgresQL - 
-Production - heroku rails db migrate - 
-how the database is set up for you - (local and then how you set it up in heroku )
+
+We initially created an local instance of a PostgreSQL database using Ruby on Rails by calling the flag -d postgresql when creating the Rails app. We then call 'rails db:create' and set up our tables and columns using migrations: eg 'rails g model user' & 'rails g migration AddNameToUser'. This database then becomes our Development and testing database which we seed with fake data using the seeds.rb file. 
+
+For Production, the Migrations and Schema of our Development Database are pushed to Heroku from the GitHub repository, then set up within Heroku. To do this we run the same commands to create the database and run migrations, only we put 'heroku run' before the command. 
+
+Because the schema and migrations are the same, the structure of our database on Heroku is exactly the same and can be seeded using the same seeds.rb file. 
+
+Therefore our production database is an instance of a postgres database, hosted on Heroku.
 
 ### 8) Describe the architecture of your App.
 
@@ -203,27 +319,88 @@ __Application Architecture Diagram__
 - PostgreSQL relational database that stores persistent information used by the application.
 
 ### 9) Explain the different high-level components (abstractions) in your App.
-- Active Record
-- HTML ERB
-- Ruby on Rails 
-  - forms
-  - 
-- 
+In structuring the components of our application, we followed the Ruby on Rails conventions adopting an MVC model coupled with Active Record as described below:
+
+__Model (M)__
+Defines the structure of the data held in our database, including attributes of objects, logic (functions) used to manipulate that data at the database level, dependencies / validations, and the relationships between different objects. Files are located in app/models directory
+
+__View (V)__ 
+Uses HTML and Embedded Ruby to describe how the pages of the application appear within a browser. Files are located in app/views, and styled with Sass CSS files located in app/assets directories.
+
+__Controller (C)__
+Sits between the Models, Views, and any APIs and controls their function. Controller methods can be called via RESTful API routes, which are in turn triggered by HTTP requests from the Client, or in some cases can be called by changes in the state of the data in the databse. Controller files are located in app/controllers directory.
+
+__Active Record__
+
+A layer of abstraction that sits between our application and the database. Active record abstracts SQL code so that we can talk to the database using Ruby, and allows us to tread the data in the Model as Ruby objects. 
+
+__Other__
+
+Some additional abstractions provided by Rails commonly used in our application:
+- Active Storage: Allows us to upload images through forms, and forms a helpful layer we can use to speak to the AWS S3 API for image hosting
+- Form helpers: For easy forms that abstract the HTML
+- link_to / redirect_to: For easy access and alias calling of RESTful routes
 
 ### 10) Detail any third party services that your App will use.
+
 Services:
 - S3 Module: Image Storage from Amazon Web Services
 - Stripe: Payment processing Software as a Service (SASS) from Stripe. Allows users to pay for products or services within the app using credit card. 
 - Mailgun: Creates and sends email from a specified account to registered users, triggered by certain actions defined within the application.
 
-Gems / Modules:
+__Key Gems / Modules:__
 - Bootstrap: Software component library built by Twitter
 - Font Awesome: SVG Icon library
 - Devise: User Authentication module used to manage user registration, sign-in, passwords, confirmation etc
 - CanCan: Authorizations module used to define the scope of actions available to specific classes of users defined within the application
 - Faker: Used to generate random data for the database.
+- AWS / Active Storage: Used to host uploaded images on Amazon Web Services
+
+__Full List of Dependencies:__
+
+ruby '2.5.1'\
+gem 'rails', '~> 5.2.3'\
+gem 'pg', '>= 0.18', '< 2.0'\
+gem 'puma', '~> 3.11'\
+gem 'sass-rails', '~> 5.0'\
+gem 'uglifier', '>= 1.3.0'\
+gem 'coffee-rails', '~> 4.2'\
+gem 'turbolinks', '~> 5'\
+gem 'jbuilder', '~> 2.5'\
+gem 'bootsnap', '>= 1.1.0', require: false
+gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]\
+gem "devise", "~> 4.6"\
+gem "cancan", "~> 1.6"\
+gem "cancancan", "~> 3.0"\
+gem "stripe", "~> 4.16"\
+gem "dotenv-rails", "~> 2.7"\
+gem "faker", "~> 1.9"\
+gem "pry", "~> 0.12.2"\
+gem "aws-sdk-s3", require: false\
+gem 'bootstrap', '~> 4.3.1'\
+gem 'jquery-rails'\
+gem "font-awesome-rails"
+
+group :development, :test do\
+  gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]\
+end
+
+group :development do\
+  gem 'web-console', '>= 3.3.0'\
+  gem 'listen', '>= 3.0.5', '< 3.2'\
+  gem 'spring'\
+  gem 'spring-watcher-listen', '~> 2.0.0'\
+end
+
+group :test do\
+  gem 'capybara', '>= 2.15'\
+  gem 'selenium-webdriver'\
+  gem 'chromedriver-helper'\
+end
+
 
 ### 11) Describe (in general terms) the data structure of marketplace apps that are similar to your own (e.g. eBay, Airbnb).
+
 https://codingcoach.io/
 All data is hosted through GitHub Pages. Theis app functions only as a portal for developers to search and contact mentors. There is no payment mechanism, messaging, or anything beyond the search feature so they don't need to store or manipulate data beyond user profiles. 
 
@@ -232,6 +409,7 @@ This app provides a range of different services beyond simple Profile Search. Th
 
 
 ### 12) Discuss the database relations to be implemented.
+
 We used a range of database relations. 
 Users have a single profile, many reviews, many bookings and many orders. Therefore to describe the other side of those relationships, profiles, reviews, bookings, and orders all belong_to user. For the Users > Bookings and Users > Orders relationships, both are defined by a single additional instance, a User_Booking or a User_Order, therefore we used has_and_belongs_to_many. 
 
@@ -271,6 +449,7 @@ __User_Order__
 
 
 ### 14) Provide your database schema design.
+
 [View at dbdesigner.net](https://www.dbdesigner.net/designer/schema/243055)
 
 ![ERD](./docs/ERD.png "ERD")
@@ -343,6 +522,7 @@ __Bucket List User Stories for Version 1.1__
 - Moderators can escalate issues to Moderators
 
 ### 16) Provide Wireframes for your App.
+
 [View at Figma.com](https://www.figma.com/file/N3IWB9shy8LfcphJliE2F1rz/Rails_Project?node-id=72%3A117)
 Here are a few screenshots of Wireframes for our App : 
 1) (https://raw.githubusercontent.com/JoshTeperman/rails_coding_tutor/master/Wireframe-1.png)
@@ -451,30 +631,44 @@ It is also a must to update virus protection on a regular basis to prevent vulne
 In addition, it is also important to develop a back up plan or a disaster recovery plan to ensure data recoverability in case of emergencies. This can be done by creating backups of multiple copies in secured multiple locations. 
 
 ---
-## Section 4: Reflection
-### Challenges 
-- what was difficult?
-### What we learned / What would we do differently next time
-Write the readme first - Questions like these help to clarify the purpose of an app and aid in decision making and direction of the project:
-- what problem are we solving?
-- how do we know that problem exists?
-- why do we need to build this app in particular, to meet that need?
-- what are we doing differently from other solutions to this problem?
-- what features are needed to solve this need?
-Bootstrap Styling
-- either user Bootstrap for everything, just for mock-up (then replace with natively styled elements), or in very limited capaicty (buttons, navbar etc)
+## __Section 4: Reflection__
 
-### Extending the App
-- what features would we add? 
+### __Challenges__
 
+Bootstrap was a big challenge. We found it easy to use to set basic views for our application, but the more we tried to customise it the more roadblocks it presented. We found. 
 
-### Maintenance
-- any requirements for ongoing management of the app
+Working on a team for a full-stack app was challenging. We are both accustomed to Source Control and collaboration using tools like Git and Trello, rather in this case we found that sharing and separating work duties across a complex application architecture threw up interesting challenges.
+
+Time also became an issue. Although we felt our MVP was relativey simple in scale, _everything_ took longer than expected therefore we barely scratched the surface of what we wanted to accomplish. 
+We had plans for creating a fully responsive application with views for mobile and tablet, as well as some advanced functionality like search & filter, messaging etc, but just ran out of time. 
+
+### __Take Aways__
+
+Writing the Readme first would have helped a lot in defining the direction and therefore decisions needed to be made on the project. Writing the Readme toward the end of the project actually gave us a lot of clarity that would have been useful during the build itself. In particular:
+- How do we define the exact problem we are solving? What is the need?
+- Wow do we know that problem exists (where is the proof)?
+- Why is this app necessary to meet that need rather than another app or service already in the marketplace?
+- What are we doing differently from other solutions to this problem?
+- What features are needed to solve this need?
+
+Next time we wouldn't use Bootstrap at the scale we tried to in this application. Bootstrap is effective for quick mock-ups, and especially useful for some types of elements (buttons, forms etc), but not all. 
+
+### __Extending Coding Tutor__
+
+Next versions of the appliction may include:
+- Search / Filtering 
+- Skills (tags, new database model)
+- Multiple students in a booking
+- Documentation / Guides with the goal of supporting the development of strong mentor / mentee relationships
+- User Messaging / Inbox
+- Integrate / Automate Video calls
+- Notifications 
+- Ability to change booking time
 
 --- 
-## Section 5: Appendix
+## __Section 5: Appendix__
 
-### SINGLE PAGE SCROLLING
+### __Single Page Scrolling__
 https://www.uxpin.com/studio/blog/4-types-creative-website-scrolling-patterns/
 > We have selected a fixed long-scrolling pattern for displaying content on our website. Long-scrolling is suitable for applications where the content of the webstie is either a) user generated and therefore constantly being updated b) either diverse and difficult to categorise or alternatively all of a particularly type and can be listed all together, as is the case with our site. 
 > Long-scrolling pattern websites have the downside of becoming difficult to navigate, particularly when trying to 'go back', or return to a previous point. To combat this we have adopted fixed menu bars and search filter for the Search page, and fixed return buttons for the Home page. 
@@ -487,7 +681,7 @@ https://www.uxpin.com/studio/blog/4-types-creative-website-scrolling-patterns/
 References: 
 https://www.uxpin.com/studio/blog/4-types-creative-website-scrolling-patterns/
 
-### SEARCH / FILTERING
+### Search & Filtering__
 Challenge / Goal:
 - App users need a way to find the right tutor for them, either with a targeted search for a specific tutor (search by Name), or with a filter (search by skill / language, location)
 - Therefore we need 
