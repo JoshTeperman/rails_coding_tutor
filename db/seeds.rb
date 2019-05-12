@@ -160,7 +160,7 @@ puts 'Seeding bookings...'
     location: LOCATIONS.sample,
     duration: duration,
     price: user.profile.hourly_rate * duration,
-    tutor_id: tutor.id #user_id for the tutor > change to tutor_id: tutor.profile.tutor_id
+    tutor_id: tutor.profile.tutor_id #user_id for the tutor > change to tutor_id: tutor.profile.tutor_id
   }
 
   puts "Seeding Booking: #{booking_params}"
