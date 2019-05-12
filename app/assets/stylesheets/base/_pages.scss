@@ -13,14 +13,47 @@
   width: 100%;
   margin: 0px;
   padding: 80px;
-  display: flex;  
-  flex-direction: column;
-  justify-content: space-evenly;
+  display: flex;
+  justify-content: center;
   align-items: center;
+
+  // justify-content: space-evenly;
+  // align-items: center;
+
+  
   .section-title {
-    font-size: 5.5rem;
+    margin-left: 30px;
+    font-size: 150px;
+    text-align: left;
   }
   .section-content {
+    height: 100%;
+    width: 600px;
+    margin-right: 20px;
+    display: flex;  
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    
+    h4 {
+      margin: 0px;
+    }
+   
+    hr {
+      width: 50px;
+      background-color: #6B78BA;
+      border: none;
+      height: 2px;
+      margin: 20px 0;
+    }
+
+    .btn {
+      width: auto;
+    }
+
+    // flex-direction: column;
+
+
   }
 }
 
